@@ -1,22 +1,52 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT SATRIYO MEGA SARANA</title>
+    <link href="logo mitra.jpg">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PT SATRIO MEGA SARANA</title>
-<link href="logo mitra.jpg">
-
-<head style="text-align: center" class="mb-2 mb-lg-0"> 
-    
-    <div class="d-md-flex align-items-center justify-content-between">
-        <div style="text-align: center" class="image">
-            <img src="logo mitra.jpg" alt="image" height="100" width="100"><br/>
-        <h1>SATRIO MEGA SARANA</h1>
-        <br>GENERAL CONTRACTOR - DEVELOPER - PERDAGANGAN UMUM
-        <br>Jl. Setrayasa Barat 1 No. Kav 19 Kedungjaya Kedawung Cirebon 45135 Telp. (0231) 8807370
-    </div>
-    <!--/.row -->
-    <hr class="mt-13 mt-md-15 mb-7" />  
-    
 </head>
+<body>
+    <div class="headerlogo">
+        <img src="logo mitra.jpg" alt="image">
+        <h1>PT. Satriyo Mega Sarana</h1>
+    </div>
+    <div class="headerkonten">
+        <p class="text">GENERAL CONTRACTOR - DEVELOPER - PERDAGANGAN UMUM
+        </p>
+        <p class="text">Jl. Setrayasa Barat 1 No. Kav 19 Kedungjaya Kedawung Cirebon 45135 Telp. (0231) 8807370</p>
+    </div>
+    <div class="divider"></div>
+</body>
 </html>
+
+
+<style>
+    .headerlogo {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center
+    }
+
+    .headerlogo img {
+        height: 55px;
+        width: 60px;
+        margin-right: 10px;
+    }
+
+    .headerkonten{
+        justify-content: center;
+        text-align: center;
+        margin-top: 8px;
+    }
+    .divider {
+        border-top: 3px solid;
+        margin: 18px 0; 
+    }
+    .text {
+        margin-bottom: 0;
+        padding: 0;
+    }
+</style>
