@@ -12,6 +12,67 @@
                             style="bottom: -1.8rem; right: -0.8rem; width: 85%; height: 90%;"></div>
                     </div>
         <!-- welcome text -->
+        <form class="mb-3">
+            <div style="margin-bottom: 1%">
+            <label for="inputName" class="col-sm-2 col-form-label">Nama</label>
+            <div class="col-sm-10">
+                <input type="name" class="form-control" id="inputName">
+            </div>
+            </div>
+            <div style="margin-bottom: 1%">
+                <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
+                <div class="col-sm-10">
+                    <input type="alamat" class="form-control" id="inputalamat">
+                </div>
+                </div>
+                <div style="margin-bottom: 1%">
+                    <label for="inputNoHP" class="col-sm-2 col-form-label">No. HP</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputNoHP">
+                    </div>
+                    </div>
+                    <div style="margin-bottom: 1%">
+                        <label for="inputJumlah" class="col-sm-2 col-form-label">Uang Sebanyak</label>
+                        <div class="col-sm-10">
+                            <input type="string" class="form-control" id="inputJumlah">
+                        </div>
+                        </div>
+            <fieldset style="margin-bottom: 1%">
+            <legend>Radios</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                <label class="form-check-label" for="gridRadios1">
+                    Radio Pertama
+                </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                        Radio Kedua
+                    </label>
+                    </div>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                <label class="form-check-label" for="gridRadios2">
+                    Radio Ketiga
+                </label>
+                </div>
+                <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="option4" disabled>
+                <label class="form-check-label" for="gridRadios3">
+                    Third disabled radio
+                </label>
+                </div>
+            </div>
+            </fieldset>
+            <div style="margin-bottom: 1%">
+                <label for="inputJumlah" class="col-sm-2 col-form-label">Jumlah</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="inputjumlah">
+                </div>
+                </div>
+            <button type="submit" class="btn btn-primary">Cetak</button>
+        </form>
 </body>
-
 @extends('templates.footer')
