@@ -18,7 +18,7 @@
         <p class="text">Jl. Setrayasa Barat 1 No. Kav 19 Kedungjaya Kedawung Cirebon 45135 Telp. (0231) 8807370</p>
     </div>
     <div class="divider"></div>
-</body>
+</body>asas
 </html>
 
 
