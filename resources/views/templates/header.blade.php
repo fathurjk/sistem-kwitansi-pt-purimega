@@ -6,10 +6,10 @@
     <title>PT SATRIYO MEGA SARANA</title>
     <link href="logo mitra.jpg">
     <div class="containerlogo">
-        <div class="headerlogo">
+        <div class="headerlogo row">
             <img src="logo mitra.jpg" alt="image">
         </div>
-        <div class="headerkonten">
+        <div>
             <h1>PT. Satriyo Mega Sarana</h1>
             <p class="text">GENERAL CONTRACTOR - DEVELOPER - PERDAGANGAN UMUM
             </p>
