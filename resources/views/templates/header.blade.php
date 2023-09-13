@@ -26,7 +26,7 @@
         padding-top: 2rem;
         display: flex;
         flex-direction: row;
-        justify-content: center
+        justify-content: center;
     }
 
     .headerlogo {
@@ -36,8 +36,8 @@
     }
 
     .headerlogo img {
-        height: 6rem;
-        width: 6rem;
+        height: 5rem;
+        width: 5rem;
         margin-right: 8px;
     }
 
@@ -52,7 +52,7 @@
     }
     
     .headerkonten p {
-        margin-top: 8px;
+        margin-top: 4px;
         padding: 0
     }
     .divider {
