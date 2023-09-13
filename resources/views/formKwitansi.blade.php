@@ -2,7 +2,7 @@
 
 <body>
     <div class="content-wrapper">
-        <section class="wrapper bg-light">
+        <section class="wrapper">
             <div class="container pt-8 pt-md-14">
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
                     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-1 position-relative order-lg-2" data-cue="zoomIn">
@@ -12,13 +12,14 @@
                             style="bottom: -1.8rem; right: -0.8rem; width: 85%; height: 90%;"></div>
                     </div>
         <!-- welcome text -->
-        
-        <div class="title-form" id="title-form" style="text-align: center">
+        <div class="title-form mt-3" id="title-form" style="text-align: center">
             <h1>KWITANSI</h1>
         </div>
 
         <div  style="text-align: right" >
             <div class="no-kwitansi" id="no-kwitansi">
+                <label for="noKwitansi">No :</label>
+                <input  class="form-first" type="text" name="no_kwi" placeholder="Nomor Kwitansi..." >
                 <label for="noKwitansi">No:</label>
                 <input  class="form-first" type="number" name="no_kwi" placeholder="Nomor Kwitansi..." >
             </div>
@@ -26,7 +27,7 @@
 
 <form style="margin-bottom: 1%">
 
-    <div class="row mb-5">
+    <div class="row mb-5 mt-5">
         <label for="inputName" class="col-sm-2 col-form-label">Nama Lengkap</label>
     <div class="col-sm-10">
         <input type="text" class="form-control" id="inputName">
@@ -43,46 +44,46 @@
     <div class="row mb-5">
         <label for="insert-hp" class="col-sm-2 col-form-label"> No HP </label>
     <div class="col-sm-10">
-        <input id="insert-hp" class="form-control" type="number">
+        <input id="insert-hp" class="form-control" type="text">
     </div>
     </div>
 
     <div class="row mb-5">
         <label for="inputJumlah" class="col-sm-2 col-form-label">Uang Sebanyak</label>
     <div class="col-sm-10">
-        <input type="string" class="form-control" id="inputJumlah">
+        <input type="text" class="form-control" id="inputJumlah">
     </div>
     </div>
     
-<fieldset style="margin-bottom: 1%">
+<fieldset class="mb-2">
     <legend class="col-form-label col-sm-2 pt-0">Pembayaran</legend>
     <div style="margin-bottom: 1%">
-        <div class="form-check">
+        <div class="form-check form-check-inline m-3 p-3">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
             <label class="form-check-label" for="gridRadios1">Booking</label>
         </div>
         
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" checked>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
             <label class="form-check-label" for="gridRadios2">DP</label>
         </div>
 
-        <div class="form-check">
+        <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
             <label class="form-check-label" for="gridRadios3">CBTH</label>
         </div>
 
-        <div>
+        <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="option4">
             <label class="form-check-label" for="gridRadios4">Angsuran Ke</label>
         </div>
 
-        <div>
+        <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="option5">
-            <label class="form-check-label" for="gridRadios5">KE</label>
+            <label class="form-check-label" for="gridRadios5">KET</label>
         </div>
 
-        <div>
+        <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios6" value="option6">
             <label class="form-check-label" for="gridRadios2">Lain-lain</label>
         </div>
@@ -128,22 +129,12 @@
     </div>
 </fieldset>
 
-    <div style="margin-bottom: 1%">
+    <div class="mb-5">
         <label for="inputJumlah" class="col-sm-2 col-form-label">Jumlah</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="inputjumlah">
+            <input type="text" class="form-control" id="inputjumlah">
         </div>
         </div>
-    <div class="row mb-3">
-    <div class="col-sm-10 offset-sm-2">
-        <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck1">
-        <label class="form-check-label" for="gridCheck1">
-            Example checkbox
-        </label>
-        </div>
-    </div>
-    </div>
     <button type="submit" class="btn btn-primary">Cetak</button>
 
     <a href="{{ route('detailKwitansi') }}" class="btn btn-primary">Cetak Sementara ya Ges</a> 
