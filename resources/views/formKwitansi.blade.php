@@ -145,6 +145,10 @@
     </div>
     </div>
     <button type="submit" class="btn btn-primary">Cetak</button>
+
+    <a href="{{ route('detailKwitansi') }}" class="btn btn-primary">Cetak Sementara ya Ges</a> 
+    {{-- sementara cuman untuk direct ke halaman detail kwitansi --}}
+
 </form>
 </body>
 

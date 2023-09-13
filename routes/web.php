@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('formKwitansi');
 });
+Route::view('/detail-kwitansi', 'detailKwitansi')->name('detailKwitansi'); //route sementara belum pakai data
