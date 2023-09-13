@@ -36,7 +36,7 @@
                 <label style="margin-left: 2.2rem">:</label>
                 <label style="margin-left: 0.5rem;" for="outputPembayaran">Booking</label>
             </div>
-            <div class="wrapper-output-radio" style="display: flex; text-align: ; margin-bottom: 4px;">
+            <div class="wrapper-output-radio" style="display: flex; text-align: ; margin-bottom: 8px;">
                 <div style="width: 13rem; display: flex">
                     <label>Lokasi</label>
                     <label style="margin-left: 2.48rem">:</label>
