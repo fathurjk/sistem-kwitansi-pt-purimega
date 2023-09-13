@@ -9,7 +9,7 @@
         <div class="headerlogo row">
             <img src="logo mitra.jpg" alt="image">
         </div>
-        <div>
+        <div class="headerkonten">
             <h1>PT. Satriyo Mega Sarana</h1>
             <p class="text">GENERAL CONTRACTOR - DEVELOPER - PERDAGANGAN UMUM
             </p>
@@ -23,10 +23,11 @@
 
 <style>
     .containerlogo{
-        padding-top: 2rem;
+        padding-top: 1rem;
         display: flex;
         flex-direction: row;
         justify-content: center;
+        text-align: center
     }
 
     .headerlogo {
@@ -52,7 +53,7 @@
     }
     
     .headerkonten p {
-        margin-top: 4px;
+        margin-top: 2px;
         padding: 0
     }
     .divider {

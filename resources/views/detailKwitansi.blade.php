@@ -2,7 +2,7 @@
         <title>Kwitansi</title>
     </head>
     
-    <body style="margin-left: %; margin-right: %">
+    <body>
         @include('templates.header')
         <div class="container">
             <div style="text-align: right">
