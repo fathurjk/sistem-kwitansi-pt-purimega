@@ -20,8 +20,6 @@
             <div class="no-kwitansi" id="no-kwitansi">
                 <label for="noKwitansi">No :</label>
                 <input  class="form-first" type="text" name="no_kwi" placeholder="Nomor Kwitansi..." >
-                <label for="noKwitansi">No:</label>
-                <input  class="form-first" type="number" name="no_kwi" placeholder="Nomor Kwitansi..." >
             </div>
         </div>
 

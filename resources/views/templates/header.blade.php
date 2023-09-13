@@ -37,8 +37,8 @@
     }
 
     .headerlogo img {
-        height: 5rem;
-        width: 5rem;
+        height: 6.2rem;
+        width: 7rem;
         margin-right: 8px;
     }
 
