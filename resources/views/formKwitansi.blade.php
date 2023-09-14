@@ -133,9 +133,7 @@
             <input type="text" class="form-control" id="inputjumlah">
         </div>
         </div>
-    <button type="submit" class="btn btn-primary">Cetak</button>
-
-    <a href="{{ route('detailKwitansi') }}" class="btn btn-primary">Cetak Sementara ya Ges</a> 
+    <a href="{{ route('detailKwitansi') }}" class="btn btn-primary">Simpan</a> 
     {{-- sementara cuman untuk direct ke halaman detail kwitansi --}}
 
 </form>

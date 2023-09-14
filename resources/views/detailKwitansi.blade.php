@@ -84,7 +84,7 @@
         <div class="button wrapper"
             style="padding: 32; position: relative; flex-direction: row; display: flex; justify-content: center; align-items: center">
             <div class="button" style="width: 21.59cm; text-align: center">
-                <button style="width: 6rem; margin: 0 10rem 0 0" type="submit" class="btn btn-primary">Kembali</button>
+            <a href="{{ route('formKwitansi') }}"> <button style="width: 6rem; margin: 0 10rem 0 0" type="submit" class="btn btn-primary">Kembali</button></a>
                 <button style="width: 6rem" type="submit" class="btn btn-primary">Cetak</button>
             </div>
         </div>

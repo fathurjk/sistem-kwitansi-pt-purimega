@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('formKwitansi');
 });
 Route::view('/detail-kwitansi', 'detailKwitansi')->name('detailKwitansi'); //route sementara belum pakai data
+Route::view('/form-kwitansi', 'formKwitansi')->name('formKwitansi'); //route back formkwitansi
