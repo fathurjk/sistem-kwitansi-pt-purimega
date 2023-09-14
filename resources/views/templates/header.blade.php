@@ -27,7 +27,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        text-align: center
+        text-align: center;
     }
 
     .headerlogo {
@@ -50,6 +50,7 @@
     .headerkonten{
         justify-content: center;
         text-align: center;
+        align-items: center
     }
     
     .headerkonten p {
