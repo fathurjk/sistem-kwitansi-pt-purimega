@@ -61,14 +61,15 @@
                             <label for="pembayaran" class="col-sm-2 col-form-label">Pembayaran</label>
                             <div class="col-sm-10">
                                 <div class="form-group mb-3">
-                                    <select class="form-control" name="pembayaran" id="pembayaran">
+                                    <input class="form-control" id="pembayaran" name="pembayaran">
+                                    {{-- <select class="form-control" name="pembayaran" id="pembayaran">
                                         <option value="booking">Booking</option>
                                         <option value="dp">DP</option>
                                         <option value="cbth">CBTH</option>
                                         <option value="angsuran">Angsuran ke</option>
                                         <option value="ket">KET</option>
                                         <option value="lainlain">Lain-lain</option>
-                                    </select>
+                                    </select> --}}
                                 </div>
                                 <div class="form-group mb-3" id="lain-lain-form" style="display: none;">
                                     <label for="pembayaran_lainlain">Keterangan</label>
