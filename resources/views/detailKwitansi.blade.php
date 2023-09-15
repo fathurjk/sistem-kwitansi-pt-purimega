@@ -8,7 +8,7 @@
         <div class="sheet wrapper"
             style="position: relative; display: flex; padding-top: 48; flex-direction: column; justify-content: center; align-items: center;">
             <div class="content wrapper"
-                style="width: 21.59cm; height: 13.97cm; padding: 0 12px 12px 18px; border: 1px solid grey;">
+                style="width: 21.59cm; height: 13.97cm; padding: 0 16px 24px 16px; border: 1px solid grey;">
                 @include('templates.header')
                 <div class="content">
                     <div class="output kwitansi" style="text-align: right">
@@ -72,11 +72,39 @@
                             <label style="margin-left: 0.2rem; width: 7rem" for="outputPembayaran">72</label>
                         </div>
                     </div>
-                    <div class="output">
-                        <label style="width: 6rem">Jumlah</label>
+                    <div class="output" style="display: flex;">
+                        <label style="width: 6.3rem">Jumlah</label>
                         <label>:</label>
-                        <label style="margin-left: 0.2rem">Rp.</label>
-                        <label style="width: 7rem" for="outputPembayaran">2.000.000</label>
+                        <label style="margin: 0 4 0 6">Rp.</label>
+                        <label style="width: 10rem" for="outputPembayaran">2.000.000</label>
+                        <div style="flex-grow: 1; text-align: right;">
+                            <label>Cirebon,</label>
+                            <label style="width: 9rem" for="date">17 Februari 2023</label>
+                        </div>
+                    </div>
+                    <div class="ttd-wrapper" style="width: 300; float: right; margin-right: 12">
+                        <div class="row" style="margin-top: 4px;">
+                            <div class="col text-center" style="border-top: 1px solid; border-left: 1px solid">
+                                Pembeli
+                            </div>
+                            <div class="col text-center" style="border-top: 1px solid; border-left: 1px solid">
+                                Kasir
+                            </div>
+                            <div class="col text-center"
+                                style="border-top: 1px solid; border-left: 1px solid; border-right: 1px solid">
+                                Keuangan
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col"
+                                style="border-top: 1px solid; border-left: 1px solid; border-bottom: 1px solid; height: 5.5rem;">
+                            </div>
+                            <div class="col" style="border: 1px solid; height: 5.5rem;">
+                            </div>
+                            <div class="col"
+                                style="border-bottom: 1px solid; border-right: 1px solid; border-top:1px solid; height: 5.5rem;">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,7 +112,8 @@
         <div class="button wrapper"
             style="padding: 32; position: relative; flex-direction: row; display: flex; justify-content: center; align-items: center">
             <div class="button" style="width: 21.59cm; text-align: center">
-            <a href="{{ route('formKwitansi') }}"> <button style="width: 6rem; margin: 0 10rem 0 0" type="submit" class="btn btn-primary">Kembali</button></a>
+                <a href="{{ route('formKwitansi') }}"> <button style="width: 6rem; margin: 0 10rem 0 0"
+                        type="submit" class="btn btn-primary">Kembali</button></a>
                 <button style="width: 6rem" type="submit" class="btn btn-primary">Cetak</button>
             </div>
         </div>
