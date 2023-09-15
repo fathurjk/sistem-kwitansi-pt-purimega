@@ -47,7 +47,7 @@
                         <div class="row mb-5">
                             <label for="no_hp" class="col-sm-2 col-form-label"> No HP </label>
                             <div class="col-sm-10">
-                                <input id="no_hp" class="form-control" type="number" id="no_hp" name="no_hp">
+                                <input id="no_hp" class="form-control" type="text" id="no_hp" name="no_hp">
                             </div>
                         </div>
 
@@ -57,10 +57,45 @@
                                 <input class="form-control" id="uang_sebanyak" name="uang_sebanyak">
                             </div>
                         </div>
-                        <div class="row mb-5">
+                        <div class="row mb-4">
                             <label for="pembayaran" class="col-sm-2 col-form-label">Pembayaran</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="pembayaran" name="pembayaran">
+                                <div class="form-group mb-3">
+                                    <select class="form-control" name="pembayaran" id="pembayaran">
+                                        <option value="booking">Booking</option>
+                                        <option value="dp">DP</option>
+                                        <option value="cbth">CBTH</option>
+                                        <option value="angsuran">Angsuran ke</option>
+                                        <option value="ket">KET</option>
+                                        <option value="lainlain">Lain-lain</option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3" id="lain-lain-form" style="display: none;">
+                                    <label for="pembayaran_lainlain">Keterangan</label>
+                                    <input type="text" class="form-control" id="pembayaran_lainlain" name="pembayaran_lainlain">
+                                </div>
+                                
+                                <script>
+                                    document.getElementById('pembayaran').addEventListener('change', function() {
+                                        if (this.value === 'lainlain') {
+                                            document.getElementById('lain-lain-form').style.display = 'block';
+                                        } else {
+                                            document.getElementById('lain-lain-form').style.display = 'none';
+                                        }
+                                    });
+                                
+                                    // Get the input element
+                                    const input = document.getElementById('pembayaran_lainlain');
+                                
+                                    // Add an event listener to the input element
+                                    input.addEventListener('change', function() {
+                                        // Get the value of the input element
+                                        const value = input.value;
+                                
+                                        // Set the value of the other input element
+                                        document.getElementById('lainlain').value = value;
+                                    });
+                                </script>
                             </div>
                         </div>
                         <fieldset style="margin-bottom: 1%">
