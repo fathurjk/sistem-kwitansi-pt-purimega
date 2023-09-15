@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KwitansiController;
+use App\Models\Kwitansi;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('formKwitansi');
+    return view('kwitansi.index',[
+        'kwitansis' => Kwitansi::all(),
+    ]);
 });
-Route::view('/detail-kwitansi', 'detailKwitansi')->name('detailKwitansi'); //route sementara belum pakai data
-Route::view('/form-kwitansi', 'formKwitansi')->name('formKwitansi'); //route back formkwitansi
+
+Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi');
+Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create');
+Route::post('/kwitansi', [KwitansiController::class, 'store'])->name('kwitansi.store');
+Route::get('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'show'])->name('kwitansi.show');
+Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])->name('kwitansi.edit');
+Route::put('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'update'])->name('kwitansi.update');
+Route::delete('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'destroy'])->name('kwitansi.destroy');

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PT SATRIYO MEGA SARANA</title>
-    <link href="logo mitra.jpg">
     <div class="containerlogo">
         <div class="headerlogo row">
-            <img src="logo mitra.jpg" alt="image">
+            <img src=" {{ asset("/img/logo.jpg")}}"
+            >
         </div>
         <div class="headerkonten">
-            <h1>PT. Satriyo Mega Sarana</h1>
+            <h1>PT. SATRIYO MEGA SARANA</h1>
             <p class="text">GENERAL CONTRACTOR - DEVELOPER - PERDAGANGAN UMUM
             </p>
             <p class="text">Jl. Setrayasa Barat 1 No. Kav 19 Kedungjaya Kedawung Cirebon 45135 Telp. (0231) 8807370</p>

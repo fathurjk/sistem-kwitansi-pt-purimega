@@ -3,6 +3,11 @@
     </head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script>
+        function printKwitansi() {
+            window.print();
+        }
+    </script>
 
     <body>
         <div class="sheet wrapper"
@@ -14,69 +19,73 @@
                     <div class="output kwitansi" style="text-align: right">
                         <div class="no-kwitansi" style="margin-top: 0.5rem" id="no-kwitansi">
                             <label class="no" style="margin-right: 2px">No:</label>
-                            <label style="width: 4.5rem" for="noKwitansi">00000328</label>
+                            <label style="width: 4.5rem" for="noKwitansi">{{ $kwitansi->nomor_kwitansi }}</label>
                         </div>
                     </div>
                     <div class="output" style="margin-bottom: 4px">
                         <label style="width: 8rem;">Nama Lengkap</label>
                         <label style="margin-left:">:</label>
-                        <label style="margin-left: 0.2rem;" for="inputName">Fathurrochman JK</label>
+                        <label style="margin-left: 0.2rem;" for="inputName">{{ $kwitansi->nama_lengkap }}</label>
                     </div>
                     <div class="output" style="margin-bottom: 4px">
                         <label style="width: 8rem;">Alamat</label>
                         <label style="margin-left:">:</label>
-                        <label style="margin-left: 0.2rem;" for="inputName">Jalan Dua Durian Runtugh Kesambi
-                            Cirebon</label>
+                        <label style="margin-left: 0.2rem;" for="inputName">{{ $kwitansi->alamat }}</label>
                     </div>
                     <div class="output" style="margin-bottom: 4px">
                         <label style="width: 8rem;">No.HP</label>
                         <label style="margin-left:">:</label>
-                        <label style="margin-left: 0.2rem;" for="inputName">084872976257</label>
+                        <label style="margin-left: 0.2rem;" for="inputName">{{ $kwitansi->no_hp }}</label>
                     </div>
                     <div class="output" style="margin-bottom: 4px">
                         <label style="width: 8rem;">Uang Sejumlah</label></label>
                         <label style="margin-left:">:</label>
-                        <label style="margin-left: 0.2rem;" for="inputName">Empat juta rupiah</label>
+                        <label style="margin-left: 0.2rem;" for="inputName">{{ $kwitansi->uang_sebanyak }}</label>
                     </div>
                     <div class="output" style="margin-bottom: 4px">
                         <label style="width: 8rem;">Pembayaran</label>
                         <label style="margin-left:">:</label>
-                        <label style="margin-left: 0.2rem;" for="inputName">Booking</label>
+                        <label style="margin-left: 0.2rem;" for="inputName">{{ $kwitansi->pembayaran }}</label>
                     </div>
                     <div class="wrapper ouput radio" style="display: flex; margin: 8px 0 4px;">
                         <div class="output">
                             <label style="width: 6rem">Lokasi</label>
                             <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem" for="outputPembayaran">Mundu</label>
+                            <label style="margin-left: 0.2rem; width: 7rem"
+                                for="outputPembayaran">{{ $kwitansi->lokasi }}</label>
                         </div>
                         <div class="output">
                             <label style="width: 2.5rem">Type</label>
                             <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem" for="outputPembayaran">66</label>
+                            <label style="margin-left: 0.2rem; width: 7rem"
+                                for="outputPembayaran">{{ $kwitansi->type }}</label>
                         </div>
                         <div class="output">
                             <label style="width: 4.5rem">Discount</label>
                             <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem" for="outputPembayaran">100%</label>
+                            <label style="margin-left: 0.2rem; width: 7rem"
+                                for="outputPembayaran">{{ $kwitansi->discount }}</label>
                         </div>
                     </div>
                     <div class="wrapper ouput radio" style="display: flex; margin: 0 0 12px;">
                         <div class="output">
                             <label style="width: 6rem">No. Kavling</label>
                             <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem" for="outputPembayaran">A-06</label>
+                            <label style="margin-left: 0.2rem; width: 7rem"
+                                for="outputPembayaran">{{ $kwitansi->no_kavling }}</label>
                         </div>
                         <div class="output">
                             <label style="width: 2.5rem">Luas</label>
                             <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem" for="outputPembayaran">72</label>
+                            <label style="margin-left: 0.2rem; width: 7rem"
+                                for="outputPembayaran">{{ $kwitansi->luas }}</label>
                         </div>
                     </div>
                     <div class="output" style="display: flex;">
                         <label style="width: 6.3rem">Jumlah</label>
                         <label>:</label>
                         <label style="margin: 0 4 0 6">Rp.</label>
-                        <label style="width: 10rem" for="outputPembayaran">2.000.000</label>
+                        <label style="width: 10rem" for="outputPembayaran">{{ $kwitansi->jumlah }}</label>
                         <div style="flex-grow: 1; text-align: right;">
                             <label>Cirebon,</label>
                             <label style="width: 9rem" for="date">17 Februari 2023</label>
@@ -112,9 +121,8 @@
         <div class="button wrapper"
             style="padding: 32; position: relative; flex-direction: row; display: flex; justify-content: center; align-items: center">
             <div class="button" style="width: 21.59cm; text-align: center">
-                <a href="{{ route('formKwitansi') }}"> <button style="width: 6rem; margin: 0 10rem 0 0"
-                        type="submit" class="btn btn-primary">Kembali</button></a>
-                <button style="width: 6rem" type="submit" class="btn btn-primary">Cetak</button>
+                <button type="button" class="btn btn-primary" onclick="">Kembali</button>
+                <button type="button" class="btn btn-primary" onclick="printKwitansi()">Cetak</button>
             </div>
         </div>
     </body>
