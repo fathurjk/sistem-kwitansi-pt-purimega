@@ -1,10 +1,14 @@
 @include('templates.header')
+
 <head>
     <meta charset="UTF-8">
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
     <title>Tambah Kwitansi</title>
+    <a class="btn btn-primary mb-3" href="/kwitansi">Kembali</a>
+</body>
 </head>
+
 <body>
     <div class="content-wrapper">
         <section class="wrapper">
@@ -27,56 +31,54 @@
                             <div class="nomor">
                                 <label for="nomor_kwitansi">No :</label>
                                 <input class="form-first" type="text" id="nomor_kwitansi" name="nomor_kwitansi"
-                                    placeholder="Nomor Kwitansi...">
+                                    value="{{ $serialNumber }}" readonly>
                             </div>
                         </div>
                         <div class="row mb-5 mt-5">
                             <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap">
+                                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan Nama Lengkap" required>
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="alamat" name="alamat">
+                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required>
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <label for="no_hp" class="col-sm-2 col-form-label"> No HP </label>
                             <div class="col-sm-10">
-                                <input id="no_hp" class="form-control" type="text" id="no_hp" name="no_hp">
+                                <input id="no_hp" class="form-control" type="text" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP" required>
                             </div>
                         </div>
 
                         <div class="row mb-5">
                             <label for="uang_sebanyak" class="col-sm-2 col-form-label">Uang Sebanyak</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="uang_sebanyak" name="uang_sebanyak">
+                                <input class="form-control" id="uang_sebanyak" name="uang_sebanyak" placeholder="Masukkan Uang Sebanyak" required>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="pembayaran" class="col-sm-2 col-form-label">Pembayaran</label>
                             <div class="col-sm-10">
-                                <div class="form-group mb-3">
-                                    <input class="form-control" id="pembayaran" name="pembayaran">
-                                    {{-- <select class="form-control" name="pembayaran" id="pembayaran">
+                                {{-- <div class="form-group mb-3">
+                                    <select class="form-control" name="pembayaran" id="pembayaran">
                                         <option value="booking">Booking</option>
                                         <option value="dp">DP</option>
                                         <option value="cbth">CBTH</option>
                                         <option value="angsuran">Angsuran ke</option>
                                         <option value="ket">KET</option>
                                         <option value="lainlain">Lain-lain</option>
-                                    </select> --}}
-                                </div>
-                                <div class="form-group mb-3" id="lain-lain-form" style="display: none;">
-                                    <label for="pembayaran_lainlain">Keterangan</label>
-                                    <input type="text" class="form-control" id="pembayaran_lainlain" name="pembayaran_lainlain">
-                                </div>
-                                
-                                <script>
+                                    </select>
+                                </div> --}}
+                                <input type="text" class="form-control" id="pembayaran" name="pembayaran"placeholder="Masukkan Peembayaran" required>
+                                {{-- <div class="form-group mb-3" id="lain-lain-form" style="display: none;">
+                                </div> --}}
+
+                                {{-- <script>
                                     document.getElementById('pembayaran').addEventListener('change', function() {
                                         if (this.value === 'lainlain') {
                                             document.getElementById('lain-lain-form').style.display = 'block';
@@ -84,19 +86,19 @@
                                             document.getElementById('lain-lain-form').style.display = 'none';
                                         }
                                     });
-                                
+
                                     // Get the input element
-                                    const input = document.getElementById('pembayaran_lainlain');
-                                
+                                    const input = document.getElementById('pembayaran');
+
                                     // Add an event listener to the input element
                                     input.addEventListener('change', function() {
                                         // Get the value of the input element
                                         const value = input.value;
-                                
+
                                         // Set the value of the other input element
                                         document.getElementById('lainlain').value = value;
                                     });
-                                </script>
+                                </script> --}}
                             </div>
                         </div>
                         <fieldset style="margin-bottom: 1%">
@@ -104,35 +106,35 @@
                                 <div style="margin-bottom: 1%">
                                     <label for="lokasi" class="col-sm-2 col-form-label">Lokasi</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="lokasi" name="lokasi">
+                                        <input class="form-control" id="lokasi" name="lokasi" placeholder="Masukkan Lokasi" required>
                                     </div>
                                 </div>
 
                                 <div style="margin-bottom: 1%">
                                     <label for="no_kavling" class="col-sm-2 col-form-label">No. Kavling</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="no_kavling" name="no_kavling">
+                                        <input class="form-control" id="no_kavling" name="no_kavling" placeholder="Masukkan Nomor Kavling" required>
                                     </div>
                                 </div>
 
                                 <div style="margin-bottom: 1%">
                                     <label for="type" class="col-sm-2 col-form-label">Type</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="type" name="type">
+                                        <input class="form-control" id="type" name="type" placeholder="Masukkan Nama Type" required>
                                     </div>
                                 </div>
 
                                 <div style="margin-bottom: 1%">
                                     <label for="luas" class="col-sm-2 col-form-label">Luas</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="luas" name="luas">
+                                        <input class="form-control" id="luas" name="luas" placeholder="Masukkan Luas" required>
                                     </div>
                                 </div>
 
                                 <div style="margin-bottom: 1%">
                                     <label for="discount" class="col-sm-2 col-form-label">Discount</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" id="discount" name="discount">
+                                        <input class="form-control" id="discount" name="discount" placeholder="Masukkan Discount" required>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +143,7 @@
                         <div class="mb-5">
                             <label for="jumlah" class="col-sm-2 col-form-label">Jumlah</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="jumlah" name="jumlah">
+                                <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Tambah</button>

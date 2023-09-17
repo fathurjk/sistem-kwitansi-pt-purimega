@@ -18,7 +18,7 @@
             <div class="mb-3">
                 <label for="nomor_kwitansi" class="form-label">Nomor Kwitansi</label>
                 <input type="text" class="form-control @error('nomor_kwitansi') is-invalid @enderror"
-                    id="nomor_kwitansi" name="nomor_kwitansi" required autofocus
+                    id="nomor_kwitansi" name="nomor_kwitansi" readonly
                     value="{{ old('nomor_kwitansi', $kwitansi->nomor_kwitansi) }}">
                 @error('nomor_kwitansi')
                     <div class="invalid-feedback">

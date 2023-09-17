@@ -3,9 +3,27 @@
     </head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style type="text/css">
+        @media print {
+            @page {
+                size: landscape;
+            }
+
+            body * {
+                visibility: hidden;
+            }
+
+            .sheet.wrapper,
+            .sheet.wrapper * {
+                visibility: visible;
+            }
+        }
+    </style>
     <script>
         function printKwitansi() {
-            window.print();
+            window.print({
+                mode: 'landscape'
+            });
         }
     </script>
 
@@ -87,8 +105,8 @@
                         <label style="margin: 0 4 0 6">Rp.</label>
                         <label style="width: 10rem" for="outputPembayaran">{{ $kwitansi->jumlah }}</label>
                         <div style="flex-grow: 1; text-align: right;">
-                            <label>Cirebon,</label>
-                            <label style="width: 9rem" for="date">17 Februari 2023</label>
+                            <label style="width: 15rem" for="date">Cirebon,
+                                {{ date('j F Y', strtotime($kwitansi->created_at)) }}</label>
                         </div>
                     </div>
                     <div class="ttd-wrapper" style="width: 300; float: right; margin-right: 12">
@@ -120,9 +138,12 @@
         </div>
         <div class="button wrapper"
             style="padding: 32; position: relative; flex-direction: row; display: flex; justify-content: center; align-items: center">
-            <div class="button" style="width: 21.59cm; text-align: center">
-                <button type="button" class="btn btn-primary" onclick="">Kembali</button>
-                <button type="button" class="btn btn-primary" onclick="printKwitansi()">Cetak</button>
+            <div style="width: 21.59cm; text-align: center">
+                <a class="btn btn-primary" href="/kwitansi">Kembali</a>
+                <button type="button" href="{{ route('kwitansi.edit', $kwitansi->id) }}"
+                    class="btn btn-warning">Edit</button>
+                <button type="button" class="btn btn-primary" onclick="printKwitansi()"
+                    media="print">Cetak</button>
             </div>
         </div>
     </body>

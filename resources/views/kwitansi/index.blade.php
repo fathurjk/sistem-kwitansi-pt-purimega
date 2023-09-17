@@ -54,7 +54,7 @@
                                 class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete
+                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Hapus
                                 </button>
                             </form>
                         </td>

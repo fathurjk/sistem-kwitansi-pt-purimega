@@ -22,7 +22,7 @@ class CreateKwitansisTable extends Migration
             $table->text('uang_sebanyak');
             $table->text('pembayaran');
             $table->text('lokasi');
-            $table->integer('no_kavling');
+            $table->string('no_kavling');
             $table->text('type');
             $table->text('luas');
             $table->text('discount');
