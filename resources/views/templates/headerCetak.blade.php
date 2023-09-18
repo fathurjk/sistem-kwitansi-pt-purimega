@@ -23,11 +23,11 @@
 
 <style>
     .containerlogo{
-        padding-top: 4;
+        padding-top: 0;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        text-align: center;
+        align-items: flex-end
     }
 
     .headerlogo {
@@ -37,9 +37,9 @@
     }
 
     .headerlogo img {
-        height: 5.5rem;
-        width: 7rem;
-        margin-right: 8px;
+        height: 6rem;
+        width: 7.3rem;
+        margin-right: 2px;
         align-items: center;
         justify-content: center
     }
