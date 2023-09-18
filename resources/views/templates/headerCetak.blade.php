@@ -37,16 +37,17 @@
     }
 
     .headerlogo img {
-        height: 6rem;
-        width: 7.3rem;
-        margin-right: 2px;
+        height: 4.8rem;
+        width: 6rem;
+        margin-right: 0px;
         align-items: center;
         justify-content: center
     }
 
     .headerkonten h1 {
-        margin: 0 0 -4 0;
+        margin: 0 0 -4px 0;
         padding: 0;
+        font-size: 24pt
     }
 
     .headerkonten{
@@ -56,12 +57,12 @@
     }
     
     .headerkonten p {
-        margin-top: -2;
+        margin-top: -4px;
         padding: 0
     }
     .divider {
-        border-top: 3px solid;
-        margin: 2px 0; 
+        border-top: 2px solid;
+        margin: 2px 0 0 0; 
     }
 
     .text {

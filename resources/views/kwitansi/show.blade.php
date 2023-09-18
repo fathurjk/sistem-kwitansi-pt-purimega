@@ -9,8 +9,8 @@
     <style type="text/css">
         @media print {
             @page {
-                size: legal;
-                margin: 0;
+                size: 21cm 33cm;
+                margin: 11pt 0px 0px 0px ;
             }
 
             .sheet.wrapper:not(:first-of-type) {
@@ -35,7 +35,7 @@
         <div class="sheet wrapper"
             style="position: relative; display: flex; padding: 0; flex-direction: column; justify-content: center; align-items: center;">
             <div class="content wrapper"
-                style="background-image: url('/img/konsumen.png'); width: 21.59cm; height: 11.7cm; padding: 0 24px 0px 24px; border-bottom: 1px solid;">
+                style="background-image: url('/img/konsumen.png'); width: 21.59cm; height: 10.8cm; padding: 0 24px 0px 24px; border-bottom: 1px solid; border-bottom-style: dashed">
                 @include('templates.headerCetak')
                 <div class="content">
                     <div class="output kwitansi" style="text-align: right">
@@ -44,43 +44,43 @@
                             <label style="width: 4.5rem">{{ $kwitansi->nomor_kwitansi }}</label>
                         </div>
                     </div>
-                    <div class="output" style="margin-left: 12px">
-                        <label style="width: 8rem;">Nama Lengkap</label>
+                    <div class="output" style="margin: 0 0 -1px 12px">
+                        <label style="width: 8rem">Nama Lengkap</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->nama_lengkap }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Alamat</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->alamat }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">No.HP</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->no_hp }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Uang Sejumlah</label></label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->uang_sebanyak }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Pembayaran</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->pembayaran }}</label>
                     </div>
-                    <div class="wrapper output radio" style="display: flex; margin-left: 12px">
-                        <div class="output">
+                    <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem">Lokasi</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->lokasi }}</label>
                         </div>
-                        <div class="output">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 2.5rem">Type</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 5rem">{{ $kwitansi->type }}</label>
                         </div>
-                        <div class="output">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 4.5rem">Discount</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->discount }}</label>
@@ -98,12 +98,12 @@
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->luas }}</label>
                         </div>
                     </div>
-                    <div class="output" style="display: flex; margin-left: 12px">
-                        <label style="width: 8.3rem">Jumlah</label>
-                        <label>:</label>
-                        <label style="margin: 0 4px 0 6px">Rp.</label>
-                        <label style="width: 10rem">{{ $kwitansi->jumlah }}</label>
-                        <div style="flex-grow: 1; text-align: right;">
+                    <div class="output" style="display: flex; margin: 0 0 -1px 12px">
+                        <label style="width: 8.3rem; margin: 0 0 -1px 0">Jumlah</label>
+                        <label style="margin: 0 0 -1px 0">:</label>
+                        <label style="margin: 0 4px -1px 6px">Rp.</label>
+                        <label style="width: 10rem; margin: 0 0 -1px 0">{{ $kwitansi->jumlah }}</label>
+                        <div style="flex-grow: 1; text-align: right; margin: 0 0 -1px 0 ">
                             <label style="width: 15rem; margin-right: 8px;">Cirebon,
                                 {{ date('j F Y', strtotime($kwitansi->created_at)) }}</label>
                         </div>
@@ -125,19 +125,19 @@
                         </div>
                         <div class="row" style="padding: 0px 8px 0px 0px;">
                             <div class="col"
-                                style="border-top: 1px solid; border-left: 1px solid; border-bottom: 1px solid; height: 5rem;">
+                                style="border-top: 1px solid; border-left: 1px solid; border-bottom: 1px solid; height: 4.6rem;">
                             </div>
-                            <div class="col" style="border: 1px solid; height: 5rem;">
+                            <div class="col" style="border: 1px solid; height: 4.6rem;">
                             </div>
                             <div class="col"
-                                style="border-bottom: 1px solid; border-right: 1px solid; border-top:1px solid; height: 5rem;">
+                                style="border-bottom: 1px solid; border-right: 1px solid; border-top:1px solid; height: 4.6rem;">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content wrapper"
-                style="background-image: url('/img/kasir.png'); width: 21.59cm; height: 11.7cm; padding: 0 24px 0px 24px; border-bottom: 1px solid;">
+                style="background-image: url('/img/kasir.png'); width: 21.59cm; height: 10.9cm; padding: 3pt 24px 0px 24px; border-bottom: 1px solid; border-bottom-style: dashed">
                 @include('templates.headerCetak')
                 <div class="content">
                     <div class="output kwitansi" style="text-align: right">
@@ -146,43 +146,43 @@
                             <label style="width: 4.5rem">{{ $kwitansi->nomor_kwitansi }}</label>
                         </div>
                     </div>
-                    <div class="output" style="margin-left: 12px">
-                        <label style="width: 8rem;">Nama Lengkap</label>
+                    <div class="output" style="margin: 0 0 -1px 12px">
+                        <label style="width: 8rem">Nama Lengkap</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->nama_lengkap }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Alamat</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->alamat }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">No.HP</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->no_hp }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Uang Sejumlah</label></label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->uang_sebanyak }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Pembayaran</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->pembayaran }}</label>
                     </div>
-                    <div class="wrapper output radio" style="display: flex; margin-left: 12px">
-                        <div class="output">
+                    <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem">Lokasi</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->lokasi }}</label>
                         </div>
-                        <div class="output">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 2.5rem">Type</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 5rem">{{ $kwitansi->type }}</label>
                         </div>
-                        <div class="output">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 4.5rem">Discount</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->discount }}</label>
@@ -200,12 +200,12 @@
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->luas }}</label>
                         </div>
                     </div>
-                    <div class="output" style="display: flex; margin-left: 12px">
-                        <label style="width: 8.3rem">Jumlah</label>
-                        <label>:</label>
-                        <label style="margin: 0 4px 0 6px">Rp.</label>
-                        <label style="width: 10rem">{{ $kwitansi->jumlah }}</label>
-                        <div style="flex-grow: 1; text-align: right;">
+                    <div class="output" style="display: flex; margin: 0 0 -1px 12px">
+                        <label style="width: 8.3rem; margin: 0 0 -1px 0">Jumlah</label>
+                        <label style="margin: 0 0 -1px 0">:</label>
+                        <label style="margin: 0 4px -1px 6px">Rp.</label>
+                        <label style="width: 10rem; margin: 0 0 -1px 0">{{ $kwitansi->jumlah }}</label>
+                        <div style="flex-grow: 1; text-align: right; margin: 0 0 -1px 0 ">
                             <label style="width: 15rem; margin-right: 8px;">Cirebon,
                                 {{ date('j F Y', strtotime($kwitansi->created_at)) }}</label>
                         </div>
@@ -227,19 +227,19 @@
                         </div>
                         <div class="row" style="padding: 0px 8px 0px 0px;">
                             <div class="col"
-                                style="border-top: 1px solid; border-left: 1px solid; border-bottom: 1px solid; height: 5rem;">
+                                style="border-top: 1px solid; border-left: 1px solid; border-bottom: 1px solid; height: 4.6rem;">
                             </div>
-                            <div class="col" style="border: 1px solid; height: 5rem;">
+                            <div class="col" style="border: 1px solid; height: 4.6rem;">
                             </div>
                             <div class="col"
-                                style="border-bottom: 1px solid; border-right: 1px solid; border-top:1px solid; height: 5rem;">
+                                style="border-bottom: 1px solid; border-right: 1px solid; border-top:1px solid; height: 4.6rem;">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content wrapper"
-                style="background-image: url('/img/keuangan.png'); width: 21.59cm; height: 11.7cm; padding: 0 24px 0px 24px; border-bottom: 1px solid;">
+                style="background-image: url('/img/keuangan.png'); width: 21.59cm; height: 10.9cm; padding: 3pt 24px 0px 24px;">
                 @include('templates.headerCetak')
                 <div class="content">
                     <div class="output kwitansi" style="text-align: right">
@@ -248,43 +248,43 @@
                             <label style="width: 4.5rem">{{ $kwitansi->nomor_kwitansi }}</label>
                         </div>
                     </div>
-                    <div class="output" style="margin-left: 12px">
-                        <label style="width: 8rem;">Nama Lengkap</label>
+                    <div class="output" style="margin: 0 0 -1px 12px">
+                        <label style="width: 8rem">Nama Lengkap</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->nama_lengkap }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Alamat</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->alamat }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">No.HP</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->no_hp }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Uang Sejumlah</label></label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->uang_sebanyak }}</label>
                     </div>
-                    <div class="output" style="margin-left: 12px">
+                    <div class="output" style="margin: 0 0 -1px 12px">
                         <label style="width: 8rem;">Pembayaran</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->pembayaran }}</label>
                     </div>
-                    <div class="wrapper output radio" style="display: flex; margin-left: 12px">
-                        <div class="output">
+                    <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem">Lokasi</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->lokasi }}</label>
                         </div>
-                        <div class="output">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 2.5rem">Type</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 5rem">{{ $kwitansi->type }}</label>
                         </div>
-                        <div class="output">
+                        <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 4.5rem">Discount</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->discount }}</label>
@@ -302,12 +302,12 @@
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->luas }}</label>
                         </div>
                     </div>
-                    <div class="output" style="display: flex; margin-left: 12px">
-                        <label style="width: 8.3rem">Jumlah</label>
-                        <label>:</label>
-                        <label style="margin: 0 4px 0 6px">Rp.</label>
-                        <label style="width: 10rem">{{ $kwitansi->jumlah }}</label>
-                        <div style="flex-grow: 1; text-align: right;">
+                    <div class="output" style="display: flex; margin: 0 0 -1px 12px">
+                        <label style="width: 8.3rem; margin: 0 0 -1px 0">Jumlah</label>
+                        <label style="margin: 0 0 -1px 0">:</label>
+                        <label style="margin: 0 4px -1px 6px">Rp.</label>
+                        <label style="width: 10rem; margin: 0 0 -1px 0">{{ $kwitansi->jumlah }}</label>
+                        <div style="flex-grow: 1; text-align: right; margin: 0 0 -1px 0 ">
                             <label style="width: 15rem; margin-right: 8px;">Cirebon,
                                 {{ date('j F Y', strtotime($kwitansi->created_at)) }}</label>
                         </div>
@@ -329,12 +329,12 @@
                         </div>
                         <div class="row" style="padding: 0px 8px 0px 0px;">
                             <div class="col"
-                                style="border-top: 1px solid; border-left: 1px solid; border-bottom: 1px solid; height: 5rem;">
+                                style="border-top: 1px solid; border-left: 1px solid; border-bottom: 1px solid; height: 4.6rem;">
                             </div>
-                            <div class="col" style="border: 1px solid; height: 5rem;">
+                            <div class="col" style="border: 1px solid; height: 4.6rem;">
                             </div>
                             <div class="col"
-                                style="border-bottom: 1px solid; border-right: 1px solid; border-top:1px solid; height: 5rem;">
+                                style="border-bottom: 1px solid; border-right: 1px solid; border-top:1px solid; height: 4.6rem;">
                             </div>
                         </div>
                     </div>
