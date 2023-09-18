@@ -12,9 +12,9 @@
     <section class="kwitansi p-5">
         <h1>Kwitansi</h1>
         <a href="{{ route('kwitansi.create') }}" class="btn btn-primary mb-3">Tambah</a>
-        <table class="table table-bordered">
+        <table class="table table-hover text-center">
             <thead>
-                <tr>
+                <tr class="bg-info">
                     <th>No</th>
                     <th>Nomor Kwitansi</th>
                     <th>Nama Lengkap</th>
@@ -31,6 +31,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
+        </div>
             <tbody>
                 @foreach ($kwitansis as $kwitansi)
                     <tr>
