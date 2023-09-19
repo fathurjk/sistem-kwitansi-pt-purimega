@@ -119,16 +119,6 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="discount" class="form-label">Discount</label>
-                <input type="text" class="form-control @error('discount') is-invalid @enderror" id="discount"
-                    name="discount" value="{{ old('discount', $kwitansi->discount) }}">
-                @error('discount')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="mb-3">
                 <label for="jumlah" class="form-label">Jumlah</label>
                 <input type="text" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah"
                     name="jumlah" value="{{ old('jumlah', $kwitansi->jumlah) }}">

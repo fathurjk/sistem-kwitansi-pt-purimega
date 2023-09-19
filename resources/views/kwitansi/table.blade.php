@@ -12,7 +12,6 @@
             <th>No. Kavling</th>
             <th>Type</th>
             <th>Luas</th>
-            <th>Discount</th>
             <th>Jumlah</th>
             <th>Action</th>
         </tr>
@@ -31,7 +30,6 @@
                 <td>{{ $kwitansi->no_kavling }}</td>
                 <td>{{ $kwitansi->type }}</td>
                 <td>{{ $kwitansi->luas }}</td>
-                <td>{{ $kwitansi->discount }}</td>
                 <td>{{ $kwitansi->jumlah }}</td>
                 <td>
                     <a href="{{ route('kwitansi.show', $kwitansi->id) }}" class="btn btn-primary ">Lihat</a>

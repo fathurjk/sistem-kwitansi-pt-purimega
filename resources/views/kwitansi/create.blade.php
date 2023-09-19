@@ -32,42 +32,60 @@
                         @csrf
                         <a class="btn btn-primary mb-3" href="/kwitansi">Kembali</a>
                         <div style="text-align: right">
-                            <div class="nomor">
+                            <div class="nomor mb-5">
                                 <label for="nomor_kwitansi">No :</label>
                                 <input class="form-first" type="text" id="nomor_kwitansi" name="nomor_kwitansi"
                                     value="{{ $serialNumber }}" readonly>
                             </div>
                         </div>
-                        <div class="row mb-5 mt-5">
+
+                        <div class="row mb-3">
                             <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan Nama Lengkap" required>
+                            <div class="col">
+                                <input type="text" class="row-form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan Nama Lengkap" required>
+                            </div>
+                                <label for="lokasi" class="col-sm-2 col-form-label">Lokasi</label>
+                            <div class="col">
+                                <input class="row-form-control" id="lokasi" name="lokasi" placeholder="Masukkan Lokasi" required>
                             </div>
                         </div>
 
-                        <div class="row mb-5">
+                        <div class="row mb-3">
                             <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required>
+                            <div class="col">
+                                <input type="text" class="row-form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required>
+                            </div>
+                                <label for="no_kavling" class="col-sm-2 col-form-label">No.Kavling</label>
+                            <div class="col">
+                                <input class="row-form-control" id="no_kavling" name="no_kavling" placeholder="Masukkan Nomor Kavling" required>
                             </div>
                         </div>
 
-                        <div class="row mb-5">
-                            <label for="no_hp" class="col-sm-2 col-form-label"> No HP </label>
-                            <div class="col-sm-4">
-                                <input id="no_hp" class="form-control" type="text" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP" required>
+                        <div class="row mb-3">
+                            <label for="no_hp" class="col-sm-2 col-form-label"> No.HP </label>
+                            <div class="col">
+                                <input id="no_hp" class="row-form-control" type="text" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP" required>
+                            </div>
+                                <label for="type" class="col-sm-2 col-form-label">Type</label>
+                            <div class="col">
+                                <input class="row-form-control" id="type" name="type" placeholder="Masukkan Nama Type" required>
                             </div>
                         </div>
 
-                        <div class="row mb-5">
+                        <div class="row mb-3">
                             <label for="uang_sebanyak" class="col-sm-2 col-form-label">Uang Sebanyak</label>
-                            <div class="col-sm-4">
-                                <input class="form-control" id="uang_sebanyak" name="uang_sebanyak" placeholder="Masukkan Uang Sebanyak" required>
+                            <div class="col">
+                                <input class="row-form-control" id="uang_sebanyak" name="uang_sebanyak" placeholder="Masukkan Uang Sebanyak" required>
+                            </div>
+                                <label for="luas" class="col-sm-2 col-form-label">Luas</label>
+                            <div class="col">
+                                <input class="row-form-control" id="luas" name="luas" placeholder="Masukkan Luas" required>
                             </div>
                         </div>
-                        <div class="row mb-5">
+
+                        <div class="row mb-3">
                             <label for="pembayaran" class="col-sm-2 col-form-label">Pembayaran</label>
-                            <div class="col-sm-4">
+                            <div class="col">
                                 {{-- <div class="form-group mb-3">
                                     <select class="form-control" name="pembayaran" id="pembayaran">
                                         <option value="booking">Booking</option>
@@ -78,7 +96,7 @@
                                         <option value="lainlain">Lain-lain</option>
                                     </select>
                                 </div> --}}
-                                <input type="text" class="form-control" id="pembayaran" name="pembayaran"placeholder="Masukkan Pembayaran" required>
+                                <input type="text" class="row-form-control" id="pembayaran" name="pembayaran"placeholder="Masukkan Pembayaran" required>
                                 {{-- <div class="form-group mb-3" id="lain-lain-form" style="display: none;">
                                 </div> --}}
 
@@ -105,49 +123,10 @@
                                 </script> --}}
                             </div>
                         </div>
-                        <fieldset style="margin-bottom: 1%">
-                            <div>
-                                <div class="row mb-5">
-                                    <label for="lokasi" class="col-sm-2 col-form-label">Lokasi</label>
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="lokasi" name="lokasi" placeholder="Masukkan Lokasi" required>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-5" >
-                                    <label for="no_kavling" class="col-sm-2 col-form-label">No. Kavling</label>
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="no_kavling" name="no_kavling" placeholder="Masukkan Nomor Kavling" required>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-5">
-                                    <label for="type" class="col-sm-2 col-form-label">Type</label>
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="type" name="type" placeholder="Masukkan Nama Type" required>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-5">
-                                    <label for="luas" class="col-sm-2 col-form-label">Luas</label>
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="luas" name="luas" placeholder="Masukkan Luas" required>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-5">
-                                    <label for="discount" class="col-sm-2 col-form-label">Discount</label>
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="discount" name="discount" placeholder="Masukkan Discount" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <div class="row mb-5">
+                        <div class="row mb-3">
                             <label for="jumlah" class="col-sm-2 col-form-label">Jumlah</label>
-                            <div class="col-sm-4">
-                                <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required>
+                            <div class="col">
+                                <input class="row-form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Tambah</button>
