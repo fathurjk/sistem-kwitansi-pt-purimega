@@ -356,14 +356,10 @@
             <div
                 style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
                 <div style="flex: 1">
-                    <a class="btn btn-primary" href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
+                    <a style="width: 6rem" class="btn btn-primary" href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
                 </div>
-                {{-- <div style="flex: 1">
-                    <button style="width: 6rem" type="button" onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
-                        class="btn btn-warning">Edit</button>
-                </div> --}}
                 <div style="flex: 1">
-                    <button type="button" style="background-color: green" class="btn btn-primary"
+                    <button type="button" style="width: 6rem; background-color: green" class="btn btn-primary"
                         onclick="printKwitansi()" media="print">Cetak</button>
                 </div>
             </div>
