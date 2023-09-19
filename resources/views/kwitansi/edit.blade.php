@@ -50,7 +50,7 @@
             </div>
             <div class="mb-3">
                 <label for="no_hp" class="form-label">No. HP</label>
-                <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp"
+                <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" onkeypress="return hanyaAngka(event)"
                     name="no_hp" value="{{ old('no_hp', $kwitansi->no_hp) }}">
                 @error('no_hp')
                     <div class="invalid-feedback">
@@ -160,6 +160,16 @@
         formatCurrency(this);
     });
 </script>
+
+<script>
+    function hanyaAngka(event) {
+        var angka = (event.which) ? event.which : event.keyCode
+        if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+            return false;
+        return true;
+    }
+</script>
+
 </body>
 
 </html>

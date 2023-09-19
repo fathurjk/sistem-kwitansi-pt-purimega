@@ -64,7 +64,7 @@
                         <div class="row mb-3">
                             <label for="no_hp" class="col-sm-2 col-form-label"> No.HP </label>
                             <div class="col">
-                                <input id="no_hp" class="row-form-control" type="text" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP" required>
+                                <input id="no_hp" class="row-form-control" type="text" id="no_hp" name="no_hp" placeholder="Masukkan Nomor HP" onkeypress="return hanyaAngka(event)" required>
                             </div>
                                 <label for="type" class="col-sm-2 col-form-label">Type</label>
                             <div class="col">
@@ -160,6 +160,16 @@
         formatCurrency(this);
     });
 </script>
+
+<script>
+    function hanyaAngka(event) {
+        var angka = (event.which) ? event.which : event.keyCode
+        if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+            return false;
+        return true;
+    }
+</script>
+
 </body>
 
 @extends('templates.footer')
