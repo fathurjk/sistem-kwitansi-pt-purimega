@@ -1,5 +1,3 @@
-@include('templates.header')
-
 <head>
     <meta charset="UTF-8">
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -166,6 +164,8 @@
         var angka = (event.which) ? event.which : event.keyCode
         if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
             return false;
+        else if (angka == 48)
+            return true;
         return true;
     }
 </script>
