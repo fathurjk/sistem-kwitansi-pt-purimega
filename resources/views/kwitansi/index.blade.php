@@ -16,7 +16,7 @@
         <table class="table table-hover text-center">
             <thead>
                 <tr class="bg-info">
-                    <th style="width: 1%;">No</th>
+                    <th style="width: 1%; justify-content: center; align-items: center">No</th>
                     <th style="width: 10%;">No. Kwitansi</th>
                     <th style="width: 15%;">Nama Lengkap</th>
                     <th style="width: 10%;">Alamat</th>
