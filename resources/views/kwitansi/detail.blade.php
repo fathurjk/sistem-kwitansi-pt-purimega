@@ -76,7 +76,7 @@
                 <div class="output" style="display: flex; margin: 0 0 -1px 12px">
                     <label style="width: 8.3rem; margin: 0 0 -1px 0">Jumlah</label>
                     <label style="margin: 0 0 -1px 0">:</label>
-                    <label style="margin: 0 4px -1px 6px">Rp.</label>
+                    <label style="margin: 0 4px -1px 6px"></label>
                     <label style="width: 10rem; margin: 0 0 -1px 0">{{ $kwitansi->jumlah }}</label>
                     <div style="flex-grow: 1; text-align: right; margin: 0 0 -1px 0 ">
                         <label style="width: 15rem; margin-right: 8px;">Cirebon,

@@ -13,7 +13,6 @@
             <th>Type</th>
             <th>Luas</th>
             <th>Jumlah</th>
-            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -31,16 +30,6 @@
                 <td>{{ $kwitansi->type }}</td>
                 <td>{{ $kwitansi->luas }}</td>
                 <td>{{ $kwitansi->jumlah }}</td>
-                <td>
-                    <a href="{{ route('kwitansi.detail', $kwitansi->id) }}" class="btn btn-primary ">Lihat</a>
-                    <a href="{{ route('kwitansi.edit', $kwitansi->id) }}" class="btn btn-warning">Edit</a>
-                    <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
-                        class="d-inline-grid">
-                        @method('delete')
-                        @csrf
-                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Hapus</button>
-                    </form>
-                </td>
             </tr>
         @endforeach
     </tbody>
