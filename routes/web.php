@@ -16,7 +16,7 @@ use App\Models\Kwitansi;
 */
 
 Route::get('/', function () {
-    return view('kwitansi.index',[
+    return view('kwitansi.index', [
         'kwitansis' => Kwitansi::all(),
     ]);
 });
@@ -28,3 +28,4 @@ Route::get('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'show'])->name
 Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])->name('kwitansi.edit');
 Route::put('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'update'])->name('kwitansi.update');
 Route::delete('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'destroy'])->name('kwitansi.destroy');
+Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel']);

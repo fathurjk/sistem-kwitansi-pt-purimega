@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportKwitansi;
 use App\Models\Kwitansi;
 use Exception;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KwitansiController extends Controller
 {
@@ -133,5 +135,10 @@ class KwitansiController extends Controller
         Kwitansi::destroy($kwitansi->id);
 
         return redirect('/kwitansi');
+    }
+
+    function export_excel()
+    {
+        return Excel::Download(new ExportKwitansi, "Kwitansi.xlsx");
     }
 }
