@@ -156,6 +156,31 @@
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
                     </script>
+                    <script>
+    // Fungsi untuk memformat input jumlah dengan titik dan "RP"
+    function formatCurrency(input) {
+    // Hapus semua karakter selain angka
+    var value = input.value.replace(/[^0-9]/g, '');
+
+    // Jika value adalah string kosong, set nilai input menjadi kosong juga
+    if (value === '') {
+        input.value = '';
+    } else {
+        // Ubah nilai menjadi format uang dengan titik sebagai pemisah ribuan
+        value = parseInt(value, 10).toLocaleString('id-ID');
+
+        // Tambahkan "RP" di depan nilai yang sudah diformat
+        input.value = 'Rp ' + value;
+    }
+}
+    // Dapatkan elemen input jumlah berdasarkan ID
+    var jumlahInput = document.getElementById('jumlah');
+
+    // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
+    jumlahInput.addEventListener('input', function() {
+        formatCurrency(this);
+    });
+</script>
 </body>
 
 @extends('templates.footer')
