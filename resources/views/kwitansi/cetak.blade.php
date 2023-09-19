@@ -90,11 +90,6 @@
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 5rem">{{ $kwitansi->type }}</label>
                         </div>
-                        <div class="output" style="margin: 0 0 -1px 0px">
-                            <label style="width: 4.5rem">Discount</label>
-                            <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->discount }}</label>
-                        </div>
                     </div>
                     <div class="wrapper ouput radio" style="display: flex; margin-left: 12px">
                         <div class="output">
@@ -192,11 +187,6 @@
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 5rem">{{ $kwitansi->type }}</label>
                         </div>
-                        <div class="output" style="margin: 0 0 -1px 0px">
-                            <label style="width: 4.5rem">Discount</label>
-                            <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->discount }}</label>
-                        </div>
                     </div>
                     <div class="wrapper ouput radio" style="display: flex; margin-left: 12px">
                         <div class="output">
@@ -293,11 +283,6 @@
                             <label style="width: 2.5rem">Type</label>
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 5rem">{{ $kwitansi->type }}</label>
-                        </div>
-                        <div class="output" style="margin: 0 0 -1px 0px">
-                            <label style="width: 4.5rem">Discount</label>
-                            <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->discount }}</label>
                         </div>
                     </div>
                     <div class="wrapper ouput radio" style="display: flex; margin-left: 12px">

@@ -17,7 +17,6 @@ class Kwitansi extends Model
         'no_kavling',
         'type',
         'luas',
-        'discount',
         'jumlah',
     ];
 }

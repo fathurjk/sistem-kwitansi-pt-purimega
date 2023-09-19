@@ -66,7 +66,6 @@ class KwitansiController extends Controller
                 'no_kavling' => 'required',
                 'type' => 'required',
                 'luas' => 'required',
-                'discount' => 'required',
                 'jumlah' => 'required',
             ]);
 
@@ -127,7 +126,6 @@ class KwitansiController extends Controller
                 'no_kavling' => 'required',
                 'type' => 'required',
                 'luas' => 'required',
-                'discount' => 'required',
                 'jumlah' => 'required',
             ];
 

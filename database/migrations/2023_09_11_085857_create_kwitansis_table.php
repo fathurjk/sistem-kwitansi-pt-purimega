@@ -25,7 +25,6 @@ class CreateKwitansisTable extends Migration
             $table->string('no_kavling');
             $table->text('type');
             $table->text('luas');
-            $table->text('discount');
             $table->text('jumlah');
             $table->timestamps();
         });
