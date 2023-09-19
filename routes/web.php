@@ -24,8 +24,9 @@ Route::get('/', function () {
 Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi');
 Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create');
 Route::post('/kwitansi', [KwitansiController::class, 'store'])->name('kwitansi.store');
-Route::get('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'show'])->name('kwitansi.show');
+Route::get('/kwitansi/detail/{kwitansi:id}', [KwitansiController::class, 'detail'])->name('kwitansi.detail');
 Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])->name('kwitansi.edit');
 Route::put('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'update'])->name('kwitansi.update');
 Route::delete('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'destroy'])->name('kwitansi.destroy');
+Route::get('/kwitansi/detail/{kwitansi:id}/print', [KwitansiController::class, 'print'])->name('kwitansi.print');
 Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel']);
