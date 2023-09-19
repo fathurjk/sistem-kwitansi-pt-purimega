@@ -116,11 +116,17 @@
         </div>
         <div class="button wrapper"
             style="padding: 32px; position: relative; flex-direction: row; display: flex; justify-content: center; align-items: center">
-            <div style="width: 21.59cm; text-align: center">
-                <a class="btn btn-primary" href="/kwitansi">Kembali</a>
-                <button type="button" onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
-                    class="btn btn-warning">Edit</button>
-                <a class="btn btn-primary" style="background-color: green" href="{{ route('kwitansi.print', $kwitansi->id) }}">Cetak</a>
+            <div style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
+                <div style="flex: 1">
+                    <a style="width: 6rem" class="btn btn-primary" href="/kwitansi">Kembali</a>
+                </div>
+                <div style="flex: 1">
+                    <button style="width: 6rem" type="button" onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
+                        class="btn btn-warning">Edit</button>
+                </div>
+                <div style="flex: 1">
+                    <a class="btn btn-primary" style="width: 6rem; background-color: green" href="{{ route('kwitansi.print', $kwitansi->id) }}">Cetak</a>
+                </div>
             </div>
         </div>
     </div>

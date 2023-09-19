@@ -13,16 +13,23 @@
         @media print {
             @page {
                 size: 21cm 33cm;
-                margin: 11pt 0px 0px 0px ;
-            }
-
-            .sheet.wrapper:not(:first-of-type) {
-                display: none;
+                margin: 11pt 0px 0px 0px;
             }
 
             .button.wrapper * {
                 display: none;
+                visibility: none;
             }
+
+            .sheet.wrapper {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
         }
     </style>
 
@@ -346,9 +353,19 @@
         </div>
         <div class="button wrapper"
             style="padding: 32px; position: relative; flex-direction: row; display: flex; justify-content: center; align-items: center">
-            <div style="width: 21.59cm; text-align: center">
-                <a class="btn btn-primary" href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
-                <button type="button" style="background-color: green" class="btn btn-primary" onclick="printKwitansi()" media="print">Cetak</button>
+            <div
+                style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
+                <div style="flex: 1">
+                    <a class="btn btn-primary" href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
+                </div>
+                {{-- <div style="flex: 1">
+                    <button style="width: 6rem" type="button" onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
+                        class="btn btn-warning">Edit</button>
+                </div> --}}
+                <div style="flex: 1">
+                    <button type="button" style="background-color: green" class="btn btn-primary"
+                        onclick="printKwitansi()" media="print">Cetak</button>
+                </div>
             </div>
         </div>
     </body>
