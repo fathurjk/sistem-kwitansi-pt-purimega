@@ -82,7 +82,7 @@ class KwitansiController extends Controller
         }
     }
 
-    public function show($id)
+    public function detail($id)
     {
         $kwitansi = $this->kwitansis->find($id);
 
@@ -92,8 +92,21 @@ class KwitansiController extends Controller
             return redirect('/kwitansi');
         }
 
-        return view('kwitansi.show', compact('kwitansi'));
+        return view('kwitansi.detail', compact('kwitansi'));
     }
+    public function print($id)
+    {
+        $kwitansi = $this->kwitansis->find($id);
+
+        if (!$kwitansi) {
+            session()->flash('error', 'Kwitansi tidak ditemukan');
+
+            return redirect('/kwitansi');
+        }
+
+        return view('kwitansi.cetak', compact('kwitansi'));
+    }
+
 
     public function edit(Kwitansi $kwitansi)
     {

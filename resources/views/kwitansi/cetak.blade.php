@@ -2,7 +2,10 @@
     <html lang="en">
 
     <head>
-        <title>Kwitansi</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cetak Kwitansi</title>
     </head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -344,10 +347,8 @@
         <div class="button wrapper"
             style="padding: 32px; position: relative; flex-direction: row; display: flex; justify-content: center; align-items: center">
             <div style="width: 21.59cm; text-align: center">
-                <a class="btn btn-primary" href="/kwitansi">Kembali</a>
-                <button type="button" onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
-                    class="btn btn-warning">Edit</button>
-                <button type="button" class="btn btn-primary" onclick="printKwitansi()" media="print">Cetak</button>
+                <a class="btn btn-primary" href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
+                <button type="button" style="background-color: green" class="btn btn-primary" onclick="printKwitansi()" media="print">Cetak</button>
             </div>
         </div>
     </body>

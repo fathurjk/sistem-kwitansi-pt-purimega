@@ -34,7 +34,7 @@
                 <td>{{ $kwitansi->discount }}</td>
                 <td>{{ $kwitansi->jumlah }}</td>
                 <td>
-                    <a href="{{ route('kwitansi.show', $kwitansi->id) }}" class="btn btn-primary ">Lihat</a>
+                    <a href="{{ route('kwitansi.detail', $kwitansi->id) }}" class="btn btn-primary ">Lihat</a>
                     <a href="{{ route('kwitansi.edit', $kwitansi->id) }}" class="btn btn-warning">Edit</a>
                     <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
                         class="d-inline-grid">
