@@ -11,7 +11,7 @@ class Kwitansi extends Model
         'nama_lengkap',
         'alamat',
         'no_hp',
-        'uang_sebanyak',
+        'terbilang',
         'pembayaran',
         'lokasi',
         'no_kavling',

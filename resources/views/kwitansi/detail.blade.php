@@ -40,9 +40,9 @@
                     <label style="margin-left: 0.2rem;">{{ $kwitansi->no_hp }}</label>
                 </div>
                 <div class="output" style="margin: 0 0 -1px 12px">
-                    <label style="width: 8rem;">Uang Sejumlah</label></label>
+                    <label style="width: 8rem;">Terbilang</label></label>
                     <label style="margin-left:">:</label>
-                    <label style="margin-left: 0.2rem;">{{ $kwitansi->uang_sebanyak }}</label>
+                    <label style="margin-left: 0.2rem;">{{ $kwitansi->terbilang }}</label>
                 </div>
                 <div class="output" style="margin: 0 0 -1px 12px">
                     <label style="width: 8rem;">Pembayaran</label>

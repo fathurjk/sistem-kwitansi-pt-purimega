@@ -21,7 +21,7 @@
                     <th>Nama Lengkap</th>
                     <th>Alamat</th>
                     <th>No. HP</th>
-                    <th>Uang Sebanyak</th>
+                    <th>Terbilang</th>
                     <th>Pembayaran</th>
                     <th>Lokasi</th>
                     <th>No. Kavling</th>
@@ -39,7 +39,7 @@
                         <td>{{ $kwitansi->nama_lengkap }}</td>
                         <td>{{ $kwitansi->alamat }}</td>
                         <td>{{ $kwitansi->no_hp }}</td>
-                        <td>{{ $kwitansi->uang_sebanyak }}</td>
+                        <td>{{ $kwitansi->terbilang }}</td>
                         <td>{{ $kwitansi->pembayaran }}</td>
                         <td>{{ $kwitansi->lokasi }}</td>
                         <td>{{ $kwitansi->no_kavling }}</td>

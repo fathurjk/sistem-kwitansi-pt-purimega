@@ -1,12 +1,11 @@
-@include('templates.header')
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Tambah Kwitansi</title>
-    
-</body>
 </head>
 
 <body>
@@ -73,9 +72,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="uang_sebanyak" class="col-sm-2 col-form-label">Uang Sebanyak</label>
+                            <label for="terbilang" class="col-sm-2 col-form-label">Terbilang</label>
                             <div class="col">
-                                <input class="row-form-control" id="uang_sebanyak" name="uang_sebanyak" placeholder="Masukkan Uang Sebanyak" required>
+                                <input class="row-form-control" id="terbilang" name="terbilang" placeholder="Masukkan Terbilang" required>
                             </div>
                                 <label for="luas" class="col-sm-2 col-form-label">Luas</label>
                             <div class="col">
@@ -171,5 +170,6 @@
 </script>
 
 </body>
+</html>
 
 @extends('templates.footer')

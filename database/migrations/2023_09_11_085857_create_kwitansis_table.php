@@ -19,7 +19,7 @@ class CreateKwitansisTable extends Migration
             $table->string('nama_lengkap');
             $table->string('alamat');
             $table->bigint('no_hp');
-            $table->text('uang_sebanyak');
+            $table->text('terbilang');
             $table->text('pembayaran');
             $table->text('lokasi');
             $table->string('no_kavling');
