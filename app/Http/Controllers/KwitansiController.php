@@ -18,19 +18,25 @@ class KwitansiController extends Controller
     }
 
     public function index(Request $request)
-    {
-        if ($request->has('search')) {
-            $kwitansis = Kwitansi::where('nomor_kwitansi', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('nama_lengkap', 'LIKE', '%' . $request->search . '%')
-                ->get();
-        } else {
-            $kwitansis = Kwitansi::all();
-        }
+{
+    if ($request->has('search')) {
+        $kwitansis = Kwitansi::where('nomor_kwitansi', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('nama_lengkap', 'LIKE', '%' . $request->search . '%')
+            ->get();
 
-        return view('kwitansi.index', [
-            'kwitansis' => $kwitansis,
-        ]);
+        if ($kwitansis->count() == 0) {
+            session()->flash('error', 'Kwitansi tidak ditemukan');
+
+            return redirect('/kwitansi');
+        }
+    } else {
+        $kwitansis = Kwitansi::all();
     }
+
+    return view('kwitansi.index', [
+        'kwitansis' => $kwitansis,
+    ]);
+}
 
     public function create()
     {
