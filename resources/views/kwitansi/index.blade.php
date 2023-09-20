@@ -16,27 +16,12 @@
         <table class="table table-hover text-center">
             <thead>
                 <tr class="bg-info">
-<<<<<<< HEAD
-                    <th>No</th>
-                    <th>Nomor Kwitansi</th>
-                    <th>Nama Lengkap</th>
-                    <th>Alamat</th>
-                    <th>No. HP</th>
-                    <th>Terbilang</th>
-                    <th>Pembayaran</th>
-                    <th>Lokasi</th>
-                    <th>No. Kavling</th>
-                    <th>Type</th>
-                    <th>Luas</th>
-                    <th>Jumlah</th>
-                    <th>Action</th>
-=======
                     <th style="width: 1%; justify-content: center; align-items: center">No</th>
                     <th style="width: 10%;">No. Kwitansi</th>
                     <th style="width: 15%;">Nama Lengkap</th>
                     <th style="width: 10%;">Alamat</th>
                     <th style="width: 5%;">No. HP</th>
-                    <th style="width: 10%;">Uang Sebanyak</th>
+                    <th style="width: 10%;">Terbilang</th>
                     <th style="width: 10%;">Pembayaran</th>
                     <th style="width: 10%;">Lokasi</th>
                     <th style="width: 5%;">No. Kavling</th>
@@ -44,7 +29,6 @@
                     <th style="width: 1%;">Luas</th>
                     <th style="width: 5%;">Jumlah</th>
                     <th style="width: 15%;">Action</th>
->>>>>>> 4f907114209987e689185f690629a01d62d3b50f
                 </tr>
             </thead>
             <tbody>
