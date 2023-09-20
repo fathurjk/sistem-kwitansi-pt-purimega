@@ -161,8 +161,12 @@
                 @enderror
                     </div>
             </div>
+<<<<<<< HEAD
 
             <button type="submit" class="btn btn-success">Edit</button>
+=======
+            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+>>>>>>> 4f907114209987e689185f690629a01d62d3b50f
         </form>
     </div>
 </section>

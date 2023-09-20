@@ -16,6 +16,7 @@
         <table class="table table-hover text-center">
             <thead>
                 <tr class="bg-info">
+<<<<<<< HEAD
                     <th>No</th>
                     <th>Nomor Kwitansi</th>
                     <th>Nama Lengkap</th>
@@ -29,6 +30,21 @@
                     <th>Luas</th>
                     <th>Jumlah</th>
                     <th>Action</th>
+=======
+                    <th style="width: 1%; justify-content: center; align-items: center">No</th>
+                    <th style="width: 10%;">No. Kwitansi</th>
+                    <th style="width: 15%;">Nama Lengkap</th>
+                    <th style="width: 10%;">Alamat</th>
+                    <th style="width: 5%;">No. HP</th>
+                    <th style="width: 10%;">Uang Sebanyak</th>
+                    <th style="width: 10%;">Pembayaran</th>
+                    <th style="width: 10%;">Lokasi</th>
+                    <th style="width: 5%;">No. Kavling</th>
+                    <th style="width: 1%;">Type</th>
+                    <th style="width: 1%;">Luas</th>
+                    <th style="width: 5%;">Jumlah</th>
+                    <th style="width: 15%;">Action</th>
+>>>>>>> 4f907114209987e689185f690629a01d62d3b50f
                 </tr>
             </thead>
             <tbody>
@@ -46,14 +62,20 @@
                         <td>{{ $kwitansi->type }}</td>
                         <td>{{ $kwitansi->luas }}</td>
                         <td>{{ $kwitansi->jumlah }}</td>
-                        <td>
-                            <a href="{{ route('kwitansi.detail', $kwitansi->id) }}" class="btn btn-primary ">Lihat</a>
-                            <a href="{{ route('kwitansi.edit', $kwitansi->id) }}" class="btn btn-warning">Edit</a>
+                        <td style="display: flex; height: 6rem; justify-content: space-evenly; align-items: center">
+                            <a href="{{ route('kwitansi.detail', $kwitansi->id) }}" class="btn btn-primary" style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%">
+                                <img src="{{ asset("icon/eye.svg") }}" alt="">
+                            </a>
+                            <a href="{{ route('kwitansi.edit', $kwitansi->id) }}" class="btn btn-warning" style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%">
+                                <img src="{{ asset("icon/pen.svg") }}" alt="">
+                            </a>
                             <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
                                 class="d-inline-grid">
                                 @method('delete')
                                 @csrf
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Hapus</button>
+                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')" style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%">
+                                    <img src="{{ asset("icon/trash3.svg") }}" alt="">
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -69,3 +91,11 @@
 </body>
 
 </html>
+<style>
+    img {
+        height: 24px;
+        width: 24px;
+        margin: 0;
+        padding: 0;
+    }
+</style>
