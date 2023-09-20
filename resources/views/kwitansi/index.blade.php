@@ -10,11 +10,17 @@
 
 <body>
     <section class="kwitansi p-5">
-        <h1>Kwitansi</h1>
-        <a href="{{ route('kwitansi.create') }}" class="btn btn-primary mb-3">Tambah</a>
-        <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-success mb-3">Export To Excel</a>
-        <table class="table table-hover text-center">
-            <thead>
+        <h1> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">Kwitansi</a></h1>
+        <div class="input-group mb-3">
+            <a href="{{ route('kwitansi.create') }}" class="btn btn-primary mb-3 m-2">Tambah</a>
+            <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-success mb-3 m-2">Export To Excel</a>
+            <form action="/kwitansi" method="GET">
+            <input type="search" class="form-control m-2" placeholder="Search..." name="search" value="{{ request('search') }}">
+            </form>
+                <button class="btn btn-primary m-2" type="submit">Search</button>
+            </div>
+            <table class="table table-hover text-center">
+                <thead>
                 <tr class="bg-info">
                     <th style="width: 1%; justify-content: center; align-items: center">No</th>
                     <th style="width: 10%;">No. Kwitansi</th>

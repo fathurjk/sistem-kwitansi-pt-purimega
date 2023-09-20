@@ -17,9 +17,15 @@ class KwitansiController extends Controller
         $this->kwitansis = Kwitansi::all();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $kwitansis = $this->kwitansis;
+        if ($request->has('search')) {
+            $kwitansis = Kwitansi::where('nomor_kwitansi', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('nama_lengkap', 'LIKE', '%' . $request->search . '%')
+                ->get();
+        } else {
+            $kwitansis = Kwitansi::all();
+        }
 
         return view('kwitansi.index', [
             'kwitansis' => $kwitansis,
