@@ -199,13 +199,13 @@
     // Set the initial page number
     let currentPage = 1;
 
-    // Hide all rows in the table
-    table.find("tr").hide();
+    // **Hide all rows in the table, except the header**
+    table.find("tr").not("thead tr").hide();
 
     // Show the first 10 rows
     table.find("tr").slice(0, 6).show();
 
-    // Add the header to the table
+    // **Add the header to the table**
     table.append(table.find("thead"));
 
     // Handle click event for pagination buttons
@@ -218,8 +218,8 @@
             // Update the current page number
             currentPage = newPage;
 
-            // Hide all rows in the table
-            table.find("tr").hide();
+            // Hide all rows in the table, except the header
+            table.find("tr").not("thead tr").hide();
 
             // Show the rows for the current page
             table.find("tr").slice((currentPage - 1) * 5, currentPage * 5).show();
