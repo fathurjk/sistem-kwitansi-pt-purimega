@@ -1,13 +1,7 @@
 @extends('layouts.main')
 @section('container')
     
-<footer class="bg-light text-center text-lg-start">
-    <!-- Grid container -->
-    <div class="container-fluid">
-    <!--Grid row-->
-    </div>
-    <!-- Grid container -->
-
+<footer class="text-center text-lg-start" style="background-color: #CE76CE">
     <!-- Copyright -->
     <div class="text-center p-3 m-3" style="text-align:center">
     © 2023 Copyright:

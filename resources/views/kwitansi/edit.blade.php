@@ -10,21 +10,12 @@
 
 <body>
     <div class="content-wrapper">
-        <section class="wrapper">
+        <section class="wrapper" style="padding-bottom: 10rem">
             <div class="container pt-8 pt-md-14">
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
-                    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-1 position-relative order-lg-2"
-                        data-cue="zoomIn">
-                        <div class="shape bg-dot orange rellax w-17 h-19" data-rellax-speed="1"
-                            style="top: -1.7rem; left: -1.5rem;"></div>
-                        <div class="shape rounded bg-soft-orange rellax d-md-block" data-rellax-speed="0"
-                            style="bottom: -1.8rem; right: -0.8rem; width: 85%; height: 90%;"></div>
-                    </div>
-
                     <div class="title-form mt-3 mb-1" id="title-form" style="text-align: center">
                         <h1 class="h2">Edit Kwitansi</h1>
                     </div>
-
                     <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3">
                         @method('put')
                         @csrf
@@ -168,47 +159,55 @@
                         <button type="submit" class="btn btn-success">Simpan Perubahan</button>
                     </form>
                 </div>
+            </div>
         </section>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
-        <script>
-            // Fungsi untuk memformat input jumlah dengan titik dan "RP"
-            function formatCurrency(input) {
-                // Hapus semua karakter selain angka
-                var value = input.value.replace(/[^0-9]/g, '');
+        <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="text-align:center">
+                © 2023 Copyright:
+                <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
+                    Group</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script>
+        // Fungsi untuk memformat input jumlah dengan titik dan "RP"
+        function formatCurrency(input) {
+            // Hapus semua karakter selain angka
+            var value = input.value.replace(/[^0-9]/g, '');
 
-                // Jika value adalah string kosong, set nilai input menjadi kosong juga
-                if (value === '') {
-                    input.value = '';
-                } else {
-                    // Ubah nilai menjadi format uang dengan titik sebagai pemisah ribuan
-                    value = parseInt(value, 10).toLocaleString('id-ID');
+            // Jika value adalah string kosong, set nilai input menjadi kosong juga
+            if (value === '') {
+                input.value = '';
+            } else {
+                // Ubah nilai menjadi format uang dengan titik sebagai pemisah ribuan
+                value = parseInt(value, 10).toLocaleString('id-ID');
 
-                    // Tambahkan "RP" di depan nilai yang sudah diformat
-                    input.value = 'Rp ' + value;
-                }
+                // Tambahkan "RP" di depan nilai yang sudah diformat
+                input.value = 'Rp ' + value;
             }
-            // Dapatkan elemen input jumlah berdasarkan ID
-            var jumlahInput = document.getElementById('jumlah');
+        }
+        // Dapatkan elemen input jumlah berdasarkan ID
+        var jumlahInput = document.getElementById('jumlah');
 
-            // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
-            jumlahInput.addEventListener('input', function() {
-                formatCurrency(this);
-            });
-        </script>
+        // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
+        jumlahInput.addEventListener('input', function() {
+            formatCurrency(this);
+        });
+    </script>
 
-        <script>
-            function hanyaAngka(event) {
-                var angka = (event.which) ? event.which : event.keyCode
-                if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
-                    return false;
-                return true;
-            }
-        </script>
-
+    <script>
+        function hanyaAngka(event) {
+            var angka = (event.which) ? event.which : event.keyCode
+            if (angka != 46 && angka > 31 && (angka < 48 || angka > 57))
+                return false;
+            return true;
+        }
+    </script>
 </body>
 
 </html>
-
-@extends('templates.footer')

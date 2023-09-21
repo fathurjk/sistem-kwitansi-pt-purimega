@@ -3,61 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Kwitansi</title>
-    <style>
-        .table th {
-            background-color: #4caf50;
-            color: white;
-            text-align: center;
-            vertical-align: middle;
-            margin: 0;
-            padding: 0 4px 0 4px;
-
-        }
-
-        .table td {
-            margin: 0;
-            padding: 0 4px 0 4px;
-            vertical-align: middle
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .pagination a {
-            margin: 0 0.5rem;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border: 1px solid #4caf50;
-            /* Ganti dengan warna yang Anda inginkan */
-            color: #4caf50;
-            /* Ganti dengan warna yang Anda inginkan */
-            border-radius: 4px;
-        }
-
-        .pagination a:hover {
-            background-color: #4caf50;
-            /* Ganti dengan warna yang Anda inginkan */
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
-    <section class="kwitansi p-5">
-        <h1> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">Kwitansi</a></h1>
+    <section class="kwitansi" style="padding: 1.5rem 24px 1.5rem 24px">
+        <h1> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">List Kwitansi</a></h1>
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row">
                 <div class="col">
                     <a href="{{ route('kwitansi.create') }}" class="btn btn-primary mb-3 ml-2">Tambah</a>
                     <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-success mb-3 ml-2">Export To Excel</a>
                 </div>
-                <div class="col" style="padding-left: 40%">
+                <div class="col" style="padding-left:50%">
                     <form action="/kwitansi" method="GET" class="float-right">
                         <div class="input-group" style="padding-left: ;">
                             <input type="search" style="border-top-right-radius: 0; border-bottom-right-radius: 0"
@@ -65,8 +25,8 @@
                                 value="{{ request('search') }}">
                             <div class="input-group-append" style="padding-left: 2px;">
                                 <button class="btn btn-primary"
-                                    style="border-top-left-radius: 0; border-bottom-left-radius: 0"
-                                    type="submit">Search</button>
+                                    style="border-top-left-radius: 0; border-bottom-left-radius: 0" type="submit"><img
+                                        src="{{ asset('icon/search.svg') }}" alt=""></button>
                             </div>
                         </div>
                     </form>
@@ -96,12 +56,13 @@
                     <th style="width: 1rem;">Type</th>
                     <th style="width: 1rem;">Luas</th>
                     <th style="width: 5rem;">Jumlah</th>
-                    <th style="width: 8.5rem;">Action</th>
+                    <th style="width: 6.7rem;">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($kwitansis as $kwitansi)
-                    <tr>
+                    <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
+                        style="cursor: pointer;">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $kwitansi->nomor_kwitansi }}</td>
                         <td>{{ $kwitansi->nama_lengkap }}</td>
@@ -115,16 +76,14 @@
                         <td>{{ $kwitansi->luas }}</td>
                         <td>{{ $kwitansi->jumlah }}</td>
                         <td
-                            style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-evenly; align-items: center">
-                            <a href="{{ route('kwitansi.detail', $kwitansi->id) }}" class="btn-view"
-                                style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%; background-color: #C6D616;">
-                                <img src="{{ asset('icon/eye.svg') }}" alt="">
-                            </a>
-                            <a href="{{ route('kwitansi.edit', $kwitansi->id) }}" class="btn btn-warning"
-                                style="margin:0 ; padding: 6.5px 7.5px 6.5px 7.5px; border-radius: 100%;">
-                                <img src="{{ asset('icon/pen2.svg') }}" alt=""
-                                    style="width: 26px; height: 26px">
-                            </a>
+                            style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
+                            <button class="btn btn-warning"
+                                style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
+                                <a href="{{ route('kwitansi.edit', $kwitansi->id) }}">
+                                    <img src="{{ asset('icon/pen2.svg') }}" alt=""
+                                        style="width: 26px; height: 26px">
+                                </a>
+                            </button>
                             <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
                                 class="d-inline-grid">
                                 @method('delete')
@@ -144,8 +103,9 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -268,15 +228,59 @@
         });
     </script>
 
-
-
-
-
-
 </body>
+
+<footer class="text-center text-lg-start" style="background-color: #8ba8d9">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="text-align:center">
+        © 2023 Copyright:
+        <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek Group</a>
+    </div>
+    <!-- Copyright -->
+</footer>
 
 </html>
 <style>
+    .table th {
+        background-color: #CE76CE;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        margin: 0;
+        padding: 0 4px 0 4px;
+        height: 4rem;
+        border-bottom: 2px solid #514F4F
+    }
+
+    .table td {
+        margin: 0;
+        padding: 0 4px 0 4px;
+        vertical-align: middle
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .pagination a {
+        margin: 0 0.5rem;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 1px solid #4caf50;
+        /* Ganti dengan warna yang Anda inginkan */
+        color: #4caf50;
+        /* Ganti dengan warna yang Anda inginkan */
+        border-radius: 4px;
+    }
+
+    .pagination a:hover {
+        background-color: #CE76CE;
+        /* Ganti dengan warna yang Anda inginkan */
+        color: white;
+    }
+
     img {
         height: 24px;
         width: 24px;
