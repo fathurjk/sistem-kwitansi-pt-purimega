@@ -78,7 +78,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <label for="no_kavling" class="col-sm-2 col-form-label">No.Kavling</label>
+                            <label for="no_kavling" class="col-sm-2 col-form-label">No. Kavling</label>
                             <div class="col">
                                 <input type="text" class="row-sm-3 @error('no_kavling') is-invalid @enderror"
                                     id="no_kavling" name="no_kavling"
@@ -165,10 +165,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <<<<<<< HEAD <button type="submit" class="btn btn-success">Edit</button>
-                            =======
-                            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
-                            >>>>>>> 4f907114209987e689185f690629a01d62d3b50f
+                        <button type="submit" class="btn btn-success">Simpan Perubahan</button>
                     </form>
                 </div>
         </section>

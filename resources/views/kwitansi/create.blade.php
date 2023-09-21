@@ -55,7 +55,7 @@
                                 <input type="text" class="row-form-control" id="alamat" name="alamat"
                                     placeholder="Masukkan Alamat" required>
                             </div>
-                            <label for="no_kavling" class="col-sm-2 col-form-label">No.Kavling</label>
+                            <label for="no_kavling" class="col-sm-2 col-form-label">No. Kavling</label>
                             <div class="col">
                                 <input class="row-form-control" id="no_kavling" name="no_kavling"
                                     placeholder="Masukkan Nomor Kavling" required>
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="no_hp" class="col-sm-2 col-form-label"> No.HP </label>
+                            <label for="no_hp" class="col-sm-2 col-form-label"> No. HP </label>
                             <div class="col">
                                 <input id="no_hp" class="row-form-control" type="text" id="no_hp"
                                     name="no_hp" placeholder="Masukkan Nomor HP" onkeypress="return hanyaAngka(event)"
@@ -92,42 +92,8 @@
                         <div class="row mb-3">
                             <label for="pembayaran" class="col-sm-2 col-form-label">Pembayaran</label>
                             <div class="col">
-                                {{-- <div class="form-group mb-3">
-                                    <select class="form-control" name="pembayaran" id="pembayaran">
-                                        <option value="booking">Booking</option>
-                                        <option value="dp">DP</option>
-                                        <option value="cbth">CBTH</option>
-                                        <option value="angsuran">Angsuran ke</option>
-                                        <option value="ket">KET</option>
-                                        <option value="lainlain">Lain-lain</option>
-                                    </select>
-                                </div> --}}
                                 <input type="text" class="row-form-control" id="pembayaran"
                                     name="pembayaran"placeholder="Masukkan Pembayaran" required>
-                                {{-- <div class="form-group mb-3" id="lain-lain-form" style="display: none;">
-                                </div> --}}
-
-                                {{-- <script>
-                                    document.getElementById('pembayaran').addEventListener('change', function() {
-                                        if (this.value === 'lainlain') {
-                                            document.getElementById('lain-lain-form').style.display = 'block';
-                                        } else {
-                                            document.getElementById('lain-lain-form').style.display = 'none';
-                                        }
-                                    });
-
-                                    // Get the input element
-                                    const input = document.getElementById('pembayaran');
-
-                                    // Add an event listener to the input element
-                                    input.addEventListener('change', function() {
-                                        // Get the value of the input element
-                                        const value = input.value;
-
-                                        // Set the value of the other input element
-                                        document.getElementById('lainlain').value = value;
-                                    });
-                                </script> --}}
                             </div>
                         </div>
                         <div class="row mb-3">
