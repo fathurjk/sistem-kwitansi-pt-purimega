@@ -340,7 +340,8 @@
             <div
                 style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
                 <div style="flex: 1">
-                    <a style="width: 6rem" class="btn btn-primary" href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
+                    <a style="width: 6rem" class="btn btn-primary"
+                        href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
                 </div>
                 <div style="flex: 1">
                     <button type="button" style="width: 6rem; background-color: green" class="btn btn-primary"
