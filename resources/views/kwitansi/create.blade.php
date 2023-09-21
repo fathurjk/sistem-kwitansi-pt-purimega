@@ -7,7 +7,7 @@
 
 <body>
     <div class="content-wrapper">
-        <section class="wrapper">
+        <section class="wrapper" style="padding-bottom: 10rem">
             <div class="container pt-8 pt-md-14">
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
                     <div class="title-form mt-3 mb-1" id="title-form" style="text-align: center">
@@ -133,9 +133,21 @@
                             return true;
                         }
                     </script>
-
+                </div>
+            </div>
+        </section>
+        <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="text-align:center">
+                © 2023 Copyright:
+                <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
+                    Group</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
 </body>
 
 </html>
 
-@extends('templates.footer')
+
