@@ -25,7 +25,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
-            <table class="table table-hover text-center">
+            <table class="table table-hover text-center" id="kwitansi-table">
                 <thead>
                 <tr class="bg-info">
                     <th style="width: 1%; justify-content: center; align-items: center; cursor: pointer;" id="sortNo">No</th>
@@ -78,7 +78,13 @@
                 @endforeach
             </tbody>
         </table>
-
+        <div class="pagination">
+    <ul class="list-group">
+        <li class="list-group-item active">1</li>
+        <li class="list-group-item">2</li>
+        <li class="list-group-item">3</li>
+    </ul>
+</div>
     </section>
 
 
@@ -133,7 +139,49 @@
         });
     });
 </script>
+<script>
+    $(document).ready(function () {
+    // Get the table element
+    const table = $("#kwitansi-table");
 
+    // Get the pagination element
+    const pagination = $(".pagination");
+
+    // Set the initial page number
+    let currentPage = 1;
+
+    // Hide all rows in the table
+    table.find("tr").hide();
+
+    // Show the first 10 rows
+    table.find("tr").slice(0, 5).show();
+
+    // Add the header to the table
+    table.append(table.find("thead"));
+
+    // Handle click event for pagination buttons
+    pagination.find("li").click(function () {
+        // Get the clicked page number
+        const newPage = parseInt($(this).text());
+
+        // If the clicked page number is different from the current page number
+        if (newPage !== currentPage) {
+            // Update the current page number
+            currentPage = newPage;
+
+            // Hide all rows in the table
+            table.find("tr").hide();
+
+            // Show the rows for the current page
+            table.find("tr").slice((currentPage - 1) * 5, currentPage * 5).show();
+
+            // Update the active pagination button
+            pagination.find("li").removeClass("active");
+            pagination.find("li").eq(currentPage - 1).addClass("active");
+        }
+    });
+});
+    </script>
 </body>
 
 </html>
