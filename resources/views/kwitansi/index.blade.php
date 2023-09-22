@@ -40,6 +40,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        <div class="content">
         <table class="table table-hover text-center" id="kwitansi-table">
             <thead>
                 <tr class="bg-info">
@@ -99,6 +100,7 @@
             </tbody>
         </table>
         <div class="pagination" style="display: flex">
+</div>
 
         </div>
     </section>
@@ -227,9 +229,6 @@
             });
         });
     </script>
-
-</body>
-
 <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
     <!-- Copyright -->
     <div class="text-center p-3" style="text-align:center">
@@ -238,9 +237,29 @@
     </div>
     <!-- Copyright -->
 </footer>
+</body>
 
-</html>
 <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    /* CSS untuk konten */
+    .content {
+        flex-grow: 1;
+        min-height: calc(100vh - 60px); /* Ketinggian minimum konten, disesuaikan dengan tinggi footer */
+    }
+
+    /* CSS untuk footer */
+    footer {
+        flex-shrink: 0;
+        background-color: #8ba8d9;
+        text-align: center;
+        padding: 0rem 0; /* Sesuaikan padding sesuai kebutuhan */
+    }
     .table th {
         background-color: #CE76CE;
         color: white;
@@ -288,3 +307,4 @@
         padding: 0;
     }
 </style>
+</html>

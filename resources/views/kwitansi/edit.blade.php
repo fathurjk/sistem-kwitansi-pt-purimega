@@ -9,21 +9,22 @@
 </head>
 
 <body>
-    <div class="content-wrapper">
-        <section class="wrapper" style="padding-bottom: 10rem">
+<div class="content-wrapper">
+        <section class="wrapper" style="padding-bottom: 10rem; max-width: 1200px; margin: 0 auto;">
             <div class="container pt-8 pt-md-14">
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
-                    <div class="title-form mt-3 mb-1" id="title-form" style="text-align: center">
-                        <h1 class="h2">Edit Kwitansi</h1>
-                    </div>
-                    <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3">
-                        @method('put')
-                        @csrf
-                        <a class="btn btn-primary mb-3" href="/kwitansi">Kembali</a>
-                        <div style="text-align: right">
-                            <div class="nomor mb-5">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="title-form mt-3 mb-4" id="title-form" style="text-align: center">
+                            <h1 class="h2">Edit Kwitansi</h1>
+                        </div>
+                        <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3">
+                            @method('put')
+                            @csrf
+                            <a class="btn btn-primary mb-3" href="/kwitansi">Kembali</a>
+
+                            <div class="mb-3">
                                 <label for="nomor_kwitansi">No :</label>
-                                <input type="text" class="form-first  @error('nomor_kwitansi') is-invalid @enderror"
+                                <input type="text" class="form-control @error('nomor_kwitansi') is-invalid @enderror"
                                     id="nomor_kwitansi" name="nomor_kwitansi" readonly
                                     value="{{ old('nomor_kwitansi', $kwitansi->nomor_kwitansi) }}">
                                 @error('nomor_kwitansi')
@@ -32,108 +33,106 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="nama_lengkap" class="col-sm-2 col-form-label">Nama Lengkap</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-3 @error('nama_lengkap') is-invalid @enderror"
-                                    id="nama_lengkap" name="nama_lengkap"
-                                    value="{{ old('nama_lengkap', $kwitansi->nama_lengkap) }}">
-                                @error('nama_lengkap')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="nama_lengkap">Nama Lengkap</label>
+                                    <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                        id="nama_lengkap" name="nama_lengkap"
+                                        value="{{ old('nama_lengkap', $kwitansi->nama_lengkap) }}">
+                                    @error('nama_lengkap')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lokasi">Lokasi</label>
+                                    <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
+                                        id="lokasi" name="lokasi" value="{{ old('lokasi', $kwitansi->lokasi) }}">
+                                    @error('lokasi')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
-                            <label for="lokasi" class="col-sm-2 col-form-label">Lokasi</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-3 @error('lokasi') is-invalid @enderror"
-                                    id="lokasi" name="lokasi" value="{{ old('lokasi', $kwitansi->lokasi) }}">
-                                @error('lokasi')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-3 @error('alamat') is-invalid @enderror"
-                                    id="alamat" name="alamat" value="{{ old('alamat', $kwitansi->alamat) }}">
-                                @error('alamat')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="alamat">Alamat</label>
+                                    <input type="text" class="form-control @error('alamat') is-invalid @enderror"
+                                        id="alamat" name="alamat" value="{{ old('alamat', $kwitansi->alamat) }}">
+                                    @error('alamat')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="no_kavling">No. Kavling</label>
+                                    <input type="text" class="form-control @error('no_kavling') is-invalid @enderror"
+                                        id="no_kavling" name="no_kavling"
+                                        value="{{ old('no_kavling', $kwitansi->no_kavling) }}">
+                                    @error('no_kavling')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
-                            <label for="no_kavling" class="col-sm-2 col-form-label">No. Kavling</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-3 @error('no_kavling') is-invalid @enderror"
-                                    id="no_kavling" name="no_kavling"
-                                    value="{{ old('no_kavling', $kwitansi->no_kavling) }}">
-                                @error('no_kavling')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="no_hp" class="col-sm-2 col-form-label">No. HP</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-3 @error('no_hp') is-invalid @enderror"
-                                    id="no_hp" onkeypress="return hanyaAngka(event)" name="no_hp"
-                                    value="{{ old('no_hp', $kwitansi->no_hp) }}">
-                                @error('no_hp')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="no_hp">No. HP</label>
+                                    <input type="text" class="form-control @error('no_hp') is-invalid @enderror"
+                                        id="no_hp" onkeypress="return hanyaAngka(event)" name="no_hp"
+                                        value="{{ old('no_hp', $kwitansi->no_hp) }}">
+                                    @error('no_hp')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="type">Type</label>
+                                    <input type="text" class="form-control @error('type') is-invalid @enderror"
+                                        id="type" name="type" value="{{ old('type', $kwitansi->type) }}">
+                                    @error('type')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
-                            <label for="type" class="col-sm-2 col-form-label">Type</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-3 @error('type') is-invalid @enderror"
-                                    id="type" name="type" value="{{ old('type', $kwitansi->type) }}">
-                                @error('type')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="terbilang" class="col-sm-2 col-form-label">Terbilang</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-3 @error('terbilang') is-invalid @enderror"
-                                    id="terbilang" name="terbilang"
-                                    value="{{ old('terbilang', $kwitansi->terbilang) }}">
-                                @error('terbilang')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="terbilang">Terbilang</label>
+                                    <input type="text" class="form-control @error('terbilang') is-invalid @enderror"
+                                        id="terbilang" name="terbilang"
+                                        value="{{ old('terbilang', $kwitansi->terbilang) }}">
+                                    @error('terbilang')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="luas">Luas</label>
+                                    <input type="text" class="form-control @error('luas') is-invalid @enderror"
+                                        id="luas" name="luas" value="{{ old('luas', $kwitansi->luas) }}">
+                                    @error('luas')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
-                            <label for="luas" class="col-sm-2 col-form-label">Luas</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-2 @error('luas') is-invalid @enderror"
-                                    id="luas" name="luas" value="{{ old('luas', $kwitansi->luas) }}">
-                                @error('luas')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="pembayaran" class="col-sm-2 col-form-label">Pembayaran</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-2 @error('pembayaran') is-invalid @enderror"
+                            <div class="mb-3">
+                                <label for="pembayaran">Pembayaran</label>
+                                <input type="text" class="form-control @error('pembayaran') is-invalid @enderror"
                                     id="pembayaran" name="pembayaran"
                                     value="{{ old('pembayaran', $kwitansi->pembayaran) }}">
                                 @error('pembayaran')
@@ -142,12 +141,10 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="jumlah" class="col-sm-2 col-form-label">Jumlah</label>
-                            <div class="col">
-                                <input type="text" class="row-sm-2 @error('jumlah') is-invalid @enderror"
+                            <div class="mb-3">
+                                <label for="jumlah">Jumlah</label>
+                                <input type="text" class="form-control @error('jumlah') is-invalid @enderror"
                                     id="jumlah" name="jumlah" value="{{ old('jumlah', $kwitansi->jumlah) }}">
                                 @error('jumlah')
                                     <div class="invalid-feedback">
@@ -155,21 +152,14 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
-                        <button type="submit" class="btn btn-success">Simpan Perubahan</button>
-                    </form>
+
+                            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
-        <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
-            <!-- Copyright -->
-            <div class="text-center p-3" style="text-align:center">
-                © 2023 Copyright:
-                <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
-                    Group</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
+       
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -209,5 +199,93 @@
         }
     </script>
 </body>
+<footer class="text-center text-lg-start" style="background-color: #8ba8d9">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="text-align:center">
+                © 2023 Copyright:
+                <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
+                    Group</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+<style>
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #8ba8d9;
+    }
+
+    /* Content */
+
+    .content-wrapper {
+        padding: 2rem;
+    }
+
+    .wrapper {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    /* Form */
+
+    form {
+        margin-bottom: 2rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+    }
+
+    .btn-primary {
+        background-color: #8ba8d9;
+        color: #fff;
+        border: 1px solid #8ba8d9;
+        border-radius: 0.25rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #fff;
+        color: #8ba8d9;
+        border: 1px solid #8ba8d9;
+    }
+
+    /* Footer */
+
+    footer {
+        padding: 1rem;
+        background-color: #8ba8d9;
+        color: #fff;
+    }
+
+    footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        color: #ccc;
+    }
+
+    /* Custom */
+
+    .title-form {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
 
 </html>
+
