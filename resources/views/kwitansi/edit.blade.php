@@ -248,48 +248,6 @@
                                     </div>
                                 @enderror
                             </div>
-                            <script>
-                                // Dapatkan elemen checkbox "Lain-lain" berdasarkan ID
-                                var lainlainCheckbox = document.getElementById('lainlain');
-                        
-                                // Dapatkan elemen row "keterangan" berdasarkan ID
-                                var keteranganRow = document.getElementById('keteranganRow');
-                        
-                                // Tambahkan event listener ke checkbox "Lain-lain"
-                                lainlainCheckbox.addEventListener('change', function() {
-                                    // Jika checkbox "Lain-lain" dicentang, tampilkan input "keterangan"
-                                    if (this.checked) {
-                                        keteranganRow.style.display = 'block';
-                                    } else {
-                                        // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan input "keterangan" dan hapus isinya
-                                        keteranganRow.style.display = 'none';
-                                        document.getElementById('keterangan').value = '';
-                                    }
-                                });
-                            </script>
-                            <script>
-                                // Dapatkan semua elemen checkbox
-                                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-                                // Tambahkan event listener untuk setiap checkbox
-                                checkboxes.forEach(function(checkbox) {
-                                    checkbox.addEventListener('change', function() {
-                                        // Jika checkbox yang sedang diubah adalah checkbox yang telah dicentang, nonaktifkan yang lainnya
-                                        if (this.checked) {
-                                            checkboxes.forEach(function(otherCheckbox) {
-                                                if (otherCheckbox !== checkbox) {
-                                                    otherCheckbox.disabled = true;
-                                                }
-                                            });
-                                        } else {
-                                            // Jika checkbox yang sedang diubah tidak dicentang, aktifkan yang lainnya
-                                            checkboxes.forEach(function(otherCheckbox) {
-                                                otherCheckbox.disabled = false;
-                                            });
-                                        }
-                                    });
-                                });
-                            </script>
                             <div class="mb-3">
                                 <label for="jumlah">Jumlah</label>
                                 <input type="text" class="form-control @error('jumlah') is-invalid @enderror"
@@ -310,6 +268,62 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script>
+        // Dapatkan elemen checkbox "Lain-lain" berdasarkan ID
+        var lainlainCheckbox = document.getElementById('lainlain');
+
+        // Dapatkan elemen row "keterangan" berdasarkan ID
+        var keteranganRow = document.getElementById('keteranganRow');
+
+        // Tambahkan event listener ke checkbox "Lain-lain"
+        lainlainCheckbox.addEventListener('change', function() {
+            // Jika checkbox "Lain-lain" dicentang, tampilkan input "keterangan"
+            if (this.checked) {
+                keteranganRow.style.display = 'block';
+            } else {
+                // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan input "keterangan" dan hapus isinya
+                keteranganRow.style.display = 'none';
+                document.getElementById('keterangan').value = '';
+            }
+        });
+    </script>
+    <script>
+        var angsuranCheckbox = document.getElementById('angsuran');
+
+        var keteranganRow = document.getElementById('keteranganRow');
+
+        angsuranCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                keteranganRow.style.display = 'block';
+            } else {
+                keteranganRow.style.display = 'none';
+                document.getElementById('keterangan').value = '';
+            }
+        });
+    </script>
+    <script>
+        // Dapatkan semua elemen checkbox
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        // Tambahkan event listener untuk setiap checkbox
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                // Jika checkbox yang sedang diubah adalah checkbox yang telah dicentang, nonaktifkan yang lainnya
+                if (this.checked) {
+                    checkboxes.forEach(function(otherCheckbox) {
+                        if (otherCheckbox !== checkbox) {
+                            otherCheckbox.disabled = true;
+                        }
+                    });
+                } else {
+                    // Jika checkbox yang sedang diubah tidak dicentang, aktifkan yang lainnya
+                    checkboxes.forEach(function(otherCheckbox) {
+                        otherCheckbox.disabled = false;
+                    });
+                }
+            });
+        });
     </script>
     <script>
         // Fungsi untuk memformat input jumlah dengan titik dan "RP"
