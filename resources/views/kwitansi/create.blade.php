@@ -35,20 +35,20 @@
                                 <div class="col-sm-6">
                                     <label for="nama_lengkap" class="col-form-label">Nama Lengkap</label>
                                     <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
-                                        placeholder="Masukkan Nama Lengkap" required>
+                                        placeholder="Masukkan Nama Lengkap" onkeypress="return hanyaHurufDanSpasi(event)" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="lokasi" class="col-form-label">Lokasi</label>
-                                    <input class="form-control" id="lokasi" name="lokasi"
-                                        placeholder="Masukkan Lokasi" required>
+                                    <label for="lokasi" class="col-form-label">Nama Perumahan</label>
+                                    <input type="text" class="form-control" id="lokasi" name="lokasi"
+                                        placeholder="Masukkan Lokasi Perumahan" required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-sm-6">
-                                    <label for="alamat" class="col-form-label">Alamat</label>
+                                    <label for="alamat" class="col-form-label">Alamat Lengkap</label>
                                     <input type="text" class="form-control" id="alamat" name="alamat"
-                                        placeholder="Masukkan Alamat" required>
+                                        placeholder="Masukkan Alamat Lengkap" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="no_kavling" class="col-form-label">No. Kavling</label>
@@ -75,7 +75,7 @@
                                 <div class="col-sm-6">
                                     <label for="terbilang" class="col-form-label">Terbilang</label>
                                     <input class="form-control" id="terbilang" name="terbilang"
-                                        placeholder="Masukkan Terbilang" required>
+                                        placeholder="Masukkan Terbilang" onkeypress="return hanyaHurufDanSpasi(event)" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="luas" class="col-form-label">Luas</label>
@@ -144,6 +144,20 @@
             else if (angka == 48)
                 return true;
             return true;
+        }
+    </script>
+
+    <script>
+        function hanyaHurufDanSpasi(event) {
+            var charCode = event.which || event.keyCode;
+            
+            // Mengecek apakah karakter yang dimasukkan adalah huruf atau spasi
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
+                return true;
+            } else {
+                event.preventDefault();
+                return false;
+            }
         }
     </script>
 </body>

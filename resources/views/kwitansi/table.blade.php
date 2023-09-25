@@ -4,7 +4,7 @@
             <th>No</th>
             <th>Nomor Kwitansi</th>
             <th>Nama Lengkap</th>
-            <th>Alamat</th>
+            <th>Alamat Lengkap</th>
             <th>No. HP</th>
             <th>Terbilang</th>
             <th>Pembayaran</th>

@@ -81,9 +81,9 @@
                     </div>
                     <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
                         <div class="output" style="margin: 0 0 -1px 0px">
-                            <label style="width: 8rem">Lokasi</label>
-                            <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->lokasi }}</label>
+                            <label style="width: 8rem">Nama Perumahan</label>
+                            <label style="margin-left:">:</label>
+                            <label style="margin-left: 0.2rem;">{{ $kwitansi->lokasi }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 2.5rem">Type</label>
@@ -157,7 +157,7 @@
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->nama_lengkap }}</label>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 12px">
-                        <label style="width: 8rem;">Alamat</label>
+                        <label style="width: 8rem;">Alamat Lengkap</label>
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem;">{{ $kwitansi->alamat }}</label>
                     </div>
@@ -178,9 +178,9 @@
                     </div>
                     <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
                         <div class="output" style="margin: 0 0 -1px 0px">
-                            <label style="width: 8rem">Lokasi</label>
-                            <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->lokasi }}</label>
+                            <label style="width: 8rem">Nama Perumahan</label>
+                            <label style="margin-left:">:</label>
+                            <label style="margin-left: 0.2rem;">{{ $kwitansi->lokasi }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 2.5rem">Type</label>
@@ -275,9 +275,9 @@
                     </div>
                     <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
                         <div class="output" style="margin: 0 0 -1px 0px">
-                            <label style="width: 8rem">Lokasi</label>
-                            <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->lokasi }}</label>
+                            <label style="width: 8rem">Nama Perumahan</label>
+                            <label style="margin-left:">:</label>
+                            <label style="margin-left: 0.2rem;">{{ $kwitansi->lokasi }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 2.5rem">Type</label>

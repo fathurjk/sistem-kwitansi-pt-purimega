@@ -48,7 +48,7 @@
                         id="sortNo">No.</th>
                     <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
                     <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
-                    <th style="width: 10rem;">Alamat</th>
+                    <th style="width: 10rem;">Alamat Lengkap</th>
                     <th style="width: 4.5rem;">No. HP</th>
                     <th style="width: 8.5rem;">Terbilang</th>
                     <th style="width: 4rem;">Pembayaran</th>
@@ -99,15 +99,12 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="pagination" style="display: flex">
-</div>
-
+        <div class="pagination" style="display: flex"></div>
         </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -162,7 +159,7 @@
             // Function to initialize the table with the specified number of items per page
             function initializeTable() {
                 const table = $("#kwitansi-table");
-                const itemsPerPage = 6; // Jumlah item per halaman
+                const itemsPerPage = 11; // Jumlah item per halaman
 
                 // Hide all rows in the table, except the header
                 table.find("tr").not("thead tr").hide();
@@ -184,7 +181,7 @@
             let currentPage = 1;
 
             // Set the number of items per page
-            const itemsPerPage = 5;
+            const itemsPerPage = 10;
 
             // Calculate the total number of pages
             const totalData = {{ $kwitansis->count() }}; // Ganti dengan jumlah data yang sesungguhnya
@@ -229,6 +226,8 @@
             });
         });
     </script>
+    
+
 <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
     <!-- Copyright -->
     <div class="text-center p-3" style="text-align:center">

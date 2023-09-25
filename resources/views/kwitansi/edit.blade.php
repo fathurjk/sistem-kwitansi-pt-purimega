@@ -38,7 +38,7 @@
                                 <div class="col-md-6">
                                     <label for="nama_lengkap">Nama Lengkap</label>
                                     <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                        id="nama_lengkap" name="nama_lengkap"
+                                        id="nama_lengkap" name="nama_lengkap" onkeypress="return hanyaHurufDanSpasi(event)"
                                         value="{{ old('nama_lengkap', $kwitansi->nama_lengkap) }}">
                                     @error('nama_lengkap')
                                         <div class="invalid-feedback">
@@ -47,7 +47,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="lokasi">Lokasi</label>
+                                    <label for="lokasi">Nama Perumahan</label>
                                     <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
                                         id="lokasi" name="lokasi" value="{{ old('lokasi', $kwitansi->lokasi) }}">
                                     @error('lokasi')
@@ -60,7 +60,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="alamat">Alamat</label>
+                                    <label for="alamat">Alamat Lengkap</label>
                                     <input type="text" class="form-control @error('alamat') is-invalid @enderror"
                                         id="alamat" name="alamat" value="{{ old('alamat', $kwitansi->alamat) }}">
                                     @error('alamat')
@@ -110,7 +110,7 @@
                                 <div class="col-md-6">
                                     <label for="terbilang">Terbilang</label>
                                     <input type="text" class="form-control @error('terbilang') is-invalid @enderror"
-                                        id="terbilang" name="terbilang"
+                                        id="terbilang" name="terbilang" onkeypress="return hanyaHurufDanSpasi(event)"
                                         value="{{ old('terbilang', $kwitansi->terbilang) }}">
                                     @error('terbilang')
                                         <div class="invalid-feedback">
@@ -159,7 +159,7 @@
                 </div>
             </div>
         </section>
-       
+    
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -198,6 +198,21 @@
             return true;
         }
     </script>
+
+    <script>
+        function hanyaHurufDanSpasi(event) {
+            var charCode = event.which || event.keyCode;
+            
+            // Mengecek apakah karakter yang dimasukkan adalah huruf atau spasi
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
+                return true;
+            } else {
+                event.preventDefault();
+                return false;
+            }
+        }
+    </script>
+
 </body>
 <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
             <!-- Copyright -->
