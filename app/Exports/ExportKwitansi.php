@@ -13,7 +13,7 @@ class ExportKwitansi implements FromView
      */
     public function view(): View
     {
-        $data = Kwitansi::orderBy('nama_lengkap', 'asc')->get();
+        $data = Kwitansi::orderBy('nomor_kwitansi', 'asc')->get();
         return view('kwitansi.table', ['kwitansis' => $data]);
     }
 }
