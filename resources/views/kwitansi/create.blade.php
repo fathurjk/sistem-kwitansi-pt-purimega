@@ -36,12 +36,14 @@
                                 <div class="col-sm-6">
                                     <label for="nama_lengkap" class="col-form-label">Nama Lengkap</label>
                                     <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
-                                        placeholder="Masukkan Nama Lengkap" onkeypress="return hanyaHurufDanSpasi(event)" required>
+                                        placeholder="Masukkan Nama Lengkap"
+                                        onkeypress="return hanyaHurufDanSpasi(event)" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="lokasi" class="col-form-label">Nama Perumahan</label>
                                     <input class="form-control" id="lokasi" name="lokasi"
-                                        placeholder="Masukkan Lokasi Perumahan" onkeypress="return hanyaHurufDanSpasi(event)" required>
+                                        placeholder="Masukkan Lokasi Perumahan"
+                                        onkeypress="return hanyaHurufDanSpasi(event)" required>
                                 </div>
                             </div>
 
@@ -79,7 +81,8 @@
                                 <div class="col-sm-6">
                                     <label for="terbilang" class="col-form-label">Terbilang</label>
                                     <input class="form-control" id="terbilang" name="terbilang"
-                                        placeholder="Masukkan Terbilang" onkeypress="return hanyaHurufDanSpasi(event)" required>
+                                        placeholder="Masukkan Terbilang" onkeypress="return hanyaHurufDanSpasi(event)"
+                                        required>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -102,7 +105,7 @@
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="angsuran"
-                                            name="pembayaran[]" value="Angsuran">
+                                            name="pembayaran[]" value="Angsuran ke">
                                         <label class="form-check-label" for="angsuran">Angsuran ke</label>
                                     </div>
                                     <div class="form-check">
@@ -117,102 +120,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="lainlain-form" style="display: none;">
-                                <div class="row mb-3">
-                                    <div class="col-sm-12">
-                                        <label for="lainlaininput" class="col-form-label">Detail Lain-lain</label>
-                                        <input type="text" class="form-control" id="lainlaininput"
-                                            name="lainlaininput" placeholder="Masukkan detail lain-lain">
-                                    </div>
+                            <div class="row mb-3" id="keteranganRow" style="display: none;">
+                                <div class="col-sm-12">
+                                    <label for="keterangan" class="col-form-label">Keterangan Lainnya</label>
+                                    <input class="form-control" id="keterangan" name="keterangan"
+                                        placeholder="Masukkan keterangan">
                                 </div>
                             </div>
-                            <script>
-                                // Dapatkan semua elemen checkbox
-                                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-                                // Tambahkan event listener untuk setiap checkbox
-                                checkboxes.forEach(function(checkbox) {
-                                    checkbox.addEventListener('change', function() {
-                                        // Jika checkbox yang sedang diubah adalah checkbox yang telah dicentang, nonaktifkan yang lainnya
-                                        if (this.checked) {
-                                            checkboxes.forEach(function(otherCheckbox) {
-                                                if (otherCheckbox !== checkbox) {
-                                                    otherCheckbox.disabled = true;
-                                                }
-                                            });
-                                        } else {
-                                            // Jika checkbox yang sedang diubah tidak dicentang, aktifkan yang lainnya
-                                            checkboxes.forEach(function(otherCheckbox) {
-                                                otherCheckbox.disabled = false;
-                                            });
-                                        }
-                                    });
-                                });
-                            </script>
-                            <script>
-                                // Dapatkan elemen checkbox "Lain-lain"
-                                var lainlainCheckbox = document.getElementById('lainlain');
-
-                                // Dapatkan elemen form tambahan
-                                var lainlainForm = document.getElementById('lainlain-form');
-
-                                // Tambahkan event listener ke checkbox "Lain-lain"
-                                lainlainCheckbox.addEventListener('change', function() {
-                                    // Jika checkbox "Lain-lain" dicentang, tampilkan form tambahan
-                                    if (this.checked) {
-                                        lainlainForm.style.display = 'block';
-                                    } else {
-                                        // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan form tambahan
-                                        lainlainForm.style.display = 'none';
-                                    }
-                                });
-                            </script>
-
                             <div class="row mb-3">
                                 <div class="col-sm-12">
                                     <label for="jumlah" class="col-form-label">Jumlah</label>
-                                    <input class="form-control" id="jumlah" name="jumlah"
-                                        placeholder="Masukkan Jumlah" required>
+                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required>
                                 </div>
                             </div>
-                            <script>
-                                // Fungsi untuk memformat input jumlah dengan titik dan "RP"
-                                function formatCurrency(input) {
-                                    // Hapus semua karakter selain angka
-                                    var value = input.value.replace(/[^0-9]/g, '');
-
-                                    // Jika value adalah string kosong, set nilai input menjadi kosong juga
-                                    if (value === '') {
-                                        input.value = '';
-                                    } else {
-                                        // Ubah nilai menjadi format uang dengan titik sebagai pemisah ribuan
-                                        value = parseInt(value, 10).toLocaleString('id-ID');
-
-                                        // Tambahkan "RP" di depan nilai yang sudah diformat
-                                        input.value = 'Rp ' + value;
-                                    }
-                                }
-                                // Dapatkan elemen input jumlah berdasarkan ID
-                                var jumlahInput = document.getElementById('jumlah');
-
-                                // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
-                                jumlahInput.addEventListener('input', function() {
-                                    formatCurrency(this);
-                                });
-                            </script>
                             <button type="submit" class="btn btn-primary mt-3">Tambah</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-
-
     <script>
         function hanyaAngka(event) {
             var angka = (event.which) ? event.which : event.keyCode
@@ -223,11 +153,10 @@
             return true;
         }
     </script>
-
     <script>
         function hanyaHurufDanSpasi(event) {
             var charCode = event.which || event.keyCode;
-            
+
             // Mengecek apakah karakter yang dimasukkan adalah huruf atau spasi
             if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
                 return true;
@@ -236,6 +165,74 @@
                 return false;
             }
         }
+    </script>
+    <script>
+        // Dapatkan elemen checkbox "Lain-lain" berdasarkan ID
+        var lainlainCheckbox = document.getElementById('lainlain');
+
+        // Dapatkan elemen row "keterangan" berdasarkan ID
+        var keteranganRow = document.getElementById('keteranganRow');
+
+        // Tambahkan event listener ke checkbox "Lain-lain"
+        lainlainCheckbox.addEventListener('change', function() {
+            // Jika checkbox "Lain-lain" dicentang, tampilkan input "keterangan"
+            if (this.checked) {
+                keteranganRow.style.display = 'block';
+            } else {
+                // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan input "keterangan" dan hapus isinya
+                keteranganRow.style.display = 'none';
+                document.getElementById('keterangan').value = '';
+            }
+        });
+    </script>
+    <script>
+        // Dapatkan semua elemen checkbox
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        // Tambahkan event listener untuk setiap checkbox
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                // Jika checkbox yang sedang diubah adalah checkbox yang telah dicentang, nonaktifkan yang lainnya
+                if (this.checked) {
+                    checkboxes.forEach(function(otherCheckbox) {
+                        if (otherCheckbox !== checkbox) {
+                            otherCheckbox.disabled = true;
+                        }
+                    });
+                } else {
+                    // Jika checkbox yang sedang diubah tidak dicentang, aktifkan yang lainnya
+                    checkboxes.forEach(function(otherCheckbox) {
+                        otherCheckbox.disabled = false;
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <script>
+        // Fungsi untuk memformat input jumlah dengan titik dan "RP"
+        function formatCurrency(input) {
+            // Hapus semua karakter selain angka
+            var value = input.value.replace(/[^0-9]/g, '');
+
+            // Jika value adalah string kosong, set nilai input menjadi kosong juga
+            if (value === '') {
+                input.value = '';
+            } else {
+                // Ubah nilai menjadi format uang dengan titik sebagai pemisah ribuan
+                value = parseInt(value, 10).toLocaleString('id-ID');
+
+                // Tambahkan "RP" di depan nilai yang sudah diformat
+                input.value = 'Rp ' + value;
+            }
+        }
+        // Dapatkan elemen input jumlah berdasarkan ID
+        var jumlahInput = document.getElementById('jumlah');
+
+        // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
+        jumlahInput.addEventListener('input', function() {
+            formatCurrency(this);
+        });
     </script>
 </body>
 <footer class="text-center text-lg-start" style="background-color: #8ba8d9">

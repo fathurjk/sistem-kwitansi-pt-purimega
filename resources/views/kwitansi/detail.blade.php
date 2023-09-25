@@ -44,24 +44,26 @@
                     <label style="margin-left:">:</label>
                     <label style="margin-left: 0.2rem;">{{ $kwitansi->terbilang }}</label>
                 </div>
-                <div class="output" style="margin: 0 0 -1px 12px">
-                    <label style="width: 8rem;">Pembayaran</label>
-                    <label style="margin-left:">:</label>
-                    @if (in_array('Lain-lain', explode(', ', $kwitansi->pembayaran)))
-                        <label style="margin-left: 0.2rem;">{{ $kwitansi->lainlaininput }}</label>
-                    @else
-                        <label style="margin-left: 0.2rem;">{{ $kwitansi->pembayaran }}</label>
-                    @endif
-                </div>                
-
+                <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
+                    <div class="output" style="margin: 0 0 -1px 0px">
+                        <label style="width: 8rem;">Pembayaran</label>
+                        <label style="margin-left:">:</label>
+                        <label style="margin-left: 0.2rem; width: 11rem;">{{ $kwitansi->pembayaran }}</label>
+                    </div>
+                    <div class="output" style="margin: 0 0 -1px 0px">
+                        <label style="width: 5.3rem">Keterangan</label>
+                        <label>:</label>
+                        <label style="margin-left: 0.2rem; width: 10rem">{{ $kwitansi->keterangan }}</label>
+                    </div>
+                </div>
                 <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
                     <div class="output" style="margin: 0 0 -1px 0px">
                         <label style="width: 8rem">Nama Perumahan</label>
                         <label>:</label>
-                        <label style="margin-left: 0.2rem; width: 15rem">{{ $kwitansi->lokasi }}</label>
+                        <label style="margin-left: 0.2rem; width: 11rem">{{ $kwitansi->lokasi }}</label>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 0px">
-                        <label style="width: 2.5rem">Type</label>
+                        <label style="width: 5.3rem">Type</label>
                         <label>:</label>
                         <label style="margin-left: 0.2rem; width: 5rem">{{ $kwitansi->type }}</label>
                     </div>
@@ -76,8 +78,7 @@
                 <div class="output" style="display: flex; margin: 0 0 -1px 12px">
                     <label style="width: 8.3rem; margin: 0 0 -1px 0">Jumlah</label>
                     <label style="margin: 0 0 -1px 0">:</label>
-                    <label style="margin: 0 4px -1px 6px"></label>
-                    <label style="width: 10rem; margin: 0 0 -1px 0">{{ $kwitansi->jumlah }}</label>
+                    <label style="width: 10rem; margin: 0 0 -1px 6px">{{ $kwitansi->jumlah }}</label>
                     <div style="flex-grow: 1; text-align: right; margin: 0 0 -1px 0 ">
                         <label style="width: 15rem; margin-right: 8px;">Cirebon,
                             {{ date('j F Y', strtotime($kwitansi->created_at)) }}</label>
@@ -114,7 +115,7 @@
             <div
                 style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
                 <div style="flex: 1">
-                    <a style="width: 6rem" class="btn btn-primary" href="{{ URL::previous() }}">Kembali</a>
+                    <a style="width: 6rem" class="btn btn-primary" href="{{ route('kwitansi') }}">Kembali</a>
                 </div>
                 <div style="flex: 1">
                     <button style="width: 6rem" type="button"

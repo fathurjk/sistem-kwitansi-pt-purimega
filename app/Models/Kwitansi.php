@@ -13,6 +13,7 @@ class Kwitansi extends Model
         'no_hp',
         'terbilang',
         'pembayaran',
+        'keterangan',
         'lokasi',
         'no_kavling',
         'type',
