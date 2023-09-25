@@ -130,7 +130,8 @@
                             <div class="row mb-3">
                                 <div class="col-sm-12">
                                     <label for="jumlah" class="col-form-label">Jumlah</label>
-                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required>
+                                    <input class="form-control" id="jumlah" name="jumlah"
+                                        placeholder="Masukkan Jumlah" required>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Tambah</button>
@@ -167,24 +168,33 @@
         }
     </script>
     <script>
-        // Dapatkan elemen checkbox "Lain-lain" berdasarkan ID
+        // Dapatkan checkbox "Lain-lain" berdasarkan ID
         var lainlainCheckbox = document.getElementById('lainlain');
 
-        // Dapatkan elemen row "keterangan" berdasarkan ID
-        var keteranganRow = document.getElementById('keteranganRow');
+        // Dapatkan elemen form "keterangan" berdasarkan ID
+        var keteranganForm = document.getElementById('keterangan-form');
 
-        // Tambahkan event listener ke checkbox "Lain-lain"
+        // Tambahkan event listener untuk checkbox "Lain-lain"
         lainlainCheckbox.addEventListener('change', function() {
-            // Jika checkbox "Lain-lain" dicentang, tampilkan input "keterangan"
+            // Jika checkbox "Lain-lain" dicentang, tampilkan form "keterangan"
             if (this.checked) {
-                keteranganRow.style.display = 'block';
+                keteranganForm.style.display = 'block';
             } else {
-                // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan input "keterangan" dan hapus isinya
-                keteranganRow.style.display = 'none';
-                document.getElementById('keterangan').value = '';
+                // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan form "keterangan" dan atur nilainya menjadi kosong
+                keteranganForm.style.display = 'none';
+                keteranganForm.value = '';
             }
         });
+
+        // Atur tampilan awal form "keterangan" sesuai dengan status checkbox "Lain-lain"
+        if (lainlainCheckbox.checked) {
+            keteranganForm.style.display = 'block';
+        } else {
+            keteranganForm.style.display = 'none';
+            keteranganForm.value = '';
+        }
     </script>
+
     <script>
         // Dapatkan semua elemen checkbox
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -208,7 +218,7 @@
             });
         });
     </script>
-    
+
     <script>
         // Fungsi untuk memformat input jumlah dengan titik dan "RP"
         function formatCurrency(input) {

@@ -19,18 +19,26 @@ class KwitansiController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->has('search')) {
-            $kwitansis = Kwitansi::where('nomor_kwitansi', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('nama_lengkap', 'LIKE', '%' . $request->search . '%')
-                ->get();
+        $search = $request->input('search');
 
-            if ($kwitansis->count() == 0) {
-                session()->flash('error', 'Kwitansi tidak ditemukan');
+        $kwitansis = Kwitansi::where(function ($query) use ($search) {
+            $query
+                ->where('nomor_kwitansi', 'LIKE', '%' . $search . '%')
+                ->orWhere('nama_lengkap', 'LIKE', '%' . $search . '%')
+                ->orWhere('alamat', 'LIKE', '%' . $search . '%')
+                ->orWhere('no_hp', 'LIKE', '%' . $search . '%') 
+                ->orWhere('terbilang', 'LIKE', '%' . $search . '%')
+                ->orWhere('pembayaran', 'LIKE', '%' . $search . '%') 
+                ->orWhere('keterangan', 'LIKE', '%' . $search . '%')
+                ->orWhere('lokasi', 'LIKE', '%' . $search . '%')
+                ->orWhere('no_kavling', 'LIKE', '%' . $search . '%')
+                ->orWhere('type', 'LIKE', '%' . $search . '%')
+                ->orWhere('jumlah', 'LIKE', '%' . $search . '%');
+        })->get();
 
-                return redirect('/kwitansi');
-            }
-        } else {
-            $kwitansis = Kwitansi::all();
+        if ($kwitansis->count() == 0) {
+            session()->flash('error', 'Kwitansi tidak ditemukan');
+            return redirect('/kwitansi');
         }
 
         return view('kwitansi.index', [

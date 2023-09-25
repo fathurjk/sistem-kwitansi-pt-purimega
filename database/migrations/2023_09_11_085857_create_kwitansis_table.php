@@ -25,7 +25,6 @@ class CreateKwitansisTable extends Migration
             $table->text('lokasi');
             $table->string('no_kavling');
             $table->text('type');
-            $table->text('luas');
             $table->text('jumlah');
             $table->timestamps();
         });
