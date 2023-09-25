@@ -57,7 +57,7 @@
                     <th style="width: 4.5rem;">No. HP</th>
                     <th style="width: 8.5rem;">Terbilang</th>
                     <th style="width: 4rem;">Pembayaran</th>
-                    <th style="width: 4rem;">Lokasi</th>
+                    <th style="width: 4rem;">Nama Perumahan</th>
                     <th style="width: 1rem;">No. Kavling</th>
                     <th style="width: 1rem;">Type</th>
                     <th style="width: 5rem;">Jumlah</th>

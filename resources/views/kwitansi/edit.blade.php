@@ -127,7 +127,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="lokasi">Lokasi</label>
+                                    <label for="lokasi">Nama Perumahan</label>
                                     <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
                                         id="lokasi" name="lokasi" value="{{ old('lokasi', $kwitansi->lokasi) }}">
                                     @error('lokasi')

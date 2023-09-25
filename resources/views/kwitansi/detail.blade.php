@@ -56,9 +56,9 @@
 
                 <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
                     <div class="output" style="margin: 0 0 -1px 0px">
-                        <label style="width: 8rem">Lokasi</label>
+                        <label style="width: 8rem">Nama Perumahan</label>
                         <label>:</label>
-                        <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->lokasi }}</label>
+                        <label style="margin-left: 0.2rem; width: 15rem">{{ $kwitansi->lokasi }}</label>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 0px">
                         <label style="width: 2.5rem">Type</label>

@@ -39,7 +39,7 @@
                                         placeholder="Masukkan Nama Lengkap" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="lokasi" class="col-form-label">Lokasi</label>
+                                    <label for="lokasi" class="col-form-label">Nama Perumahan</label>
                                     <input class="form-control" id="lokasi" name="lokasi"
                                         placeholder="Masukkan Lokasi" required>
                                 </div>
