@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -25,8 +26,8 @@
                                 <div class="col-sm-6">
                                     <div class="nomor">
                                         <label for="nomor_kwitansi">No :</label>
-                                        <input class="form-first" type="text" id="nomor_kwitansi" name="nomor_kwitansi"
-                                            value="{{ $serialNumber }}" readonly>
+                                        <input class="form-first" type="text" id="nomor_kwitansi"
+                                            name="nomor_kwitansi" value="{{ $serialNumber }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -35,20 +36,20 @@
                                 <div class="col-sm-6">
                                     <label for="nama_lengkap" class="col-form-label">Nama Lengkap</label>
                                     <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
-                                        placeholder="Masukkan Nama Lengkap" onkeypress="return hanyaHurufDanSpasi(event)" required>
+                                        placeholder="Masukkan Nama Lengkap" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label for="lokasi" class="col-form-label">Nama Perumahan</label>
-                                    <input type="text" class="form-control" id="lokasi" name="lokasi"
-                                        placeholder="Masukkan Lokasi Perumahan" required>
+                                    <label for="lokasi" class="col-form-label">Lokasi</label>
+                                    <input class="form-control" id="lokasi" name="lokasi"
+                                        placeholder="Masukkan Lokasi" required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-sm-6">
-                                    <label for="alamat" class="col-form-label">Alamat Lengkap</label>
+                                    <label for="alamat" class="col-form-label">Alamat</label>
                                     <input type="text" class="form-control" id="alamat" name="alamat"
-                                        placeholder="Masukkan Alamat Lengkap" required>
+                                        placeholder="Masukkan Alamat" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="no_kavling" class="col-form-label">No. Kavling</label>
@@ -61,36 +62,101 @@
                                 <div class="col-sm-6">
                                     <label for="no_hp" class="col-form-label"> No. HP </label>
                                     <input id="no_hp" class="form-control" type="text" id="no_hp"
-                                        name="no_hp" placeholder="Masukkan Nomor HP" onkeypress="return hanyaAngka(event)"
-                                        required>
+                                        name="no_hp" placeholder="Masukkan Nomor HP"
+                                        onkeypress="return hanyaAngka(event)" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="type" class="col-form-label">Type</label>
-                                    <input class="form-control" id="type" name="type"
-                                        placeholder="Masukkan Nama Type" required>
+                                    <select class="form-control" id="type" name="type" required>
+                                        <option value="30/60">30/60</option>
+                                        <option value="30/60">30/66</option>
+                                        <option value="40/72">45/72</option>
+                                        <option value="40/72">45/102</option>
+                                    </select>
                                 </div>
                             </div>
-
                             <div class="row mb-3">
                                 <div class="col-sm-6">
                                     <label for="terbilang" class="col-form-label">Terbilang</label>
                                     <input class="form-control" id="terbilang" name="terbilang"
-                                        placeholder="Masukkan Terbilang" onkeypress="return hanyaHurufDanSpasi(event)" required>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="luas" class="col-form-label">Luas</label>
-                                    <input class="form-control" id="luas" name="luas"
-                                        placeholder="Masukkan Luas" required>
+                                        placeholder="Masukkan Terbilang" required>
                                 </div>
                             </div>
-
                             <div class="row mb-3">
                                 <div class="col-sm-12">
                                     <label for="pembayaran" class="col-form-label">Pembayaran</label>
-                                    <input type="text" class="form-control" id="pembayaran"
-                                        name="pembayaran" placeholder="Masukkan Pembayaran" required>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dp"
+                                            name="pembayaran[]" value="DP">
+                                        <label class="form-check-label" for="dp">DP</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="booking"
+                                            name="pembayaran[]" value="Booking">
+                                        <label class="form-check-label" for="booking">Booking</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="angsuran"
+                                            name="pembayaran[]" value="Angsuran">
+                                        <label class="form-check-label" for="angsuran">Angsuran ke</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="lainlain"
+                                            name="pembayaran[]" value="Lain-lain">
+                                        <label class="form-check-label" for="lainlain">Lain-lain</label>
+                                    </div>
                                 </div>
                             </div>
+                            <div id="lainlain-form" style="display: none;">
+                                <div class="row mb-3">
+                                    <div class="col-sm-12">
+                                        <label for="lainlaininput" class="col-form-label">Detail Lain-lain</label>
+                                        <input type="text" class="form-control" id="lainlaininput"
+                                            name="lainlaininput" placeholder="Masukkan detail lain-lain">
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                // Dapatkan semua elemen checkbox
+                                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+                                // Tambahkan event listener untuk setiap checkbox
+                                checkboxes.forEach(function(checkbox) {
+                                    checkbox.addEventListener('change', function() {
+                                        // Jika checkbox yang sedang diubah adalah checkbox yang telah dicentang, nonaktifkan yang lainnya
+                                        if (this.checked) {
+                                            checkboxes.forEach(function(otherCheckbox) {
+                                                if (otherCheckbox !== checkbox) {
+                                                    otherCheckbox.disabled = true;
+                                                }
+                                            });
+                                        } else {
+                                            // Jika checkbox yang sedang diubah tidak dicentang, aktifkan yang lainnya
+                                            checkboxes.forEach(function(otherCheckbox) {
+                                                otherCheckbox.disabled = false;
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
+                            <script>
+                                // Dapatkan elemen checkbox "Lain-lain"
+                                var lainlainCheckbox = document.getElementById('lainlain');
+
+                                // Dapatkan elemen form tambahan
+                                var lainlainForm = document.getElementById('lainlain-form');
+
+                                // Tambahkan event listener ke checkbox "Lain-lain"
+                                lainlainCheckbox.addEventListener('change', function() {
+                                    // Jika checkbox "Lain-lain" dicentang, tampilkan form tambahan
+                                    if (this.checked) {
+                                        lainlainForm.style.display = 'block';
+                                    } else {
+                                        // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan form tambahan
+                                        lainlainForm.style.display = 'none';
+                                    }
+                                });
+                            </script>
 
                             <div class="row mb-3">
                                 <div class="col-sm-12">
@@ -99,42 +165,43 @@
                                         placeholder="Masukkan Jumlah" required>
                                 </div>
                             </div>
+                            <script>
+                                // Fungsi untuk memformat input jumlah dengan titik dan "RP"
+                                function formatCurrency(input) {
+                                    // Hapus semua karakter selain angka
+                                    var value = input.value.replace(/[^0-9]/g, '');
+
+                                    // Jika value adalah string kosong, set nilai input menjadi kosong juga
+                                    if (value === '') {
+                                        input.value = '';
+                                    } else {
+                                        // Ubah nilai menjadi format uang dengan titik sebagai pemisah ribuan
+                                        value = parseInt(value, 10).toLocaleString('id-ID');
+
+                                        // Tambahkan "RP" di depan nilai yang sudah diformat
+                                        input.value = 'Rp ' + value;
+                                    }
+                                }
+                                // Dapatkan elemen input jumlah berdasarkan ID
+                                var jumlahInput = document.getElementById('jumlah');
+
+                                // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
+                                jumlahInput.addEventListener('input', function() {
+                                    formatCurrency(this);
+                                });
+                            </script>
                             <button type="submit" class="btn btn-primary mt-3">Tambah</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-        
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <script>
-        // Fungsi untuk memformat input jumlah dengan titik dan "RP"
-        function formatCurrency(input) {
-            // Hapus semua karakter selain angka
-            var value = input.value.replace(/[^0-9]/g, '');
 
-            // Jika value adalah string kosong, set nilai input menjadi kosong juga
-            if (value === '') {
-                input.value = '';
-            } else {
-                // Ubah nilai menjadi format uang dengan titik sebagai pemisah ribuan
-                value = parseInt(value, 10).toLocaleString('id-ID');
-
-                // Tambahkan "RP" di depan nilai yang sudah diformat
-                input.value = 'Rp ' + value;
-            }
-        }
-        // Dapatkan elemen input jumlah berdasarkan ID
-        var jumlahInput = document.getElementById('jumlah');
-
-        // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
-        jumlahInput.addEventListener('input', function() {
-            formatCurrency(this);
-        });
-    </script>
 
     <script>
         function hanyaAngka(event) {
@@ -147,29 +214,17 @@
         }
     </script>
 
-    <script>
-        function hanyaHurufDanSpasi(event) {
-            var charCode = event.which || event.keyCode;
-            
-            // Mengecek apakah karakter yang dimasukkan adalah huruf atau spasi
-            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
-                return true;
-            } else {
-                event.preventDefault();
-                return false;
-            }
-        }
-    </script>
+
 </body>
 <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
-            <!-- Copyright -->
-            <div class="text-center p-3" style="text-align:center">
-                © 2023 Copyright:
-                <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
-                    Group</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
+    <!-- Copyright -->
+    <div class="text-center p-3" style="text-align:center">
+        © 2023 Copyright:
+        <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
+            Group</a>
+    </div>
+    <!-- Copyright -->
+</footer>
 <style>
     body {
         font-family: sans-serif;

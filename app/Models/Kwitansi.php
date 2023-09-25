@@ -16,7 +16,6 @@ class Kwitansi extends Model
         'lokasi',
         'no_kavling',
         'type',
-        'luas',
         'jumlah',
     ];
 }

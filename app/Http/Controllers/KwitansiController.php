@@ -18,25 +18,25 @@ class KwitansiController extends Controller
     }
 
     public function index(Request $request)
-{
-    if ($request->has('search')) {
-        $kwitansis = Kwitansi::where('nomor_kwitansi', 'LIKE', '%' . $request->search . '%')
-            ->orWhere('nama_lengkap', 'LIKE', '%' . $request->search . '%')
-            ->get();
+    {
+        if ($request->has('search')) {
+            $kwitansis = Kwitansi::where('nomor_kwitansi', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('nama_lengkap', 'LIKE', '%' . $request->search . '%')
+                ->get();
 
-        if ($kwitansis->count() == 0) {
-            session()->flash('error', 'Kwitansi tidak ditemukan');
+            if ($kwitansis->count() == 0) {
+                session()->flash('error', 'Kwitansi tidak ditemukan');
 
-            return redirect('/kwitansi');
+                return redirect('/kwitansi');
+            }
+        } else {
+            $kwitansis = Kwitansi::all();
         }
-    } else {
-        $kwitansis = Kwitansi::all();
-    }
 
-    return view('kwitansi.index', [
-        'kwitansis' => $kwitansis,
-    ]);
-}
+        return view('kwitansi.index', [
+            'kwitansis' => $kwitansis,
+        ]);
+    }
 
     public function create()
     {
@@ -73,15 +73,25 @@ class KwitansiController extends Controller
                 'alamat' => 'required',
                 'no_hp' => 'required',
                 'terbilang' => 'required',
-                'pembayaran' => 'required',
                 'lokasi' => 'required',
                 'no_kavling' => 'required',
                 'type' => 'required',
-                'luas' => 'required',
                 'jumlah' => 'required',
             ]);
 
+            // Mengubah pilihan checkbox menjadi string yang dipisahkan oleh koma
+            $pembayaran = implode(', ', $request->input('pembayaran'));
+
+            // Memeriksa apakah checkbox "Lain-lain" dicentang
+            // Periksa apakah kotak centang "Lain-lain" dicentang
+            if ($request->has('lainlain')) {
+                // Ambil data input "Lain-lain" dan tambahkan ke dalam kolom "pembayaran"
+                $lainlaininput = $request->input('lainlaininput');
+                $pembayaran .= ', ' . $lainlaininput;
+            }
+
             $validatedData['nomor_kwitansi'] = $serialNumber;
+            $validatedData['pembayaran'] = $pembayaran; // Menyimpan pilihan checkbox ke dalam kolom 'pembayaran'
 
             Kwitansi::create($validatedData);
 
@@ -118,7 +128,6 @@ class KwitansiController extends Controller
         return view('kwitansi.cetak', compact('kwitansi'));
     }
 
-
     public function edit(Kwitansi $kwitansi)
     {
         return view('kwitansi.edit', compact('kwitansi'));
@@ -128,22 +137,32 @@ class KwitansiController extends Controller
     {
         try {
             $rules = [
-                'nomor_kwitansi' => 'required',
                 'nama_lengkap' => 'required',
                 'alamat' => 'required',
                 'no_hp' => 'required',
                 'terbilang' => 'required',
-                'pembayaran' => 'required',
                 'lokasi' => 'required',
                 'no_kavling' => 'required',
                 'type' => 'required',
-                'luas' => 'required',
                 'jumlah' => 'required',
             ];
 
             $validatedData = $request->validate($rules);
 
-            Kwitansi::where('id', $kwitansi->id)->update($validatedData);
+            // Mengubah pilihan checkbox menjadi string yang dipisahkan oleh koma
+            $pembayaran = implode(', ', $request->input('pembayaran'));
+
+            // Memeriksa apakah checkbox "Lain-lain" dicentang
+            if ($request->has('lainlain')) {
+                // Ambil data input "Lain-lain" dan tambahkan ke dalam kolom "pembayaran"
+                $lainlaininput = $request->input('lainlaininput');
+                $pembayaran .= ', ' . $lainlaininput;
+            }
+
+            $validatedData['pembayaran'] = $pembayaran; // Menyimpan pilihan checkbox ke dalam kolom 'pembayaran'
+
+            // Update data kwitansi
+            $kwitansi->update($validatedData);
 
             return redirect('/kwitansi')->with('success', 'Kwitansi berhasil diperbarui');
         } catch (Exception $e) {
@@ -162,6 +181,6 @@ class KwitansiController extends Controller
 
     function export_excel()
     {
-        return Excel::Download(new ExportKwitansi, "Kwitansi.xlsx");
+        return Excel::Download(new ExportKwitansi(), 'Kwitansi.xlsx');
     }
 }

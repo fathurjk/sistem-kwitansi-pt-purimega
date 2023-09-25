@@ -60,7 +60,6 @@
                     <th style="width: 4rem;">Lokasi</th>
                     <th style="width: 1rem;">No. Kavling</th>
                     <th style="width: 1rem;">Type</th>
-                    <th style="width: 1rem;">Luas</th>
                     <th style="width: 5rem;">Jumlah</th>
                     <th style="width: 6.7rem;">Action</th>
                 </tr>
@@ -75,11 +74,16 @@
                         <td>{{ $kwitansi->alamat }}</td>
                         <td>{{ $kwitansi->no_hp }}</td>
                         <td>{{ $kwitansi->terbilang }}</td>
-                        <td>{{ $kwitansi->pembayaran }}</td>
+                        <td>
+                            @if (in_array('Lain-lain', explode(', ', $kwitansi->pembayaran)))
+                                {{ $kwitansi->lainlaininput }}
+                            @else
+                                {{ $kwitansi->pembayaran }}
+                            @endif
+                        </td>
                         <td>{{ $kwitansi->lokasi }}</td>
                         <td>{{ $kwitansi->no_kavling }}</td>
                         <td>{{ $kwitansi->type }}</td>
-                        <td>{{ $kwitansi->luas }}</td>
                         <td>{{ $kwitansi->jumlah }}</td>
                         <td
                             style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">

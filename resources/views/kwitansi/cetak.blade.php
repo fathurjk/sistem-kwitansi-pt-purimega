@@ -97,11 +97,6 @@
                             <label>:</label>
                             <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->no_kavling }}</label>
                         </div>
-                        <div class="output">
-                            <label style="width: 2.5rem">Luas</label>
-                            <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->luas }}</label>
-                        </div>
                     </div>
                     <div class="output" style="display: flex; margin: 0 0 -1px 12px">
                         <label style="width: 8.3rem; margin: 0 0 -1px 0">Jumlah</label>

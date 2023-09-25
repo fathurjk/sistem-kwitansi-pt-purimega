@@ -3,18 +3,98 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Edit Kwitansi</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #8ba8d9;
+        }
+
+        /* Content */
+
+        .content-wrapper {
+            padding: 2rem;
+        }
+
+        .wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Form */
+
+        form {
+            margin-bottom: 2rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 0.25rem;
+        }
+
+        .btn-primary {
+            background-color: #8ba8d9;
+            color: #fff;
+            border: 1px solid #8ba8d9;
+            border-radius: 0.25rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+            color: #8ba8d9;
+            border: 1px solid #8ba8d9;
+        }
+
+        /* Footer */
+
+        footer {
+            padding: 1rem;
+            background-color: #8ba8d9;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ccc;
+        }
+
+        /* Custom */
+
+        .title-form {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-<div class="content-wrapper">
+    <div class="content-wrapper">
         <section class="wrapper" style="padding-bottom: 10rem; max-width: 1200px; margin: 0 auto;">
             <div class="container pt-8 pt-md-14">
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
                     <div class="col-lg-8 mx-auto">
-                        <div class="title-form mt-3 mb-4" id="title-form" style="text-align: center">
+                        <div class="title-form mt-3 mb-4" id="title-form">
                             <h1 class="h2">Edit Kwitansi</h1>
                         </div>
                         <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3">
@@ -38,7 +118,7 @@
                                 <div class="col-md-6">
                                     <label for="nama_lengkap">Nama Lengkap</label>
                                     <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                        id="nama_lengkap" name="nama_lengkap" onkeypress="return hanyaHurufDanSpasi(event)"
+                                        id="nama_lengkap" name="nama_lengkap"
                                         value="{{ old('nama_lengkap', $kwitansi->nama_lengkap) }}">
                                     @error('nama_lengkap')
                                         <div class="invalid-feedback">
@@ -47,7 +127,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="lokasi">Nama Perumahan</label>
+                                    <label for="lokasi">Lokasi</label>
                                     <input type="text" class="form-control @error('lokasi') is-invalid @enderror"
                                         id="lokasi" name="lokasi" value="{{ old('lokasi', $kwitansi->lokasi) }}">
                                     @error('lokasi')
@@ -60,7 +140,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="alamat">Alamat Lengkap</label>
+                                    <label for="alamat">Alamat</label>
                                     <input type="text" class="form-control @error('alamat') is-invalid @enderror"
                                         id="alamat" name="alamat" value="{{ old('alamat', $kwitansi->alamat) }}">
                                     @error('alamat')
@@ -96,21 +176,26 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="type">Type</label>
-                                    <input type="text" class="form-control @error('type') is-invalid @enderror"
-                                        id="type" name="type" value="{{ old('type', $kwitansi->type) }}">
+                                    <select class="form-control @error('type') is-invalid @enderror" id="type" name="type" required>
+                                        <option value="30/60" {{ old('type', $kwitansi->type) == '30/60' ? 'selected' : '' }}>30/60</option>
+                                        <option value="30/66" {{ old('type', $kwitansi->type) == '30/66' ? 'selected' : '' }}>30/66</option>
+                                        <option value="45/72" {{ old('type', $kwitansi->type) == '45/72' ? 'selected' : '' }}>45/72</option>
+                                        <option value="45/102" {{ old('type', $kwitansi->type) == '45/102' ? 'selected' : '' }}>45/102</option>
+                                    </select>
                                     @error('type')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
+                                
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="terbilang">Terbilang</label>
                                     <input type="text" class="form-control @error('terbilang') is-invalid @enderror"
-                                        id="terbilang" name="terbilang" onkeypress="return hanyaHurufDanSpasi(event)"
+                                        id="terbilang" name="terbilang"
                                         value="{{ old('terbilang', $kwitansi->terbilang) }}">
                                     @error('terbilang')
                                         <div class="invalid-feedback">
@@ -118,30 +203,82 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="luas">Luas</label>
-                                    <input type="text" class="form-control @error('luas') is-invalid @enderror"
-                                        id="luas" name="luas" value="{{ old('luas', $kwitansi->luas) }}">
-                                    @error('luas')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
+
                             </div>
 
                             <div class="mb-3">
                                 <label for="pembayaran">Pembayaran</label>
-                                <input type="text" class="form-control @error('pembayaran') is-invalid @enderror"
-                                    id="pembayaran" name="pembayaran"
-                                    value="{{ old('pembayaran', $kwitansi->pembayaran) }}">
-                                @error('pembayaran')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="dp" name="pembayaran[]" value="DP"
+                                        {{ in_array('DP', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="dp">DP</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="booking" name="pembayaran[]" value="Booking"
+                                        {{ in_array('Booking', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="booking">Booking</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="angsuran" name="pembayaran[]" value="Angsuran"
+                                        {{ in_array('Angsuran', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="angsuran">Angsuran ke</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="lainlain" name="pembayaran[]" value="Lain-lain"
+                                        {{ in_array('Lain-lain', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="lainlain">Lain-lain</label>
+                                </div>
                             </div>
+                            <div id="lainlain-form" style="display: none;">
+                                <div class="row mb-3">
+                                    <div class="col-sm-12">
+                                        <label for="lainlaininput" class="col-form-label">Detail Lain-lain</label>
+                                        <input type="text" class="form-control" id="lainlaininput"
+                                            name="lainlaininput" placeholder="Masukkan detail lain-lain">
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                // Dapatkan semua elemen checkbox
+                                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
+                                // Tambahkan event listener untuk setiap checkbox
+                                checkboxes.forEach(function(checkbox) {
+                                    checkbox.addEventListener('change', function() {
+                                        // Jika checkbox yang sedang diubah adalah checkbox yang telah dicentang, nonaktifkan yang lainnya
+                                        if (this.checked) {
+                                            checkboxes.forEach(function(otherCheckbox) {
+                                                if (otherCheckbox !== checkbox) {
+                                                    otherCheckbox.disabled = true;
+                                                }
+                                            });
+                                        } else {
+                                            // Jika checkbox yang sedang diubah tidak dicentang, aktifkan yang lainnya
+                                            checkboxes.forEach(function(otherCheckbox) {
+                                                otherCheckbox.disabled = false;
+                                            });
+                                        }
+                                    });
+                                });
+                            </script>
+                            <script>
+                                // Dapatkan elemen checkbox "Lain-lain"
+                                var lainlainCheckbox = document.getElementById('lainlain');
+
+                                // Dapatkan elemen form tambahan
+                                var lainlainForm = document.getElementById('lainlain-form');
+
+                                // Tambahkan event listener ke checkbox "Lain-lain"
+                                lainlainCheckbox.addEventListener('change', function() {
+                                    // Jika checkbox "Lain-lain" dicentang, tampilkan form tambahan
+                                    if (this.checked) {
+                                        lainlainForm.style.display = 'block';
+                                    } else {
+                                        // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan form tambahan
+                                        lainlainForm.style.display = 'none';
+                                    }
+                                });
+                            </script>                            
                             <div class="mb-3">
                                 <label for="jumlah">Jumlah</label>
                                 <input type="text" class="form-control @error('jumlah') is-invalid @enderror"
@@ -153,13 +290,12 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-    
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -185,7 +321,7 @@
         var jumlahInput = document.getElementById('jumlah');
 
         // Tambahkan event listener untuk memanggil fungsi formatCurrency saat nilai berubah
-        jumlahInput.addEventListener('input', function() {
+        jumlahInput.addEventListener('input', function () {
             formatCurrency(this);
         });
     </script>
@@ -198,109 +334,15 @@
             return true;
         }
     </script>
-
-    <script>
-        function hanyaHurufDanSpasi(event) {
-            var charCode = event.which || event.keyCode;
-            
-            // Mengecek apakah karakter yang dimasukkan adalah huruf atau spasi
-            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode === 32) {
-                return true;
-            } else {
-                event.preventDefault();
-                return false;
-            }
-        }
-    </script>
-
+    <footer>
+        <!-- Copyright -->
+        <div class="text-center p-3">
+            © 2023 Copyright:
+            <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
+                Group</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
 </body>
-<footer class="text-center text-lg-start" style="background-color: #8ba8d9">
-            <!-- Copyright -->
-            <div class="text-center p-3" style="text-align:center">
-                © 2023 Copyright:
-                <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
-                    Group</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
-<style>
-    body {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    a {
-        color: #000;
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: #8ba8d9;
-    }
-
-    /* Content */
-
-    .content-wrapper {
-        padding: 2rem;
-    }
-
-    .wrapper {
-        max-width: 960px;
-        margin: 0 auto;
-    }
-
-    /* Form */
-
-    form {
-        margin-bottom: 2rem;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 0.25rem;
-    }
-
-    .btn-primary {
-        background-color: #8ba8d9;
-        color: #fff;
-        border: 1px solid #8ba8d9;
-        border-radius: 0.25rem;
-    }
-
-    .btn-primary:hover {
-        background-color: #fff;
-        color: #8ba8d9;
-        border: 1px solid #8ba8d9;
-    }
-
-    /* Footer */
-
-    footer {
-        padding: 1rem;
-        background-color: #8ba8d9;
-        color: #fff;
-    }
-
-    footer a {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    footer a:hover {
-        color: #ccc;
-    }
-
-    /* Custom */
-
-    .title-form {
-        font-size: 2rem;
-        font-weight: bold;
-        text-align: center;
-    }
-</style>
 
 </html>
-
