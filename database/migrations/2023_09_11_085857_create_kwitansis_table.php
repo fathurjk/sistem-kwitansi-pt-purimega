@@ -21,6 +21,7 @@ class CreateKwitansisTable extends Migration
             $table->string('no_hp');
             $table->text('terbilang');
             $table->text('pembayaran');
+            $table->string('keterangan');
             $table->text('lokasi');
             $table->string('no_kavling');
             $table->text('type');

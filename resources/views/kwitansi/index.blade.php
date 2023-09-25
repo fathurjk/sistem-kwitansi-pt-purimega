@@ -56,6 +56,7 @@
                     <th style="width: 4.5rem;">No. HP</th>
                     <th style="width: 8.5rem;">Terbilang</th>
                     <th style="width: 4rem;">Pembayaran</th>
+                    <th style="width: 4rem;">Keterangan</th>
                     <th style="width: 4rem;">Nama Perumahan</th>
                     <th style="width: 1rem;">No. Kavling</th>
                     <th style="width: 1rem;">Type</th>
@@ -73,13 +74,8 @@
                         <td>{{ $kwitansi->alamat }}</td>
                         <td>{{ $kwitansi->no_hp }}</td>
                         <td>{{ $kwitansi->terbilang }}</td>
-                        <td>
-                            @if (in_array('Lain-lain', explode(', ', $kwitansi->pembayaran)))
-                                {{ $kwitansi->lainlaininput }}
-                            @else
-                                {{ $kwitansi->pembayaran }}
-                            @endif
-                        </td>
+                        <td>{{ $kwitansi->pembayaran }}</td>
+                        <td>{{ $kwitansi->keterangan }}</td>
                         <td>{{ $kwitansi->lokasi }}</td>
                         <td>{{ $kwitansi->no_kavling }}</td>
                         <td>{{ $kwitansi->type }}</td>

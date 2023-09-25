@@ -19,18 +19,26 @@ class KwitansiController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->has('search')) {
-            $kwitansis = Kwitansi::where('nomor_kwitansi', 'LIKE', '%' . $request->search . '%')
-                ->orWhere('nama_lengkap', 'LIKE', '%' . $request->search . '%')
-                ->get();
+        $search = $request->input('search');
 
-            if ($kwitansis->count() == 0) {
-                session()->flash('error', 'Kwitansi tidak ditemukan');
+        $kwitansis = Kwitansi::where(function ($query) use ($search) {
+            $query
+                ->where('nomor_kwitansi', 'LIKE', '%' . $search . '%')
+                ->orWhere('nama_lengkap', 'LIKE', '%' . $search . '%')
+                ->orWhere('alamat', 'LIKE', '%' . $search . '%')
+                ->orWhere('no_hp', 'LIKE', '%' . $search . '%') 
+                ->orWhere('terbilang', 'LIKE', '%' . $search . '%')
+                ->orWhere('pembayaran', 'LIKE', '%' . $search . '%') 
+                ->orWhere('keterangan', 'LIKE', '%' . $search . '%')
+                ->orWhere('lokasi', 'LIKE', '%' . $search . '%')
+                ->orWhere('no_kavling', 'LIKE', '%' . $search . '%')
+                ->orWhere('type', 'LIKE', '%' . $search . '%')
+                ->orWhere('jumlah', 'LIKE', '%' . $search . '%');
+        })->get();
 
-                return redirect('/kwitansi');
-            }
-        } else {
-            $kwitansis = Kwitansi::all();
+        if ($kwitansis->count() == 0) {
+            session()->flash('error', 'Kwitansi tidak ditemukan');
+            return redirect('/kwitansi');
         }
 
         return view('kwitansi.index', [
@@ -82,12 +90,10 @@ class KwitansiController extends Controller
             // Mengubah pilihan checkbox menjadi string yang dipisahkan oleh koma
             $pembayaran = implode(', ', $request->input('pembayaran'));
 
-            // Memeriksa apakah checkbox "Lain-lain" dicentang
-            // Periksa apakah kotak centang "Lain-lain" dicentang
-            if ($request->has('lainlain')) {
-                // Ambil data input "Lain-lain" dan tambahkan ke dalam kolom "pembayaran"
-                $lainlaininput = $request->input('lainlaininput');
-                $pembayaran .= ', ' . $lainlaininput;
+            if ($request->has('keterangan') && !empty($request->input('keterangan'))) {
+                // Ambil data input "keterangan" dan tambahkan ke dalam kolom "keterangan" dalam database
+                $keterangan = $request->input('keterangan');
+                $validatedData['keterangan'] = $keterangan;
             }
 
             $validatedData['nomor_kwitansi'] = $serialNumber;
@@ -147,19 +153,24 @@ class KwitansiController extends Controller
                 'jumlah' => 'required',
             ];
 
+            // Tambahkan validasi untuk "keterangan" hanya jika ada nilai yang diberikan
+            if ($request->has('keterangan')) {
+                $rules['keterangan'] = 'nullable'; // Ubah "required" menjadi "nullable"
+            }
+
             $validatedData = $request->validate($rules);
 
             // Mengubah pilihan checkbox menjadi string yang dipisahkan oleh koma
             $pembayaran = implode(', ', $request->input('pembayaran'));
 
-            // Memeriksa apakah checkbox "Lain-lain" dicentang
-            if ($request->has('lainlain')) {
-                // Ambil data input "Lain-lain" dan tambahkan ke dalam kolom "pembayaran"
-                $lainlaininput = $request->input('lainlaininput');
-                $pembayaran .= ', ' . $lainlaininput;
-            }
-
             $validatedData['pembayaran'] = $pembayaran; // Menyimpan pilihan checkbox ke dalam kolom 'pembayaran'
+
+            // Periksa apakah input "keterangan" diisi atau tidak
+            if ($request->has('keterangan') && !empty($request->input('keterangan'))) {
+                // Ambil data input "keterangan" dan tambahkan ke dalam kolom "keterangan" dalam database
+                $keterangan = $request->input('keterangan');
+                $validatedData['keterangan'] = $keterangan;
+            }
 
             // Update data kwitansi
             $kwitansi->update($validatedData);
