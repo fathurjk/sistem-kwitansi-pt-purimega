@@ -13,7 +13,6 @@
         <h1> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">List Kwitansi</a>
             <label class="date float-end">
                 {{ date('l, j F Y') }}
-                <span id="jam"></span>
             </label>
         </h1>
         <div class="input mb-2" style="padding-top: 2rem">
@@ -247,31 +246,6 @@
     <!-- Copyright -->
 </footer>
 </body>
-
-<script>
-    function updateClock() {
-        var now = new Date();
-        var jam = now.getHours();
-        var menit = now.getMinutes();
-        var detik = now.getSeconds();
-
-        // Menambahkan nol di depan angka jika angka < 10
-        jam = (jam < 10) ? "0" + jam : jam;
-        menit = (menit < 10) ? "0" + menit : menit;
-        detik = (detik < 10) ? "0" + detik : detik;
-
-        var waktu = jam + ":" + menit + ":" + detik;
-
-        document.getElementById('jam').innerHTML = waktu;
-    }
-
-    // Memanggil fungsi updateClock setiap detik
-    setInterval(updateClock, 1000);
-
-    // Memanggil fungsi untuk menampilkan jam pertama kali
-    updateClock();
-</script>
-
 
 <style>
     body {
