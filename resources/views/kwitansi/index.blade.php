@@ -171,7 +171,7 @@
             // Function to initialize the table with the specified number of items per page
             function initializeTable() {
                 const table = $("#kwitansi-table");
-                const itemsPerPage = 6; // Jumlah item per halaman
+                const itemsPerPage = 11; // Jumlah item per halaman
 
                 // Hide all rows in the table, except the header
                 table.find("tr").not("thead tr").hide();
@@ -193,7 +193,7 @@
             let currentPage = 1;
 
             // Set the number of items per page
-            const itemsPerPage = 5;
+            const itemsPerPage = 10;
 
             // Calculate the total number of pages
             const totalData = {{ $kwitansis->count() }}; // Ganti dengan jumlah data yang sesungguhnya
