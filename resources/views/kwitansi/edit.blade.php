@@ -103,7 +103,7 @@
                             <a class="btn btn-primary mb-3" href="/kwitansi">Kembali</a>
 
                             <div class="mb-3">
-                                <label for="nomor_kwitansi">No :</label>
+                                <label for="nomor_kwitansi">No. Kwitansi :</label>
                                 <input type="text" class="form-control @error('nomor_kwitansi') is-invalid @enderror"
                                     id="nomor_kwitansi" name="nomor_kwitansi" readonly
                                     value="{{ old('nomor_kwitansi', $kwitansi->nomor_kwitansi) }}">

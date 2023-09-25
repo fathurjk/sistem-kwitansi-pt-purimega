@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="nomor">
-                                        <label for="nomor_kwitansi">No :</label>
+                                        <label for="nomor_kwitansi">No. Kwitansi :</label>
                                         <input class="form-first" type="text" id="nomor_kwitansi"
                                             name="nomor_kwitansi" value="{{ $serialNumber }}" readonly>
                                     </div>

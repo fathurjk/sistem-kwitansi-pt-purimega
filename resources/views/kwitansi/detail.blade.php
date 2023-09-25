@@ -20,7 +20,7 @@
             <div class="content">
                 <div class="output kwitansi" style="text-align: right">
                     <div class="no-kwitansi" style="margin: 0px 8px 0 0" id="no-kwitansi">
-                        <label class="no" style="margin-right: 2px">No:</label>
+                        <label class="no" style="margin-right: 2px">No. Kwitansi:</label>
                         <label style="width: 4.5rem">{{ $kwitansi->nomor_kwitansi }}</label>
                     </div>
                 </div>
