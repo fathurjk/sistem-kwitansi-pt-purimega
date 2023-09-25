@@ -10,7 +10,12 @@
 
 <body>
     <section class="kwitansi" style="padding: 1.5rem 24px 1.5rem 24px">
-        <h1> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">List Kwitansi</a></h1>
+        <h1> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">List Kwitansi</a>
+            <label class="date float-end">
+                {{ date('l, j F Y') }}
+                <span id="jam"></span>
+            </label>
+        </h1>
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row">
                 <div class="col">
@@ -48,7 +53,7 @@
                         id="sortNo">No.</th>
                     <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
                     <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
-                    <th style="width: 10rem;">Alamat Lengkap</th>
+                    <th style="width: 10rem;">Alamat</th>
                     <th style="width: 4.5rem;">No. HP</th>
                     <th style="width: 8.5rem;">Terbilang</th>
                     <th style="width: 4rem;">Pembayaran</th>
@@ -99,12 +104,15 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="pagination" style="display: flex"></div>
+        <div class="pagination" style="display: flex">
+</div>
+
         </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -159,7 +167,7 @@
             // Function to initialize the table with the specified number of items per page
             function initializeTable() {
                 const table = $("#kwitansi-table");
-                const itemsPerPage = 11; // Jumlah item per halaman
+                const itemsPerPage = 6; // Jumlah item per halaman
 
                 // Hide all rows in the table, except the header
                 table.find("tr").not("thead tr").hide();
@@ -181,7 +189,7 @@
             let currentPage = 1;
 
             // Set the number of items per page
-            const itemsPerPage = 10;
+            const itemsPerPage = 5;
 
             // Calculate the total number of pages
             const totalData = {{ $kwitansis->count() }}; // Ganti dengan jumlah data yang sesungguhnya
@@ -226,8 +234,6 @@
             });
         });
     </script>
-    
-
 <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
     <!-- Copyright -->
     <div class="text-center p-3" style="text-align:center">
@@ -237,6 +243,31 @@
     <!-- Copyright -->
 </footer>
 </body>
+
+<script>
+    function updateClock() {
+        var now = new Date();
+        var jam = now.getHours();
+        var menit = now.getMinutes();
+        var detik = now.getSeconds();
+
+        // Menambahkan nol di depan angka jika angka < 10
+        jam = (jam < 10) ? "0" + jam : jam;
+        menit = (menit < 10) ? "0" + menit : menit;
+        detik = (detik < 10) ? "0" + detik : detik;
+
+        var waktu = jam + ":" + menit + ":" + detik;
+
+        document.getElementById('jam').innerHTML = waktu;
+    }
+
+    // Memanggil fungsi updateClock setiap detik
+    setInterval(updateClock, 1000);
+
+    // Memanggil fungsi untuk menampilkan jam pertama kali
+    updateClock();
+</script>
+
 
 <style>
     body {
@@ -305,5 +336,11 @@
         margin: 0;
         padding: 0;
     }
+
+    .date {
+        font-size: 18px;
+        margin-top: 10px; 
+    }
+
 </style>
 </html>
