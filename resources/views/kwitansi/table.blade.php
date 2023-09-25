@@ -8,7 +8,7 @@
             <th>No. HP</th>
             <th>Terbilang</th>
             <th>Pembayaran</th>
-            <th>Lokasi</th>
+            <th>Nama Perumahan</th>
             <th>No. Kavling</th>
             <th>Type</th>
             <th>Luas</th>
