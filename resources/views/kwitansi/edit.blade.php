@@ -209,19 +209,29 @@
                             <div class="mb-3">
                                 <label for="pembayaran">Pembayaran</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="dp" name="pembayaran[]" value="DP"
-                                        {{ in_array('DP', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="dp">DP</label>
-                                </div>
-                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="booking" name="pembayaran[]" value="Booking"
                                         {{ in_array('Booking', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="booking">Booking</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="angsuran" name="pembayaran[]" value="Angsuran"
+                                    <input class="form-check-input" type="checkbox" id="dp" name="pembayaran[]" value="DP"
+                                        {{ in_array('DP', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="dp">DP</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="cbth" name="pembayaran[]" value="CBTH"
+                                        {{ in_array('CBTH', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="cbth">CBTH</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="angsuran" name="pembayaran[]" value="Angsuran ke"
                                         {{ in_array('Angsuran', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
                                     <label class="form-check-label" for="angsuran">Angsuran ke</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ket" name="pembayaran[]" value="KET"
+                                        {{ in_array('KET', old('pembayaran', explode(',', $kwitansi->pembayaran))) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="ket">KET</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="lainlain" name="pembayaran[]" value="Lain-lain"

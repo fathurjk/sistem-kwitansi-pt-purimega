@@ -86,19 +86,29 @@
                                 <div class="col-sm-12">
                                     <label for="pembayaran" class="col-form-label">Pembayaran</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="dp"
-                                            name="pembayaran[]" value="DP">
-                                        <label class="form-check-label" for="dp">DP</label>
-                                    </div>
-                                    <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="booking"
                                             name="pembayaran[]" value="Booking">
                                         <label class="form-check-label" for="booking">Booking</label>
                                     </div>
                                     <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dp"
+                                            name="pembayaran[]" value="DP">
+                                        <label class="form-check-label" for="dp">DP</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="cbth"
+                                            name="pembayaran[]" value="CBTH">
+                                        <label class="form-check-label" for="cbth">CBTH</label>
+                                    </div>
+                                    <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="angsuran"
                                             name="pembayaran[]" value="Angsuran">
                                         <label class="form-check-label" for="angsuran">Angsuran ke</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="ket"
+                                            name="pembayaran[]" value="KET">
+                                        <label class="form-check-label" for="ket">KET</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="lainlain"
