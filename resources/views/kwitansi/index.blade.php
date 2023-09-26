@@ -18,18 +18,18 @@
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('kwitansi.create') }}" class="btn btn-primary mb-3 ml-2">Tambah</a>
-                    <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-success mb-3 ml-2">Export To Excel</a>
+                    <a href="{{ route('kwitansi.create') }}" class="btn btn-add mb-1" style="margin-right: 24px">Tambah</a>
+                    <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-print mb-1 ">Export To Excel</a>
                 </div>
                 <div class="col" style="padding-left:50%">
                     <form action="/kwitansi" method="GET" class="float-right">
                         <div class="input-group" style="padding-left: ;">
                             <input type="search" style="border-top-right-radius: 0; border-bottom-right-radius: 0"
-                                class="form-control" placeholder="Search..." name="search"
+                                class="form-control shadow-sm bg-body-tertiary" placeholder="Search..." name="search"
                                 value="{{ request('search') }}">
                             <div class="input-group-append" style="padding-left: 2px;">
                                 <button class="btn btn-primary"
-                                    style="border-top-left-radius: 0; border-bottom-left-radius: 0" type="submit"><img
+                                    style="border-top-left-radius: 0; border-bottom-left-radius: 0; padding: 4px" type="submit"><img
                                         src="{{ asset('icon/search.svg') }}" alt=""></button>
                             </div>
                         </div>
@@ -82,18 +82,16 @@
                         <td>{{ $kwitansi->jumlah }}</td>
                         <td
                             style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                            <button class="btn btn-warning"
-                                style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
-                                <a href="{{ route('kwitansi.edit', $kwitansi->id) }}">
+                                <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt=""
-                                        style="width: 26px; height: 26px">
+                                        style="margin: 4px 0 4px 0">
                                 </a>
-                            </button>
+                            
                             <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
                                 class="d-inline-grid">
                                 @method('delete')
                                 @csrf
-                                <button class="btn btn-danger" onclick="return confirm('Are you sure?')"
+                                <button class="btn btn-delete" onclick="return confirm('Are you sure?')"
                                     style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
                                     <img src="{{ asset('icon/trash3.svg') }}" alt="">
                                 </button>
@@ -250,19 +248,17 @@
         min-height: 100vh;
         margin: 0;
     }
-
-    /* CSS untuk konten */
+    
     .content {
         flex-grow: 1;
-        min-height: calc(100vh - 60px); /* Ketinggian minimum konten, disesuaikan dengan tinggi footer */
+        min-height: calc(100vh - 60px);
     }
 
-    /* CSS untuk footer */
     footer {
         flex-shrink: 0;
         background-color: #8ba8d9;
         text-align: center;
-        padding: 0rem 0; /* Sesuaikan padding sesuai kebutuhan */
+        padding: 0rem 0;
     }
     .table th {
         background-color: #CE76CE;
@@ -292,22 +288,19 @@
         text-decoration: none;
         padding: 0.5rem 1rem;
         border: 1px solid #4caf50;
-        /* Ganti dengan warna yang Anda inginkan */
         color: #4caf50;
-        /* Ganti dengan warna yang Anda inginkan */
         border-radius: 4px;
     }
 
     .pagination a:hover {
-        background-color: #CE76CE;
-        /* Ganti dengan warna yang Anda inginkan */
+        background-color: #6ac063;
         color: white;
     }
 
     img {
-        height: 24px;
-        width: 24px;
-        margin: 0;
+        height: 26px;
+        width: 26px;
+        margin: 4px;
         padding: 0;
     }
 
@@ -316,5 +309,51 @@
         margin-top: 10px; 
     }
 
+    .btn-add{
+        background-color: #8e4761;
+        color: #ffffff;
+        border-radius: 0.3rem;
+    }
+
+    .btn-add:hover{
+        background-color: #acdff8;
+        color: #8e4761;
+        border: 1px solid #8e4761
+    }
+
+    .btn-print{
+        background-color: #f9d150;
+        color: #404567;
+        border-radius: 0.3rem;
+    }
+
+    .btn-print:hover{
+        background-color: #e5eae6;
+        color: #404567;
+        border: 1px solid #8e4761
+    }
+
+    .btn-edit-pencil{
+        background-color: #d96652;
+        color: #e9ecf1;
+        border-radius: 100%;
+    }
+
+    .btn-edit-pencil:hover{
+        background-color: #8e4761;
+        color: #e9ecf1;
+        border: 1px solid #f39c7d
+    }
+    .btn-delete{
+        background-color: #33434f;
+        color: #ffffff ;
+        border-radius: 0.3rem
+    }
+
+    .btn-delete:hover{
+        background-color: #b0b2b7;
+        color: #ffffff ;
+        border: 1px solid #33434f
+    }
 </style>
 </html>

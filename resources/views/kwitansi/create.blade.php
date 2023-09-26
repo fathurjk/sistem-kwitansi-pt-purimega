@@ -21,12 +21,12 @@
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-sm-6">
-                                    <a class="btn btn-primary mb-3" href="/kwitansi">Kembali</a>
+                                    <a class="btn btn-back mb-3 shadow-sm bg-body-tertiary rounded" href="/kwitansi">Kembali</a>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="nomor">
                                         <label for="nomor_kwitansi">No. Kwitansi :</label>
-                                        <input class="form-first" type="text" id="nomor_kwitansi"
+                                        <input class="form-first p-1 shadow-sm bg-body-tertiary rounded" type="text" id="nomor_kwitansi"
                                             name="nomor_kwitansi" value="{{ $serialNumber }}" readonly>
                                     </div>
                                 </div>
@@ -35,13 +35,13 @@
                             <div class="row mb-3">
                                 <div class="col-sm-6">
                                     <label for="nama_lengkap" class="col-form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
+                                    <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="nama_lengkap" name="nama_lengkap"
                                         placeholder="Masukkan Nama Lengkap"
                                         onkeypress="return hanyaHurufDanSpasi(event)" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="lokasi" class="col-form-label">Nama Perumahan</label>
-                                    <input class="form-control" id="lokasi" name="lokasi"
+                                    <input class="form-control shadow-sm bg-body-tertiary rounded" id="lokasi" name="lokasi"
                                         placeholder="Masukkan Lokasi Perumahan"
                                         onkeypress="return hanyaHurufDanSpasi(event)" required>
                                 </div>
@@ -50,12 +50,12 @@
                             <div class="row mb-3">
                                 <div class="col-sm-6">
                                     <label for="alamat" class="col-form-label">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat"
+                                    <input type="text" class="form-control shadow-sm bg-body-tertiary rounded" id="alamat" name="alamat"
                                         placeholder="Masukkan Alamat" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="no_kavling" class="col-form-label">No. Kavling</label>
-                                    <input class="form-control" id="no_kavling" name="no_kavling"
+                                    <input class="form-control shadow-sm bg-body-tertiary rounded" id="no_kavling" name="no_kavling"
                                         placeholder="Masukkan Nomor Kavling" required>
                                 </div>
                             </div>
@@ -63,13 +63,13 @@
                             <div class="row mb-3">
                                 <div class="col-sm-6">
                                     <label for="no_hp" class="col-form-label"> No. HP </label>
-                                    <input id="no_hp" class="form-control" type="text" id="no_hp"
+                                    <input id="no_hp" class="form-control shadow-sm bg-body-tertiary rounded" type="text" id="no_hp"
                                         name="no_hp" placeholder="Masukkan Nomor HP"
                                         onkeypress="return hanyaAngka(event)" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="type" class="col-form-label">Type</label>
-                                    <select class="form-select" id="type" name="type" required>
+                                    <select class="form-select p-2 shadow-sm bg-body-tertiary rounded" id="type" name="type" required>
                                         <option value="30/60">30/60</option>
                                         <option value="30/60">30/66</option>
                                         <option value="40/72">45/72</option>
@@ -77,46 +77,46 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-6">
-                                    <label for="terbilang" class="col-form-label">Terbilang</label>
-                                    <input class="form-control" id="terbilang" name="terbilang"
-                                        placeholder="Masukkan Terbilang" onkeypress="return hanyaHurufDanSpasi(event)"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-12">
-                                    <label for="pembayaran" class="col-form-label">Pembayaran</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="booking"
-                                            name="pembayaran[]" value="Booking">
-                                        <label class="form-check-label" for="booking">Booking</label>
-                                    </div>
-                                    <div class="form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="dp"
-                                            name="pembayaran[]" value="DP">
-                                        <label class="form-check-label" for="dp">DP</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="cbth"
-                                            name="pembayaran[]" value="CBTH">
-                                        <label class="form-check-label" for="cbth">CBTH</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="angsuran"
-                                            name="pembayaran[]" value="Angsuran ke">
-                                        <label class="form-check-label" for="angsuran">Angsuran ke</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="ket"
-                                            name="pembayaran[]" value="KET">
-                                        <label class="form-check-label" for="ket">KET</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="lainlain"
-                                            name="pembayaran[]" value="Lain-lain">
-                                        <label class="form-check-label" for="lainlain">Lain-lain</label>
+                            <div class="container mb-3">
+                                <label for="pembayaran" class="col-form-label">Pembayaran</label>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="booking"
+                                                    name="pembayaran[]" value="Booking">
+                                                <label class="form-check-label" for="booking">Booking</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="dp"
+                                                    name="pembayaran[]" value="DP">
+                                                <label class="form-check-label" for="dp">DP</label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="cbth"
+                                                    name="pembayaran[]" value="CBTH">
+                                                <label class="form-check-label" for="cbth">CBTH</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="angsuran"
+                                                    name="pembayaran[]" value="Angsuran ke">
+                                                <label class="form-check-label" for="angsuran">Angsuran ke</label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="ket"
+                                                    name="pembayaran[]" value="KET">
+                                                <label class="form-check-label" for="ket">KET</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="lainlain"
+                                                    name="pembayaran[]" value="Lain-lain">
+                                                <label class="form-check-label" for="lainlain">Lain-lain</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -129,16 +129,26 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-12">
-                                    <label for="jumlah" class="col-form-label">Jumlah</label>
-                                    <input class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan Jumlah" required>
+                                    <label for="terbilang" class="col-form-label">Terbilang</label>
+                                    <input class="form-control shadow-sm bg-body-tertiary rounded" id="terbilang" name="terbilang"
+                                        placeholder="Masukkan Terbilang" onkeypress="return hanyaHurufDanSpasi(event)"
+                                        required>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-3">Tambah</button>
+                            <div class="row mb-3">
+                                <div class="col-sm-12">
+                                    <label for="jumlah" class="col-form-label">Jumlah</label>
+                                    <input class="form-control shadow-sm bg-body-tertiary rounded" id="jumlah" name="jumlah"
+                                        placeholder="Masukkan Jumlah" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-add mt-3 shadow-sm bg-body-tertiary rounded">Tambah</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -222,7 +232,7 @@
             });
         });
     </script>
-    
+
     <script>
         // Fungsi untuk memformat input jumlah dengan titik dan "RP"
         function formatCurrency(input) {
@@ -295,23 +305,32 @@
         width: 100%;
         padding: 0.5rem;
         border: 1px solid #ccc;
-        border-radius: 0.25rem;
+        border-radius: 0.3rem;
     }
 
-    .btn-primary {
-        background-color: #8ba8d9;
-        color: #fff;
-        border: 1px solid #8ba8d9;
-        border-radius: 0.25rem;
+    .btn-back {
+        background-color: #82bcde;
+        color: #404567;
+        border-radius: 0.3rem;
     }
 
-    .btn-primary:hover {
-        background-color: #fff;
-        color: #8ba8d9;
-        border: 1px solid #8ba8d9;
+    .btn-back:hover {
+        background-color: #5a8db6;
+        color: #ffffff;
+        border: 1px solid #82bcde;
     }
 
-    /* Custom */
+    .btn-add{
+        background-color: #8e4761;
+        color: #ffffff;
+        border-radius: 0.3rem;
+    }
+
+    .btn-add:hover{
+        background-color: #acdff8;
+        color: #8e4761;
+        border: 1px solid #8e4761
+    }
 
     .title-form {
         font-size: 2rem;

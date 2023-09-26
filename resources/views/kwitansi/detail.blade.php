@@ -115,15 +115,15 @@
             <div
                 style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
                 <div style="flex: 1">
-                    <a style="width: 6rem" class="btn btn-primary" href="{{ route('kwitansi') }}">Kembali</a>
+                    <a style="width: 6rem" class="btn btn-back" href="{{ route('kwitansi') }}">Kembali</a>
                 </div>
                 <div style="flex: 1">
                     <button style="width: 6rem" type="button"
                         onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
-                        class="btn btn-warning">Edit</button>
+                        class="btn btn-edit">Edit</button>
                 </div>
                 <div style="flex: 1">
-                    <a class="btn btn-primary" style="width: 6rem; background-color: green"
+                    <a class="btn btn-print" style="width: 6rem;"
                         href="{{ route('kwitansi.print', $kwitansi->id) }}">Cetak</a>
                 </div>
             </div>
@@ -132,3 +132,40 @@
 </body>
 
 </html>
+<style>
+    .btn-back {
+        background-color: #82bcde;
+        color: #404567;
+        border-radius: 0.3rem;
+    }
+
+    .btn-back:hover {
+        background-color: #5a8db6;
+        color: #ffffff;
+        border: 1px solid #82bcde;
+    }
+
+    .btn-print{
+        background-color: #f9d150;
+        color: #404567;
+        border-radius: 0.3rem;
+    }
+
+    .btn-print:hover{
+        background-color: #e5eae6;
+        color: #404567;
+        border: 1px solid #8e4761
+    }
+
+    .btn-edit{
+        background-color: #d96652;
+        color: #e9ecf1;
+        border-radius: 0.3rem
+    }
+
+    .btn-edit:hover{
+        background-color: #8e4761;
+        color: #e9ecf1;
+        border: 1px solid #f39c7d
+    }
+</style>

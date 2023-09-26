@@ -78,7 +78,7 @@
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem;">Pembayaran</label>
                             <label style="margin-left:">:</label>
-                            <label style="margin-left: 0.2rem; width: 11rem;">{{ $kwitansi->pembayaran }}</label>
+                            <label style="margin-left: 0.2rem; width: 15rem;">{{ $kwitansi->pembayaran }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 5.3rem">Keterangan</label>
@@ -90,7 +90,7 @@
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem">Nama Perumahan</label>
                             <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 11rem">{{ $kwitansi->lokasi }}</label>
+                            <label style="margin-left: 0.2rem; width: 15rem">{{ $kwitansi->lokasi }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 5.3rem">Type</label>
@@ -176,7 +176,7 @@
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem;">Pembayaran</label>
                             <label style="margin-left:">:</label>
-                            <label style="margin-left: 0.2rem; width: 11rem;">{{ $kwitansi->pembayaran }}</label>
+                            <label style="margin-left: 0.2rem; width: 15rem;">{{ $kwitansi->pembayaran }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 5.3rem">Keterangan</label>
@@ -188,7 +188,7 @@
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem">Nama Perumahan</label>
                             <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 11rem">{{ $kwitansi->lokasi }}</label>
+                            <label style="margin-left: 0.2rem; width: 15rem">{{ $kwitansi->lokasi }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 5.3rem">Type</label>
@@ -274,7 +274,7 @@
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem;">Pembayaran</label>
                             <label style="margin-left:">:</label>
-                            <label style="margin-left: 0.2rem; width: 11rem;">{{ $kwitansi->pembayaran }}</label>
+                            <label style="margin-left: 0.2rem; width: 15rem;">{{ $kwitansi->pembayaran }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 5.3rem">Keterangan</label>
@@ -286,7 +286,7 @@
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 8rem">Nama Perumahan</label>
                             <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 11rem">{{ $kwitansi->lokasi }}</label>
+                            <label style="margin-left: 0.2rem; width: 15rem">{{ $kwitansi->lokasi }}</label>
                         </div>
                         <div class="output" style="margin: 0 0 -1px 0px">
                             <label style="width: 5.3rem">Type</label>
@@ -344,11 +344,11 @@
             <div
                 style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
                 <div style="flex: 1">
-                    <a style="width: 6rem" class="btn btn-primary"
+                    <a style="width: 6rem" class="btn btn-back"
                         href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
                 </div>
                 <div style="flex: 1">
-                    <button type="button" style="width: 6rem; background-color: green" class="btn btn-primary"
+                    <button type="button" style="width: 6rem;" class="btn btn-print"
                         onclick="printKwitansi()" media="print">Cetak</button>
                 </div>
             </div>
@@ -356,3 +356,40 @@
     </body>
 
     </html>
+    <style>
+        .btn-back {
+            background-color: #82bcde;
+            color: #404567;
+            border-radius: 0.3rem;
+        }
+
+        .btn-back:hover {
+            background-color: #5a8db6;
+            color: #ffffff;
+            border: 1px solid #82bcde;
+        }
+
+        .btn-print {
+            background-color: #f9d150;
+            color: #404567;
+            border-radius: 0.3rem;
+        }
+
+        .btn-print:hover {
+            background-color: #e5eae6;
+            color: #404567;
+            border: 1px solid #8e4761
+        }
+
+        .btn-edit {
+            background-color: #d96652;
+            color: #e9ecf1;
+            border-radius: 0.3rem
+        }
+
+        .btn-edit:hover {
+            background-color: #8e4761;
+            color: #e9ecf1;
+            border: 1px solid #f39c7d
+        }
+    </style>
