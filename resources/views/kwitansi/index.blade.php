@@ -10,11 +10,14 @@
 </head>
 
 <body>
+    @include('templates.navbar')
+    <div class="date">
+        <label class="date float-end" style="font-weight: 500">
+            {{ date('l, j F Y') }}
+        </label>
+    </div>
     <section class="kwitansi" style="padding: 1.5rem 24px 1.5rem 24px">
-        <h1> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">List Kwitansi</a>
-            <label class="date float-end">
-                {{ date('l, j F Y') }}
-            </label>
+        <h1 class="text-center"> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">List Kwitansi</a>
         </h1>
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row">
@@ -242,6 +245,10 @@
 </body>
 
 <style>
+    .date{
+        margin-right: 16px;
+    }
+
     body {
         display: flex;
         flex-direction: column;
