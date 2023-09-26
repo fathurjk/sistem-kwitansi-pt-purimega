@@ -50,11 +50,13 @@
                         <label style="margin-left:">:</label>
                         <label style="margin-left: 0.2rem; width: 15rem;">{{ $kwitansi->pembayaran }}</label>
                     </div>
-                    <div class="output" style="margin: 0 0 -1px 0px">
-                        <label style="width: 5.3rem">Keterangan</label>
-                        <label>:</label>
-                        <label style="margin-left: 0.2rem; width: 10rem">{{ $kwitansi->keterangan }}</label>
-                    </div>
+                    @if (!empty($kwitansi->keterangan))
+                        <div class="output" style="margin: 0 0 -1px 0px">
+                            <label style="width: 5.3rem">Keterangan</label>
+                            <label>:</label>
+                            <label style="margin-left: 0.2rem; width: 10rem">{{ $kwitansi->keterangan }}</label>
+                        </div>
+                    @endif
                 </div>
                 <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
                     <div class="output" style="margin: 0 0 -1px 0px">
@@ -145,25 +147,25 @@
         border: 1px solid #82bcde;
     }
 
-    .btn-print{
+    .btn-print {
         background-color: #f9d150;
         color: #404567;
         border-radius: 0.3rem;
     }
 
-    .btn-print:hover{
+    .btn-print:hover {
         background-color: #e5eae6;
         color: #404567;
         border: 1px solid #8e4761
     }
 
-    .btn-edit{
+    .btn-edit {
         background-color: #d96652;
         color: #e9ecf1;
         border-radius: 0.3rem
     }
 
-    .btn-edit:hover{
+    .btn-edit:hover {
         background-color: #8e4761;
         color: #e9ecf1;
         border: 1px solid #f39c7d

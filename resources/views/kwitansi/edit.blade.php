@@ -22,7 +22,6 @@
                             @method('put')
                             @csrf
                             <a class="btn btn-back mb-3" href="/kwitansi">Kembali</a>
-
                             <div class="mb-3">
                                 <label for="nomor_kwitansi">No. Kwitansi :</label>
                                 <input type="text"
@@ -35,7 +34,6 @@
                                     </div>
                                 @enderror
                             </div>
-
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="nama_lengkap">Nama Lengkap</label>
@@ -88,7 +86,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="no_hp">No. HP</label>
@@ -218,6 +215,8 @@
                                     <button type="submit"
                                         class="btn btn-add shadow-sm bg-body-tertiary rounded">Simpan
                                         Perubahan</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
