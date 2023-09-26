@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="type" class="col-form-label">Type</label>
-                                    <select class="form-control" id="type" name="type" required>
+                                    <select class="form-select" id="type" name="type" required>
                                         <option value="30/60">30/60</option>
                                         <option value="30/60">30/66</option>
                                         <option value="40/72">45/72</option>
@@ -93,17 +93,17 @@
                                             name="pembayaran[]" value="Booking">
                                         <label class="form-check-label" for="booking">Booking</label>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="dp"
                                             name="pembayaran[]" value="DP">
                                         <label class="form-check-label" for="dp">DP</label>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="cbth"
                                             name="pembayaran[]" value="CBTH">
                                         <label class="form-check-label" for="cbth">CBTH</label>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="angsuran"
                                             name="pembayaran[]" value="Angsuran ke">
                                         <label class="form-check-label" for="angsuran">Angsuran ke</label>

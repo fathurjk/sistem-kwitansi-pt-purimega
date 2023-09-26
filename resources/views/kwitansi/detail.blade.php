@@ -48,7 +48,7 @@
                     <div class="output" style="margin: 0 0 -1px 0px">
                         <label style="width: 8rem;">Pembayaran</label>
                         <label style="margin-left:">:</label>
-                        <label style="margin-left: 0.2rem; width: 11rem;">{{ $kwitansi->pembayaran }}</label>
+                        <label style="margin-left: 0.2rem; width: 15rem;">{{ $kwitansi->pembayaran }}</label>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 0px">
                         <label style="width: 5.3rem">Keterangan</label>
@@ -60,7 +60,7 @@
                     <div class="output" style="margin: 0 0 -1px 0px">
                         <label style="width: 8rem">Nama Perumahan</label>
                         <label>:</label>
-                        <label style="margin-left: 0.2rem; width: 11rem">{{ $kwitansi->lokasi }}</label>
+                        <label style="margin-left: 0.2rem; width: 15rem">{{ $kwitansi->lokasi }}</label>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 0px">
                         <label style="width: 5.3rem">Type</label>
