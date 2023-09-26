@@ -18,7 +18,8 @@
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('kwitansi.create') }}" class="btn btn-add mb-1" style="margin-right: 24px">Tambah</a>
+                    <a href="{{ route('kwitansi.create') }}" class="btn btn-add mb-1"
+                        style="margin-right: 24px">Tambah</a>
                     <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-print mb-1 ">Export To Excel</a>
                 </div>
                 <div class="col" style="padding-left:50%">
@@ -29,8 +30,8 @@
                                 value="{{ request('search') }}">
                             <div class="input-group-append" style="padding-left: 2px;">
                                 <button class="btn btn-primary"
-                                    style="border-top-left-radius: 0; border-bottom-left-radius: 0; padding: 4px" type="submit"><img
-                                        src="{{ asset('icon/search.svg') }}" alt=""></button>
+                                    style="border-top-left-radius: 0; border-bottom-left-radius: 0; padding: 4px"
+                                    type="submit"><img src="{{ asset('icon/search.svg') }}" alt=""></button>
                             </div>
                         </div>
                     </form>
@@ -44,66 +45,64 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="content">
-        <table class="table table-hover text-center" id="kwitansi-table">
-            <thead>
-                <tr class="bg-info">
-                    <th style="width: 2rem; justify-content: center; align-items: center; cursor: pointer;"
-                        id="sortNo">No.</th>
-                    <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
-                    <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
-                    <th style="width: 10rem;">Alamat</th>
-                    <th style="width: 4.5rem;">No. HP</th>
-                    <th style="width: 8.5rem;">Terbilang</th>
-                    <th style="width: 4rem;">Pembayaran</th>
-                    <th style="width: 4rem;">Keterangan</th>
-                    <th style="width: 4rem;">Nama Perumahan</th>
-                    <th style="width: 1rem;">No. Kavling</th>
-                    <th style="width: 1rem;">Type</th>
-                    <th style="width: 5rem;">Jumlah</th>
-                    <th style="width: 6.7rem;">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($kwitansis as $kwitansi)
-                    <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
-                        style="cursor: pointer;">
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $kwitansi->nomor_kwitansi }}</td>
-                        <td>{{ $kwitansi->nama_lengkap }}</td>
-                        <td>{{ $kwitansi->alamat }}</td>
-                        <td>{{ $kwitansi->no_hp }}</td>
-                        <td>{{ $kwitansi->terbilang }}</td>
-                        <td>{{ $kwitansi->pembayaran }}</td>
-                        <td>{{ $kwitansi->keterangan }}</td>
-                        <td>{{ $kwitansi->lokasi }}</td>
-                        <td>{{ $kwitansi->no_kavling }}</td>
-                        <td>{{ $kwitansi->type }}</td>
-                        <td>{{ $kwitansi->jumlah }}</td>
-                        <td
-                            style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
-                                    <img src="{{ asset('icon/pen2.svg') }}" alt=""
-                                        style="margin: 4px 0 4px 0">
-                                </a>
-                            
-                            <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
-                                class="d-inline-grid">
-                                @method('delete')
-                                @csrf
-                                <button class="btn btn-delete" onclick="return confirm('Are you sure?')"
-                                    style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
-                                    <img src="{{ asset('icon/trash3.svg') }}" alt="">
-                                </button>
-                            </form>
-                        </td>
+        <div class="content" style="margin: 2rem 0 2rem 0">
+            <table class="table table-hover table-striped text-center" id="kwitansi-table" style="margin-bottom: 2rem">
+                <thead>
+                    <tr class="bg-info">
+                        <th style="width: 2rem; justify-content: center; align-items: center; cursor: pointer;"
+                            id="sortNo">No.</th>
+                        <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
+                        <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
+                        <th style="width: 10rem;">Alamat</th>
+                        <th style="width: 4.5rem;">No. HP</th>
+                        <th style="width: 8.5rem;">Terbilang</th>
+                        <th style="width: 4rem;">Pembayaran</th>
+                        <th style="width: 4rem;">Keterangan</th>
+                        <th style="width: 4rem;">Nama Perumahan</th>
+                        <th style="width: 1rem;">No. Kavling</th>
+                        <th style="width: 1rem;">Type</th>
+                        <th style="width: 5rem;">Jumlah</th>
+                        <th style="width: 6.7rem;">Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div class="pagination" style="display: flex">
-</div>
+                </thead>
+                <tbody>
+                    @foreach ($kwitansis as $kwitansi)
+                        <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
+                            style="cursor: pointer;">
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $kwitansi->nomor_kwitansi }}</td>
+                            <td>{{ $kwitansi->nama_lengkap }}</td>
+                            <td>{{ $kwitansi->alamat }}</td>
+                            <td>{{ $kwitansi->no_hp }}</td>
+                            <td>{{ $kwitansi->terbilang }}</td>
+                            <td>{{ $kwitansi->pembayaran }}</td>
+                            <td>{{ $kwitansi->keterangan }}</td>
+                            <td>{{ $kwitansi->lokasi }}</td>
+                            <td>{{ $kwitansi->no_kavling }}</td>
+                            <td>{{ $kwitansi->type }}</td>
+                            <td>{{ $kwitansi->jumlah }}</td>
+                            <td
+                                style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
+                                <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
+                                    <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
+                                </a>
 
+                                <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
+                                    class="d-inline-grid">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-delete" onclick="return confirm('Are you sure?')"
+                                        style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
+                                        <img src="{{ asset('icon/trash3.svg') }}" alt="">
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="pagination" style="display: flex">
+            </div>
         </div>
     </section>
 
@@ -231,14 +230,14 @@
             });
         });
     </script>
-<footer class="text-center text-lg-start" style="background-color: #8ba8d9">
-    <!-- Copyright -->
-    <div class="text-center p-3" style="text-align:center">
-        © 2023 Copyright:
-        <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek Group</a>
-    </div>
-    <!-- Copyright -->
-</footer>
+    <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="text-align:center">
+            © 2023 Copyright:
+            <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek Group</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
 </body>
 
 <style>
@@ -248,7 +247,7 @@
         min-height: 100vh;
         margin: 0;
     }
-    
+
     .content {
         flex-grow: 1;
         min-height: calc(100vh - 60px);
@@ -260,15 +259,16 @@
         text-align: center;
         padding: 0rem 0;
     }
+
     .table th {
-        background-color: #CE76CE;
+        background-color: #3c6687;
         color: white;
         text-align: center;
         vertical-align: middle;
         margin: 0;
         padding: 0 4px 0 4px;
         height: 4rem;
-        border-bottom: 2px solid #514F4F
+        border-bottom: 1px solid #493d3d
     }
 
     .table td {
@@ -306,54 +306,56 @@
 
     .date {
         font-size: 18px;
-        margin-top: 10px; 
+        margin-top: 10px;
     }
 
-    .btn-add{
+    .btn-add {
         background-color: #8e4761;
         color: #ffffff;
         border-radius: 0.3rem;
     }
 
-    .btn-add:hover{
+    .btn-add:hover {
         background-color: #acdff8;
         color: #8e4761;
         border: 1px solid #8e4761
     }
 
-    .btn-print{
+    .btn-print {
         background-color: #f9d150;
         color: #404567;
         border-radius: 0.3rem;
     }
 
-    .btn-print:hover{
+    .btn-print:hover {
         background-color: #e5eae6;
         color: #404567;
         border: 1px solid #8e4761
     }
 
-    .btn-edit-pencil{
+    .btn-edit-pencil {
         background-color: #d96652;
         color: #e9ecf1;
         border-radius: 100%;
     }
 
-    .btn-edit-pencil:hover{
+    .btn-edit-pencil:hover {
         background-color: #8e4761;
         color: #e9ecf1;
         border: 1px solid #f39c7d
     }
-    .btn-delete{
+
+    .btn-delete {
         background-color: #33434f;
-        color: #ffffff ;
+        color: #ffffff;
         border-radius: 0.3rem
     }
 
-    .btn-delete:hover{
+    .btn-delete:hover {
         background-color: #b0b2b7;
-        color: #ffffff ;
+        color: #ffffff;
         border: 1px solid #33434f
     }
 </style>
+
 </html>
