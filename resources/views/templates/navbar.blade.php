@@ -11,7 +11,7 @@
     @include('templates.sidebar')
     <nav class="navbar shadow-sm" style="background-color: #8ba8d9; display: flex; align-items: center; justify-content: center;">
         <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
-            <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                 <img src="{{ asset('icon/menu.svg') }}" alt="">
             </button>
             <img class="logo-img" src="{{ asset('img/logoremove.png') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" style="margin-right: 10px;">
