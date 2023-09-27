@@ -8,20 +8,70 @@
 </head>
 
 <body>
+    @include('dashboard.layouts.sidebar')
     <nav class="navbar shadow-sm" style="background-color: #8ba8d9; display: flex; align-items: center; justify-content: center;">
         <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
+            <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+                <img src="{{ asset('icon/menu.svg') }}" alt="">
+            </button>
             <img class="logo-img" src="{{ asset('img/logoremove.png') }}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" style="margin-right: 10px;">
             <a class="navbar-brand" href="{{ route('kwitansi') }}" style="margin-top: 0;">
                 PT SATRIYO MEGA SARANA
             </a>
             
-            <span class="profile" style="margin-left: auto;">
-                Hello, Fathurrochman Jati Kusuma
+            <div class="profile d-flex align-items-center" style="margin-left: auto; ">
+                <div class="dropdown">
+                    <a class="dropdown-toggle " style="text-decoration: none; color: #fff;" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Hello, {{ auth()->user()->name }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                                Change Password
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button class="dropdown-item" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
                 
                 <img class="profile-img" src="{{ asset('img/download.jpg') }}" alt="">
             </span>
         </div>
     </nav>
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('change-password') }}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="oldPassword" class="form-label">Old Password</label>
+                            <input type="password" class="form-control" id="oldPassword" name="old_password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="newPassword" name="new_password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     
 </body>
 
