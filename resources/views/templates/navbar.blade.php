@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    @include('dashboard.layouts.sidebar')
+    @include('templates.sidebar')
     <nav class="navbar shadow-sm" style="background-color: #8ba8d9; display: flex; align-items: center; justify-content: center;">
         <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
             <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">

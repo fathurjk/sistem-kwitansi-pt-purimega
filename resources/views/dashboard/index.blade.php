@@ -14,10 +14,6 @@
 <body>
   @include('templates.navbar')
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    @include('dashboard.layouts.sidebar')
-  </div>
 
   <!-- Main Content -->
   <div class="main-content">
