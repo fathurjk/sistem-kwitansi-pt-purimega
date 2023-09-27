@@ -32,7 +32,7 @@
 </html>
 <style>
     .container-fluid {
-        margin: 0 12px 0 24px;
+        margin: 0 12px 0 12px;
         padding: 0;
         vertical-align: middle
     }
