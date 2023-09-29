@@ -33,7 +33,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard')->middleware('can:super admin');
 
 Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi')->middleware('auth');
-Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create')->middleware('auth');
+Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create')->middleware('can:super admin, admin');
 Route::post('/kwitansi', [KwitansiController::class, 'store'])->name('kwitansi.store')->middleware('auth');
 Route::get('/kwitansi/detail/{kwitansi:id}', [KwitansiController::class, 'detail'])->name('kwitansi.detail')->middleware('auth');
 Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])->name('kwitansi.edit')->middleware('can:super admin');
@@ -50,8 +50,6 @@ Route::post('/change-password', [ChangePasswordController::class, 'update'])->na
 Route::get('/manage-users', [ManageUsersController::class, 'index'])->name('manage.users')->middleware('can:super admin');
 Route::get('/manage-users/create', [ManageUsersController::class, 'create'])->name('manage-users.create')->middleware('can:super admin');
 Route::post('/manage-users', [ManageUsersController::class, 'store'])->name('manage-users.store')->middleware('can:super admin');
-Route::get('/manage-users/{userId}/edit', [ManageUsersController::class, 'edit'])->name('manage-users.edit')->middleware('can:super admin');
-Route::put('/manage-users/{userId}', [ManageUsersController::class, 'update'])->name('manage-users.update')->middleware('can:super admin');
 Route::delete('/manage-users/{userId}', [ManageUsersController::class, 'destroy'])->name('manage-users.destroy')->middleware('can:super admin');
 Route::get('/manage-users/{userId}/', [ManageUsersController::class, 'addRole'])->name('add.role')->middleware('can:super admin');
 Route::post('/manage-users/{userId}/assign-role', [ManageUsersController::class, 'assignRole'])->name('assign.role')->middleware('can:super admin');

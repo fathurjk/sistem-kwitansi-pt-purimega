@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<html>
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -64,10 +65,11 @@
         }
     </style>
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <body>
     @include('templates.navbar')
-
 
     <!-- Main Content -->
     <div class="main-content">
@@ -75,37 +77,34 @@
         <div class="container">
             <div class="col mt-4">
                 <h2 style="margin-bottom: 12px">Dashboard</h2>
-                    <div class="col" style="margin-left: 32px">
-                        <table class="table table-hover table-striped text-center" id="kwitansi-table"
-                            style="margin-bottom: 2rem">
-                            <thead>
-                                <tr class="bg-info">
-                                    <th style="width: 1.5rem; justify-content: center; align-items: center; cursor: pointer; border-top-left-radius:6px "
-                                        id="sortNo">No.</th>
-                                    <th style="width: 5rem">Nama Admin</th>
-                                    <th style="width: 3rem">Tanggal</th>
-                                    <th style="width: 4rem">No. Kwitansi</th>
-                                    <th style="border-top-right-radius: 6px; width: 7rem">Pembayaran</th>
-
+                <div class="col" style="margin-left: 32px">
+                    <table class="table table-hover table-striped text-center" id="kwitansi-table"
+                        style="margin-bottom: 2rem">
+                        <thead>
+                            <tr class="bg-info">
+                                <th style="width: 1.5rem; justify-content: center; align-items: center; cursor: pointer; border-top-left-radius:6px "
+                                    id="sortNo">No.</th>
+                                <th style="width: 5rem">Nama Admin</th>
+                                <th style="width: 3rem">Tanggal</th>
+                                <th style="width: 4rem">No. Kwitansi</th>
+                                <th style="border-top-right-radius: 6px; width: 7rem">Pembayaran</th>
+                            </tr>
+                        </thead>
+                        {{-- <tbody>
+                            @foreach ($kwitansis as $kwitansi)
+                                <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
+                                    style="cursor: pointer;">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kwitansi->user_id }}</td>
+                                    <td>{{ $kwitansi->created_at->format('Y-m-d') }}</td>
+                                    <td>{{ $kwitansi->nomor_kwitansi }}</td>
+                                    <td>{{ $kwitansi->pembayaran }}</td>
                                 </tr>
-                            </thead>
-                            {{-- <tbody>
-                                @foreach ($kwitansis as $kwitansi)
-                                    <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
-                                        style="cursor: pointer;">
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $kwitansi->user_id }}</td>
-                                        <td>{{ $kwitansi->created_at }}</td>
-                                        <td>{{ $kwitansi->nomor_kwitansi }}</td>
-                                        <td>{{ $kwitansi->pembayaran }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody> --}}
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody> --}}
+                    </table>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -118,10 +117,9 @@
         </div>
         <!-- Copyright -->
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 

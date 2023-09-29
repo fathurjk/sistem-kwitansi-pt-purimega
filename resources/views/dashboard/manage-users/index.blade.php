@@ -74,9 +74,6 @@
                             </td>
                             <td
                                 style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                    <a class="btn btn-edit-pencil" href="{{ route('manage-users.edit', $user->id) }}">
-                                        <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
-                                    </a>
                                 <form action="{{ route('manage-users.destroy', $user->id) }}}}" method="POST"
                                     class="d-inline-grid">
                                     @method('delete')
