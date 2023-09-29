@@ -29,21 +29,28 @@ class ManageUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
-    }
+{
+    return view('dashboard.manage-users.create');
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'username' => 'required|string|max:255',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|string|min:6',
+    ]);
 
+    User::create([
+        'name' => $request->input('name'),
+        'username' => $request->input('username'),
+        'email' => $request->input('email'),
+        'password' => bcrypt($request->input('password')),
+    ]);
+
+    return redirect('/manage-users')->with('success', 'User successfully created');
+}
     /**
      * Display the specified resource.
      *
@@ -62,21 +69,27 @@ class ManageUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
-    }
+{
+    $user = User::findOrFail($id);
+    return view('dashboard.manage-users.edit', compact('user'));
+}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+public function update(Request $request, $id)
+{
+    $user = User::findOrFail($id);
+
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,'.$user->id,
+    ]);
+
+    $user->update([
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+    ]);
+
+    return redirect('/manage-users')->with('success', 'User updated successfully');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -85,9 +98,12 @@ class ManageUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
-    }
+{
+    $user = User::findOrFail($id);
+    $user->delete();
+
+    return redirect('/manage-users')->with('success', 'User deleted successfully');
+}
 
     public function addRole(Request $request, $userId)
     {

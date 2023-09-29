@@ -94,7 +94,6 @@
                             <td>{{ $kwitansi->no_kavling }}</td>
                             <td>{{ $kwitansi->type }}</td>
                             <td>{{ $kwitansi->jumlah }}</td>
-                            @can('super admin')
                                 <td
                                     style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
                                     <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
@@ -111,7 +110,6 @@
                                         </button>
                                     </form>
                                 </td>
-                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

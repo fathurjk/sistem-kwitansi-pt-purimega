@@ -19,17 +19,14 @@ use App\Models\Kwitansi;
 */
 
 Route::get('/', function () {
-    if (auth()->user()->hasRole('super_admin')) {
-        // Jika user adalah super admin, izinkan akses ke semua data
-        $kwitansis = Kwitansi::all();
-    } else {
-        // Jika bukan super admin, batasi akses berdasarkan user_id
-        $kwitansis = Kwitansi::where('user_id', auth()->user()->id)->get();
-    }
-    return view('kwitansi.index', [
-        'kwitansis' => $kwitansis,
-    ]);
-})->middleware('auth');
+
+    $kwitansis = Kwitansi::get();
+       
+   
+       return view('kwitansi.index', [
+           'kwitansis' => $kwitansis,
+       ]);
+   })->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -39,9 +36,9 @@ Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi')-
 Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create')->middleware('auth');
 Route::post('/kwitansi', [KwitansiController::class, 'store'])->name('kwitansi.store')->middleware('auth');
 Route::get('/kwitansi/detail/{kwitansi:id}', [KwitansiController::class, 'detail'])->name('kwitansi.detail')->middleware('auth');
-Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])->name('kwitansi.edit')->middleware('auth');
-Route::put('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'update'])->name('kwitansi.update')->middleware('auth');
-Route::delete('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'destroy'])->name('kwitansi.destroy')->middleware('auth');
+Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])->name('kwitansi.edit')->middleware('can:super admin');
+Route::put('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'update'])->name('kwitansi.update')->middleware('can:super admin');
+Route::delete('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'destroy'])->name('kwitansi.destroy')->middleware('can:super admin');
 Route::get('/kwitansi/detail/{kwitansi:id}/print', [KwitansiController::class, 'print'])->name('kwitansi.print')->middleware('auth');
 Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel'])->middleware('auth');
 
@@ -51,9 +48,14 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('change-password');
 
 Route::get('/manage-users', [ManageUsersController::class, 'index'])->name('manage.users')->middleware('can:super admin');
+Route::get('/manage-users/create', [ManageUsersController::class, 'create'])->name('manage-users.create')->middleware('can:super admin');
+Route::post('/manage-users', [ManageUsersController::class, 'store'])->name('manage-users.store')->middleware('can:super admin');
+Route::get('/manage-users/{userId}/edit', [ManageUsersController::class, 'edit'])->name('manage-users.edit')->middleware('can:super admin');
+Route::put('/manage-users/{userId}', [ManageUsersController::class, 'update'])->name('manage-users.update')->middleware('can:super admin');
+Route::delete('/manage-users/{userId}', [ManageUsersController::class, 'destroy'])->name('manage-users.destroy')->middleware('can:super admin');
+Route::get('/manage-users/{userId}/', [ManageUsersController::class, 'addRole'])->name('add.role')->middleware('can:super admin');
+Route::post('/manage-users/{userId}/assign-role', [ManageUsersController::class, 'assignRole'])->name('assign.role')->middleware('can:super admin');
 
-Route::get('/manage-users/{userId}/', [ManageUsersController::class, 'addRole'])->name('add.role');
-Route::post('/manage-users/{userId}/assign-role', [ManageUsersController::class, 'assignRole'])->name('assign.role');
+Route::get('/user/{userId}/remove-role', [ManageUsersController::class, 'showRemoveRoleForm'])->name('remove.role')->middleware('can:super admin');
+Route::post('/user/{userId}/remove-role', [ManageUsersController::class, 'removeRole'])->name('remove.role')->middleware('can:super admin');
 
-Route::get('/user/{userId}/remove-role', [ManageUsersController::class, 'showRemoveRoleForm'])->name('remove.role');
-Route::post('/user/{userId}/remove-role', [ManageUsersController::class, 'removeRole'])->name('remove.role');

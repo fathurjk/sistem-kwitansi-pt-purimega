@@ -75,18 +75,6 @@
         <div class="container">
             <div class="col mt-4">
                 <h2 style="margin-bottom: 12px">Dashboard</h2>
-                <div class="col-content col-md-12 mt-4">
-                    <div class="card">
-                        <div class="card-header">
-                            Dashboard Statistics
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Total Admin: 2</li>
-                                <li class="list-group-item">Total Kwitansi: 500</li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="col" style="margin-left: 32px">
                         <table class="table table-hover table-striped text-center" id="kwitansi-table"
                             style="margin-bottom: 2rem">

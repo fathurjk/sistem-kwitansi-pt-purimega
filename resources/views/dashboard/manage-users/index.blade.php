@@ -27,6 +27,14 @@
 
     <h1 class="text-center"> <a href="{{ route('manage.users') }}" class="text-decoration-none" style="color: black">Manage Users</a>
     </h1>
+    <div class="input mb-2" style="padding-top: 2rem">
+        <div class="row">
+            <div class="col">
+            <a href="{{ route('manage-users.create') }}" class="btn btn-add mb-1"
+            style="margin-right: 24px">Tambah</a>
+            </div>
+        </div>
+    </div>
     <div class="content" style="margin: 2rem 0 2rem 0">
             <table class="table table-hover table-striped text-center" id="kwitansi-table" style="margin-bottom: 2rem">
                 <thead>
@@ -64,7 +72,21 @@
                                     @endif
                                 @endforeach
                             </td>
-                            <td></td>
+                            <td
+                                style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
+                                    <a class="btn btn-edit-pencil" href="{{ route('manage-users.edit', $user->id) }}">
+                                        <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
+                                    </a>
+                                <form action="{{ route('manage-users.destroy', $user->id) }}}}" method="POST"
+                                    class="d-inline-grid">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-delete" onclick="return confirm('Are you sure?')"
+                                        style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
+                                        <img src="{{ asset('icon/trash3.svg') }}" alt="">
+                                    </button>
+                                </form>
+                            </td>
                             <td>
                             <a class="btn btn-edit-pencil" href="{{ route('add.role', $user->id) }}">
                                 <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0;">Add Role
@@ -86,6 +108,17 @@
     </script>
 </body>
 <style>
+    .btn-add {
+        background-color: #8e4761;
+        color: #ffffff;
+        border-radius: 0.3rem;
+    }
+
+    .btn-add:hover {
+        background-color: #acdff8;
+        color: #8e4761;
+        border: 1px solid #8e4761
+    }
     .btn-edit-pencil {
         background-color: darkcyan;
         color: #e9ecf1;
