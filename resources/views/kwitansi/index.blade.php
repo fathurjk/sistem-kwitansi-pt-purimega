@@ -66,8 +66,14 @@
                         <th style="width: 4rem;">Nama Perumahan</th>
                         <th style="width: 1rem;">No. Kavling</th>
                         <th style="width: 1rem;">Type</th>
-                        <th style="width: 5rem;"> Jumlah</th>
-                        <th style="width: 6.7rem;"> Action</th>
+                        <th
+                            style="width: 5rem; @cannot('super admin')
+                        border-top-right-radius: 6px                            
+                        @endcannot">
+                            Jumlah</th>
+                        @can('super admin')
+                            <th style="width: 6.7rem; border-top-right-radius: 6px"> Action</th>
+                        @endcan
                         </th>
                     </tr>
                 </thead>
@@ -87,6 +93,7 @@
                             <td>{{ $kwitansi->no_kavling }}</td>
                             <td>{{ $kwitansi->type }}</td>
                             <td>{{ $kwitansi->jumlah }}</td>
+                            @can('super admin')
                                 <td
                                     style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
                                     <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
@@ -103,6 +110,7 @@
                                         </button>
                                     </form>
                                 </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>
