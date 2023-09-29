@@ -33,18 +33,18 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->name('dashboard')->middleware('can:super admin');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('can:super admin, admin');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('can:super admin');
 
 
-Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi')->middleware('can:super admin, admin');
-Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create')->middleware('can:super admin, admin');
+Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi')->middleware('can:admin, super admin');
+Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create')->middleware('can:admin, super admin');
 Route::post('/kwitansi', [KwitansiController::class, 'store'])->name('kwitansi.store')->middleware('auth');
 Route::get('/kwitansi/detail/{kwitansi:id}', [KwitansiController::class, 'detail'])->name('kwitansi.detail')->middleware('auth');
 Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])->name('kwitansi.edit')->middleware('can:super admin');
 Route::put('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'update'])->name('kwitansi.update')->middleware('can:super admin');
 Route::delete('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'destroy'])->name('kwitansi.destroy')->middleware('can:super admin');
-Route::get('/kwitansi/detail/{kwitansi:id}/print', [KwitansiController::class, 'print'])->name('kwitansi.print')->middleware('can:super admin, admin');
-Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel'])->middleware('can:super admin, admin');
+Route::get('/kwitansi/detail/{kwitansi:id}/print', [KwitansiController::class, 'print'])->name('kwitansi.print')->middleware('can:admin, super admin');
+Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel'])->middleware('can:admin, super admin');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.process');
