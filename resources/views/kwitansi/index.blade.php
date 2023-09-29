@@ -54,7 +54,7 @@
             <table class="table table-hover table-striped text-center" id="kwitansi-table" style="margin-bottom: 2rem">
                 <thead>
                     <tr class="bg-info">
-                        <th style="width: 2rem; justify-content: center; align-items: center; cursor: pointer;"
+                        <th style="width: 2rem; justify-content: center; align-items: center; cursor: pointer; border-top-left-radius: 6px"
                             id="sortNo">No.</th>
                         <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
                         <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
@@ -66,10 +66,16 @@
                         <th style="width: 4rem;">Nama Perumahan</th>
                         <th style="width: 1rem;">No. Kavling</th>
                         <th style="width: 1rem;">Type</th>
-                        <th style="width: 5rem;">Jumlah</th>
+                        <th style="width: 5rem; @cannot('super admin') border-top-right-radius: 6px; @endcannot">
+                            Jumlah
+                        </th>
+
                         @can('super admin')
-                            <th style="width: 6.7rem;">Action</th>
+                            <th style="width: 6.7rem; @can('super admin') border-top-right-radius: 6px; @endcan">
+                                Action
+                            </th>
                         @endcan
+
                     </tr>
                 </thead>
                 <tbody>
