@@ -15,42 +15,42 @@
         }
 
         .table th {
-        background-color: #3c6687;
-        color: white;
-        text-align: center;
-        vertical-align: middle;
-        margin: 0;
-        padding: 0 4px 0 4px;
-        height: 3rem;
-        border-bottom: 1px solid #493d3d
-    }
+            background-color: #3c6687;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0 4px 0 4px;
+            height: 3rem;
+            border-bottom: 1px solid #493d3d
+        }
 
-    .table td {
-        margin: 0;
-        padding: 0 4px 0 4px;
-        vertical-align: middle;
-        height: 6rem;
-    }
+        .table td {
+            margin: 0;
+            padding: 0 4px 0 4px;
+            vertical-align: middle;
+            height: 6rem;
+        }
 
-    .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 1rem;
-    }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
 
-    .pagination a {
-        margin: 0 0.5rem;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        border: 1px solid #4caf50;
-        color: #4caf50;
-        border-radius: 4px;
-    }
+        .pagination a {
+            margin: 0 0.5rem;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid #4caf50;
+            color: #4caf50;
+            border-radius: 4px;
+        }
 
-    .pagination a:hover {
-        background-color: #6ac063;
-        color: white;
-    }
+        .pagination a:hover {
+            background-color: #6ac063;
+            color: white;
+        }
 
         footer {
             position: fixed;
@@ -101,50 +101,18 @@
 
                                 </tr>
                             </thead>
-                            <tbody>
-                                <td>1</td>
-                                <td>asdasasd ad</td>
-                                <td>asdasasdasasd asdasd asdd</td>
-                                <td>asdasasdasd d</td>
-                                <td>asdaasdasd asd asd</td>
-                            </tbody>
                             {{-- <tbody>
-                            @foreach ($kwitansis as $kwitansi)
-                                <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
-                                    style="cursor: pointer;">
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $kwitansi->nomor_kwitansi }}</td>
-                                    <td>{{ $kwitansi->nama_lengkap }}</td>
-                                    <td>{{ $kwitansi->alamat }}</td>
-                                    <td>{{ $kwitansi->no_hp }}</td>
-                                    <td>{{ $kwitansi->terbilang }}</td>
-                                    <td>{{ $kwitansi->pembayaran }}</td>
-                                    <td>{{ $kwitansi->keterangan }}</td>
-                                    <td>{{ $kwitansi->lokasi }}</td>
-                                    <td>{{ $kwitansi->no_kavling }}</td>
-                                    <td>{{ $kwitansi->type }}</td>
-                                    <td>{{ $kwitansi->jumlah }}</td>
-                                    @can('super admin')
-                                        <td
-                                            style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                            <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
-                                                <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
-                                            </a>
-        
-                                            <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
-                                                class="d-inline-grid">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-delete" onclick="return confirm('Are you sure?')"
-                                                    style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
-                                                    <img src="{{ asset('icon/trash3.svg') }}" alt="">
-                                                </button>
-                                            </form>
-                                        </td>
-                                    @endcan
-                                </tr>
-                            @endforeach
-                        </tbody> --}}
+                                @foreach ($kwitansis as $kwitansi)
+                                    <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
+                                        style="cursor: pointer;">
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $kwitansi->user_id }}</td>
+                                        <td>{{ $kwitansi->created_at }}</td>
+                                        <td>{{ $kwitansi->nomor_kwitansi }}</td>
+                                        <td>{{ $kwitansi->pembayaran }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody> --}}
                         </table>
                     </div>
                 </div>
