@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Manage Admin</title>
+    <link rel="icon" href="{{ asset('img/logoremove.png') }}">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
         @endif
 
         <h1 class="text-center" style="margin: 2.5rem 0 0 0"> <a href="{{ route('manage.users') }}"
-                class="text-decoration-none" style="color: black">Manage Users</a>
+                class="text-decoration-none" style="color: black">LIST ADMIN</a>
         </h1>
         <div class="input mb-2" style="padding-top: 1rem">
             <div class="row">
@@ -83,18 +84,18 @@
                                     class="d-inline-grid">
                                     @method('delete')
                                     @csrf
-                                    <button class="btn btn-delete" onclick="return confirm('Are you sure?')">
+                                    <button class="btn btn-delete" onclick="return confirm('Hapus Akun Ini?')">
                                         <img src="{{ asset('icon/trash3.svg') }}" alt="">
                                     </button>
                                 </form>
                             </td>
                             <td>
-                                <a class="btn btn-edit-pencil" data-bs-toggle="modal"
-                                data-bs-target="#addRoleModal" href="{{ route('add.role', $user->id) }}">
+                                <a class="btn btn-edit-pencil" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                                    href="">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                 </a>
-                                <a class="btn btn-delete" href="{{ route('remove.role', $user->id) }}"><img
-                                        src="{{ asset('icon/trash3.svg') }}" alt="">
+                                <a class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteRoleModal"
+                                    href=""><img src="{{ asset('icon/trash3.svg') }}" alt="">
                                 </a>
                             </td>
 
@@ -106,31 +107,8 @@
             </div>
         </div>
     </section>
-    <div class="modal fade" id="addRoleModal" tabindex="-1" aria-labelledby="addRoleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addRoleModalLabel">Change Password</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('assign.role', $user->id) }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="role">Select Role:</label>
-                                <select class="form-control" id="role" name="role" required>
-                                    @foreach ($roles as $role)
-                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Assign Role</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+    @extends('dashboard.manage-users.pop-up.addrole')
+    @extends('dashboard.manage-users.pop-up.deleterole')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
