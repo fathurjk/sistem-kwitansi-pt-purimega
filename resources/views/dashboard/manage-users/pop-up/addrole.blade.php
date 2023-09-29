@@ -12,21 +12,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addRoleModalLabel">Change Password</h5>
+                    <h5 class="modal-title" id="addRoleModalLabel">Tambah Role Akses</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('assign.role', $user->id) }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="role">Select Role:</label>
-                            <select class="form-control" id="role" name="role" required>
+                            <label class="mb-3" for="role">Pilih Role:</label>
+                            <select class="form-control mb-3" id="role" name="role" required>
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->name }}">{{ $role->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Assign Role</button>
+                        <button type="submit" class="btn btn-primary">Tambah Role</button>
                     </form>
                 </div>
             </div>
