@@ -66,16 +66,9 @@
                         <th style="width: 4rem;">Nama Perumahan</th>
                         <th style="width: 1rem;">No. Kavling</th>
                         <th style="width: 1rem;">Type</th>
-                        <th style="width: 5rem; @cannot('super admin') border-top-right-radius: 6px; @endcannot">
-                            Jumlah
+                        <th style="width: 5rem;"> Jumlah</th>
+                        <th style="width: 6.7rem;"> Action</th>
                         </th>
-
-                        @can('super admin')
-                            <th style="width: 6.7rem; @can('super admin') border-top-right-radius: 6px; @endcan">
-                                Action
-                            </th>
-                        @endcan
-
                     </tr>
                 </thead>
                 <tbody>
