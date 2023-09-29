@@ -17,6 +17,7 @@
             width: 100%;
             height: auto;
             background-color: #8ba8d9;
+            padding: 10px 0
         }
     </style>
 </head>
@@ -65,16 +66,3 @@
 </body>
 
 </html>
-<style>
-    footer {
-        bottom: 0;
-        width: 100%;
-        background-color: #8ba8d9;
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    .main-content {
-        margin-bottom: 60px; /* Sesuaikan dengan tinggi footer */
-    }
-</style>
