@@ -29,8 +29,8 @@
     <!-- Content goes here -->
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1>Dashboard</h1>
+            <div class="col-md-12 mt-4">
+                <h2 style="margin-bottom: 12px">Dashboard</h2>
 
                 <div class="card">
                     <div class="card-header">
