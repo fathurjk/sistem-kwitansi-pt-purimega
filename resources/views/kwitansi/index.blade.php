@@ -259,7 +259,7 @@
         margin: 0;
     }
 
-    .content {
+    .kwitansi {
         flex-grow: 1;
         min-height: calc(100vh - 60px);
     }

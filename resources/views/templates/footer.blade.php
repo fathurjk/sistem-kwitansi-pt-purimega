@@ -23,6 +23,7 @@
             background-color: #8ba8d9;
             text-align: center;
             padding: 10px 0;
+            position: relative;
         }
     </style>
 

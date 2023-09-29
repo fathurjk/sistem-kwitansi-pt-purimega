@@ -4,20 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Edit Kwitansi</title>
     <link rel="icon" href="{{ asset('img/logoremove.png') }}">
 </head>
 
 <body>
+    @include('templates.navbar')
     <div class="content-wrapper">
         <section class="wrapper" style="padding-bottom: 10rem; max-width: 1200px; margin: 0 auto;">
             <div class="container pt-8 pt-md-14">
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
                     <div class="col-lg-8 mx-auto">
                         <div class="title-form mt-3 mb-4" id="title-form">
-                            <h1 class="h2">Edit Kwitansi</h1>
+                            <h1 class="h2">EDIT KWITANSI</h1>
                         </div>
                         <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3">
                             @method('put')
@@ -125,7 +126,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="container mb-3">
+                            <div class="col mb-3">
                                 <label for="pembayaran" class="col-form-label">Pembayaran</label>
                                 <div class="container">
                                     <div class="row">
@@ -172,60 +173,56 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mb-3" id="keteranganRow" style="display: none;">
-                                        <label for="keterangan">Keterangan</label>
-                                        <input type="text"
-                                            class="form-control @error('keterangan') is-invalid @enderror"
-                                            id="keterangan" name="keterangan"
-                                            value="{{ old('keterangan', $kwitansi->keterangan) }}">
-                                        @error('keterangan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-12">
-                                            <label for="terbilang">Terbilang</label>
-                                            <input type="text"
-                                                class="form-control shadow-sm bg-body-tertiary rounded @error('terbilang') is-invalid @enderror"
-                                                id="terbilang" name="terbilang"
-                                                onkeypress="return hanyaHurufDanSpasi(event)"
-                                                value="{{ old('terbilang', $kwitansi->terbilang) }}">
-                                            @error('terbilang')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="jumlah">Jumlah</label>
-                                        <input type="text"
-                                            class="form-control shadow-sm bg-body-tertiary rounded @error('jumlah') is-invalid @enderror"
-                                            id="jumlah" name="jumlah"
-                                            value="{{ old('jumlah', $kwitansi->jumlah) }}">
-                                        @error('jumlah')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-
-                                    <button type="submit"
-                                        class="btn btn-add shadow-sm bg-body-tertiary rounded">Simpan
-                                        Perubahan</button>
                                 </div>
                             </div>
+                            <div class="col mb-3 mt-3" id="keteranganRow" style="display: none;">
+                                <label for="keterangan">Keterangan</label>
+                                <input type="text"
+                                    class="form-control @error('keterangan') is-invalid @enderror"
+                                    id="keterangan" name="keterangan"
+                                    value="{{ old('keterangan', $kwitansi->keterangan) }}">
+                                @error('keterangan')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col mb-3 mt-3">
+                                <div class="col-md-12">
+                                    <label for="terbilang">Terbilang</label>
+                                    <input type="text"
+                                        class="form-control shadow-sm bg-body-tertiary rounded @error('terbilang') is-invalid @enderror"
+                                        id="terbilang" name="terbilang" onkeypress="return hanyaHurufDanSpasi(event)"
+                                        value="{{ old('terbilang', $kwitansi->terbilang) }}">
+                                    @error('terbilang')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col mb-3">
+                                <label for="jumlah">Jumlah</label>
+                                <input type="text"
+                                    class="form-control shadow-sm bg-body-tertiary rounded @error('jumlah') is-invalid @enderror"
+                                    id="jumlah" name="jumlah" value="{{ old('jumlah', $kwitansi->jumlah) }}">
+                                @error('jumlah')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <button type="submit" class="btn btn-add shadow-sm">Simpan
+                                Perubahan</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script>
         // Dapatkan elemen checkbox "Lain-lain" berdasarkan ID

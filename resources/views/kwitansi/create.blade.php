@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Tambah Kwitansi</title>
     <link rel="icon" href="{{ asset('img/logoremove.png') }}">
 </head>
 
 <body>
+    @include('templates.navbar')
     <div class="content-wrapper">
         <section class="wrapper" style="padding-bottom: 10rem">
             <div class="container pt-8 pt-md-14">
@@ -22,7 +23,7 @@
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-sm-6">
-                                    <a class="btn btn-back mb-3 shadow-sm bg-body-tertiary rounded" href="/kwitansi">Kembali</a>
+                                    <a class="btn btn-back mb-3 shadow-sm" href="/kwitansi">Kembali</a>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="nomor">
@@ -143,7 +144,7 @@
                                         placeholder="Masukkan Jumlah" required>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-add mt-3 shadow-sm bg-body-tertiary rounded">Tambah</button>
+                            <button type="submit" class="btn btn-add mt-3 shadow-sm">Tambah</button>
                         </form>
                     </div>
                 </div>
@@ -151,8 +152,9 @@
         </section>
     </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    @extends('templates.footer')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
     <script>
         function hanyaAngka(event) {
@@ -260,15 +262,6 @@
         });
     </script>
 </body>
-<footer class="text-center text-lg-start" style="background-color: #8ba8d9">
-    <!-- Copyright -->
-    <div class="text-center p-3" style="text-align:center">
-        © 2023 Copyright:
-        <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
-            Group</a>
-    </div>
-    <!-- Copyright -->
-</footer>
 <style>
     body {
         font-family: sans-serif;
@@ -289,6 +282,8 @@
 
     .content-wrapper {
         padding: 2rem;
+        flex-grow: 1;
+        min-height: calc(100vh - 60px);
     }
 
     .wrapper {
