@@ -90,18 +90,18 @@
                                 <th style="border-top-right-radius: 6px; width: 7rem">Pembayaran</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             @foreach ($kwitansis as $kwitansi)
                                 <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
                                     style="cursor: pointer;">
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $kwitansi->user_id }}</td>
+                                    <td>{{ $kwitansi->user->name }}</td>
                                     <td>{{ $kwitansi->created_at->format('Y-m-d') }}</td>
                                     <td>{{ $kwitansi->nomor_kwitansi }}</td>
                                     <td>{{ $kwitansi->pembayaran }}</td>
                                 </tr>
                             @endforeach
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>
