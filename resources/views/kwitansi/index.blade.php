@@ -244,14 +244,7 @@
             });
         });
     </script>
-    <footer class="text-center text-lg-start">
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek Group</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    @extends('templates.footer')
 </body>
 
 <style>
@@ -269,14 +262,6 @@
     .content {
         flex-grow: 1;
         min-height: calc(100vh - 60px);
-    }
-
-    footer {
-        bottom: 0;
-        width: 100%;
-        background-color: #8ba8d9;
-        text-align: center;
-        padding: 10px 0;
     }
 
     .table th {

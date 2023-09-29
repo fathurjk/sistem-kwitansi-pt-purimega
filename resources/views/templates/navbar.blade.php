@@ -22,7 +22,7 @@
                 PT SATRIYO MEGA SARANA
             </a>
 
-            <div class="profile d-flex align-items-center" style="margin-left: auto; ">
+            <div class="profile d-flex align-items-center" style="margin-left: auto; margin-right: 20px">
                 <div class="dropdown">
                     <a class="dropdown-toggle " style="text-decoration: none; color: #fff;" href="#"
                         role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
