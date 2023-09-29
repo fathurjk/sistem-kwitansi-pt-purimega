@@ -120,11 +120,13 @@
                 <div style="flex: 1">
                     <a style="width: 6rem" class="btn btn-back" href="{{ route('kwitansi') }}">Kembali</a>
                 </div>
-                <div style="flex: 1">
-                    <button style="width: 6rem" type="button"
-                        onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
-                        class="btn btn-edit">Edit</button>
-                </div>
+                @can('super admin')
+                    <div style="flex: 1">
+                        <button style="width: 6rem" type="button"
+                            onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
+                            class="btn btn-edit">Edit</button>
+                    </div>
+                @endcan
                 <div style="flex: 1">
                     <a class="btn btn-print" style="width: 6rem;"
                         href="{{ route('kwitansi.print', $kwitansi->id) }}">Cetak</a>
