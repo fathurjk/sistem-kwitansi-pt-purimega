@@ -49,9 +49,9 @@
   </div>
 
   <!-- Footer -->
-  <footer class="text-center text-lg-start" style="background-color: #8ba8d9">
+  <footer class="text-center text-lg-start">
     <!-- Copyright -->
-    <div class="text-center p-3" style="text-align:center">
+    <div class="text-center p-3">
         © 2023 Copyright:
         <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek Group</a>
     </div>
@@ -65,3 +65,16 @@
 </body>
 
 </html>
+<style>
+    footer {
+        bottom: 0;
+        width: 100%;
+        background-color: #8ba8d9;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .main-content {
+        margin-bottom: 60px; /* Sesuaikan dengan tinggi footer */
+    }
+</style>
