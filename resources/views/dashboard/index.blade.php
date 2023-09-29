@@ -10,6 +10,15 @@
     <link rel="icon" href="{{ asset('img/logoremove.png') }}">
 
     <style>
+        .date {
+        margin-right: 16px;
+        margin-top: 10px;
+        font-size: 18px
+        }
+        .main-content{
+            flex-grow: 1;
+        min-height: calc(100vh - 60px);
+        }
         .col-content {
             display: flex;
             justify-content: space-between
@@ -70,13 +79,17 @@
 
 <body>
     @include('templates.navbar')
-
+    <div class="date">
+        <label class="date float-end" style="font-weight: 500">
+            {{ date('l, j F Y') }}
+        </label>
+    </div>
     <!-- Main Content -->
     <div class="main-content">
         <!-- Content goes here -->
-        <div class="container">
-            <div class="col mt-4">
-                <h2 style="margin-bottom: 12px">Dashboard</h2>
+        <div class="container" style="margin-top: 4rem">
+            <div class="col">
+                <h1 class="text-center" style="margin-bottom: 3rem">Dashboard</h1>
                 <div class="col" style="margin-left: 32px">
                     <table class="table table-hover table-striped text-center" id="kwitansi-table"
                         style="margin-bottom: 2rem">
@@ -87,7 +100,8 @@
                                 <th style="width: 5rem">Nama Admin</th>
                                 <th style="width: 3rem">Tanggal</th>
                                 <th style="width: 4rem">No. Kwitansi</th>
-                                <th style="border-top-right-radius: 6px; width: 7rem">Pembayaran</th>
+                                <th style="width: 4rem">Pembayaran</th>
+                                <th style="border-top-right-radius: 6px; width: 7rem">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,9 +110,10 @@
                                     style="cursor: pointer;">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $kwitansi->user->name }}</td>
-                                    <td>{{ $kwitansi->created_at->format('Y-m-d') }}</td>
+                                    <td>{{ date('j F Y', strtotime($kwitansi->created_at)) }}</td>
                                     <td>{{ $kwitansi->nomor_kwitansi }}</td>
                                     <td>{{ $kwitansi->pembayaran }}</td>
+                                    <td>{{ $kwitansi->keterangan }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
