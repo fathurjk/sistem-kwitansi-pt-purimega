@@ -6,7 +6,7 @@
     <div class="offcanvas-body px-0">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
             <li class="nav-item">
-                <a href="#" class="nav-link text-truncate">
+                <a href="{{ route('dashboard') }}" class="nav-link text-truncate">
                     <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Dashboard</span>
                 </a>
             </li>

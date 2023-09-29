@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +17,8 @@
         </label>
     </div>
     <section class="kwitansi" style="padding: 1.5rem 24px 1.5rem 24px">
-        <h1 class="text-center"> <a href="{{ route('kwitansi') }}" class="text-decoration-none" style="color: black">List Kwitansi</a>
+        <h1 class="text-center"> <a href="{{ route('kwitansi') }}" class="text-decoration-none"
+                style="color: black">List Kwitansi</a>
         </h1>
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row">
@@ -67,7 +67,9 @@
                         <th style="width: 1rem;">No. Kavling</th>
                         <th style="width: 1rem;">Type</th>
                         <th style="width: 5rem;">Jumlah</th>
-                        <th style="width: 6.7rem;">Action</th>
+                        @can('super admin')
+                            <th style="width: 6.7rem;">Action</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -86,22 +88,24 @@
                             <td>{{ $kwitansi->no_kavling }}</td>
                             <td>{{ $kwitansi->type }}</td>
                             <td>{{ $kwitansi->jumlah }}</td>
-                            <td
-                                style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
-                                    <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
-                                </a>
+                            @can('super admin')
+                                <td
+                                    style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
+                                    <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
+                                        <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
+                                    </a>
 
-                                <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
-                                    class="d-inline-grid">
-                                    @method('delete')
-                                    @csrf
-                                    <button class="btn btn-delete" onclick="return confirm('Are you sure?')"
-                                        style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
-                                        <img src="{{ asset('icon/trash3.svg') }}" alt="">
-                                    </button>
-                                </form>
-                            </td>
+                                    <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
+                                        class="d-inline-grid">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="btn btn-delete" onclick="return confirm('Are you sure?')"
+                                            style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
+                                            <img src="{{ asset('icon/trash3.svg') }}" alt="">
+                                        </button>
+                                    </form>
+                                </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>
@@ -246,7 +250,7 @@
 </body>
 
 <style>
-    .date{
+    .date {
         margin-right: 16px;
     }
 
@@ -283,7 +287,8 @@
     .table td {
         margin: 0;
         padding: 0 4px 0 4px;
-        vertical-align: middle
+        vertical-align: middle;
+        height: 6rem;
     }
 
     .pagination {
