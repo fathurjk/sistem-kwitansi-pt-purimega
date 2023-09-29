@@ -84,7 +84,7 @@
                                     class="d-inline-grid">
                                     @method('delete')
                                     @csrf
-                                    <button class="btn btn-delete" onclick="return confirm('Hapus Akun Ini?')">
+                                    <button class="btn btn-delete" style="border-radius: 100%" onclick="return confirm('Hapus Akun Ini?')">
                                         <img src="{{ asset('icon/trash3.svg') }}" alt="">
                                     </button>
                                 </form>
@@ -94,7 +94,7 @@
                                     href="">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                 </a>
-                                <a class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteRoleModal"
+                                <a class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteRoleModal" style="border-radius: 100%"
                                     href=""><img src="{{ asset('icon/trash3.svg') }}" alt="">
                                 </a>
                             </td>
@@ -172,7 +172,6 @@
     .btn-delete {
         background-color: #33434f;
         color: #ffffff;
-        border-radius: 0.3rem;
         margin: 0;
         padding: 6.5px 8px 6.5px 8px;
         border-radius: 100%;
