@@ -15,6 +15,7 @@ class CreateKwitansisTable extends Migration
     {
         Schema::create('kwitansis', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('nomor_kwitansi');
             $table->string('nama_lengkap');
             $table->string('alamat');

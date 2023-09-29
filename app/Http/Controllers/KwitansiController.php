@@ -21,20 +21,37 @@ class KwitansiController extends Controller
     {
         $search = $request->input('search');
 
-        $kwitansis = Kwitansi::where(function ($query) use ($search) {
-            $query
-                ->where('nomor_kwitansi', 'LIKE', '%' . $search . '%')
-                ->orWhere('nama_lengkap', 'LIKE', '%' . $search . '%')
-                ->orWhere('alamat', 'LIKE', '%' . $search . '%')
-                ->orWhere('no_hp', 'LIKE', '%' . $search . '%') 
-                ->orWhere('terbilang', 'LIKE', '%' . $search . '%')
-                ->orWhere('pembayaran', 'LIKE', '%' . $search . '%') 
-                ->orWhere('keterangan', 'LIKE', '%' . $search . '%')
-                ->orWhere('lokasi', 'LIKE', '%' . $search . '%')
-                ->orWhere('no_kavling', 'LIKE', '%' . $search . '%')
-                ->orWhere('type', 'LIKE', '%' . $search . '%')
-                ->orWhere('jumlah', 'LIKE', '%' . $search . '%');
-        })->get();
+        if (auth()->user()->hasRole('super_admin')) {
+            $kwitansis = Kwitansi::where(function ($query) use ($search){
+                $query
+                    ->where('nomor_kwitansi', 'LIKE', '%' . $search . '%')
+                    ->orWhere('nama_lengkap', 'LIKE', '%' . $search . '%')
+                    ->orWhere('alamat', 'LIKE', '%' . $search . '%')
+                    ->orWhere('no_hp', 'LIKE', '%' . $search . '%') 
+                    ->orWhere('terbilang', 'LIKE', '%' . $search . '%')
+                    ->orWhere('pembayaran', 'LIKE', '%' . $search . '%') 
+                    ->orWhere('keterangan', 'LIKE', '%' . $search . '%')
+                    ->orWhere('lokasi', 'LIKE', '%' . $search . '%')
+                    ->orWhere('no_kavling', 'LIKE', '%' . $search . '%')
+                    ->orWhere('type', 'LIKE', '%' . $search . '%')
+                    ->orWhere('jumlah', 'LIKE', '%' . $search . '%');
+            })->get();
+        }else{
+            $kwitansis = Kwitansi::where('user_id', auth()->user()->id)->where(function ($query) use ($search) {
+                $query
+                    ->where('nomor_kwitansi', 'LIKE', '%' . $search . '%')
+                    ->orWhere('nama_lengkap', 'LIKE', '%' . $search . '%')
+                    ->orWhere('alamat', 'LIKE', '%' . $search . '%')
+                    ->orWhere('no_hp', 'LIKE', '%' . $search . '%') 
+                    ->orWhere('terbilang', 'LIKE', '%' . $search . '%')
+                    ->orWhere('pembayaran', 'LIKE', '%' . $search . '%') 
+                    ->orWhere('keterangan', 'LIKE', '%' . $search . '%')
+                    ->orWhere('lokasi', 'LIKE', '%' . $search . '%')
+                    ->orWhere('no_kavling', 'LIKE', '%' . $search . '%')
+                    ->orWhere('type', 'LIKE', '%' . $search . '%')
+                    ->orWhere('jumlah', 'LIKE', '%' . $search . '%');
+            })->get();
+        }
 
         if ($kwitansis->count() == 0) {
             session()->flash('error', 'Kwitansi tidak ditemukan');
@@ -48,6 +65,7 @@ class KwitansiController extends Controller
 
     public function create()
     {
+        // $this->authorize('super admin');
         $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
 
         if ($lastSerialNumber) {
@@ -96,9 +114,11 @@ class KwitansiController extends Controller
                 $validatedData['keterangan'] = $keterangan;
             }
 
+            $validatedData['user_id'] = auth()->user()->id;
             $validatedData['nomor_kwitansi'] = $serialNumber;
             $validatedData['pembayaran'] = $pembayaran; // Menyimpan pilihan checkbox ke dalam kolom 'pembayaran'
 
+            // dd($validatedData);
             Kwitansi::create($validatedData);
 
             return redirect('/kwitansi');
@@ -164,6 +184,7 @@ class KwitansiController extends Controller
             $pembayaran = implode(', ', $request->input('pembayaran'));
 
             $validatedData['pembayaran'] = $pembayaran; // Menyimpan pilihan checkbox ke dalam kolom 'pembayaran'
+            $validatedData['user_id'] = auth()->user()->id;
 
             // Periksa apakah input "keterangan" diisi atau tidak
             if ($request->has('keterangan') && !empty($request->input('keterangan'))) {

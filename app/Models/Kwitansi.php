@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Kwitansi extends Model
 {
     protected $fillable = [
+        'user_id',
         'nomor_kwitansi',
         'nama_lengkap',
         'alamat',
@@ -19,4 +21,9 @@ class Kwitansi extends Model
         'type',
         'jumlah',
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

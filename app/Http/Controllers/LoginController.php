@@ -22,7 +22,11 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
  
-            return redirect()->intended('/');
+            if (auth()->user()->hasRole('super_admin')) {
+                return redirect('/dashboard');
+            } else {
+                return redirect('/');
+            }
         }
  
         return back()->with([

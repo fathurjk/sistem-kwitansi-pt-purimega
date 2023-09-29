@@ -11,13 +11,16 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link text-truncate">
+                <a href="{{ route('kwitansi') }}" class="nav-link text-truncate">
                     <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">List Kwitansi</span></a>
             </li>
+            @can('super admin')
             <li>
-                <a href="#" class="nav-link text-truncate">
+                <a href="{{ route('manage.users') }}" class="nav-link text-truncate">
                     <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Manage Admin</span></a>
             </li>
+            @endcan
+            
         </ul>
     </div>
 </div>

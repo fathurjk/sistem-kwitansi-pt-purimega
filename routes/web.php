@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KwitansiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ManageUsersController;
 use App\Models\Kwitansi;
 
 /*
@@ -18,14 +19,21 @@ use App\Models\Kwitansi;
 */
 
 Route::get('/', function () {
+    if (auth()->user()->hasRole('super_admin')) {
+        // Jika user adalah super admin, izinkan akses ke semua data
+        $kwitansis = Kwitansi::all();
+    } else {
+        // Jika bukan super admin, batasi akses berdasarkan user_id
+        $kwitansis = Kwitansi::where('user_id', auth()->user()->id)->get();
+    }
     return view('kwitansi.index', [
-        'kwitansis' => Kwitansi::all(),
+        'kwitansis' => $kwitansis,
     ]);
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('can:super admin');
 
 Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi')->middleware('auth');
 Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create')->middleware('auth');
@@ -41,3 +49,11 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('change-password');
+
+Route::get('/manage-users', [ManageUsersController::class, 'index'])->name('manage.users')->middleware('can:super admin');
+
+Route::get('/manage-users/{userId}/', [ManageUsersController::class, 'addRole'])->name('add.role');
+Route::post('/manage-users/{userId}/assign-role', [ManageUsersController::class, 'assignRole'])->name('assign.role');
+
+Route::get('/user/{userId}/remove-role', [ManageUsersController::class, 'showRemoveRoleForm'])->name('remove.role');
+Route::post('/user/{userId}/remove-role', [ManageUsersController::class, 'removeRole'])->name('remove.role');
