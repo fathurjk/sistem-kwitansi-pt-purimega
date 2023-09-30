@@ -80,22 +80,19 @@
                             </td>
                             <td
                                 style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                <form action="{{ route('manage-users.destroy', $user->id) }}}}" method="POST"
-                                    class="d-inline-grid">
-                                    @method('delete')
-                                    @csrf
-                                    <button class="btn btn-delete" style="border-radius: 100%" onclick="return confirm('Hapus Akun Ini?')">
-                                        <img src="{{ asset('icon/trash3.svg') }}" alt="">
-                                    </button>
-                                </form>
+                                <a class="btn btn-edit-pencil" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#changePasswordAdminModal">
+                                    <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
+                                </a>
                             </td>
                             <td>
                                 <a class="btn btn-edit-pencil" data-bs-toggle="modal" data-bs-target="#addRoleModal"
                                     href="">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                 </a>
-                                <a class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteRoleModal" style="border-radius: 100%"
-                                    href=""><img src="{{ asset('icon/trash3.svg') }}" alt="">
+                                <a class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteRoleModal"
+                                    style="border-radius: 100%" href=""><img
+                                        src="{{ asset('icon/trash3.svg') }}" alt="">
                                 </a>
                             </td>
 
@@ -103,10 +100,9 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="pagination" style="display: flex">
-            </div>
         </div>
     </section>
+    @extends('dashboard.manage-users.pop-up.change-pass-admin')
     @extends('dashboard.manage-users.pop-up.addrole')
     @extends('dashboard.manage-users.pop-up.deleterole')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
