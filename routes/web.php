@@ -49,7 +49,8 @@ Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel']
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('change-password');
+Route::post('/change-password', [ChangePasswordController::class, 'updateMe'])->name('change-password-me');
+Route::post('/change-password/{user_id}', [ChangePasswordController::class, 'updateAdmin'])->name('change-password-admin');
 
 Route::get('/manage-users', [ManageUsersController::class, 'index'])->name('manage.users')->middleware('can:super admin');
 Route::get('/manage-users/create', [ManageUsersController::class, 'create'])->name('manage-users.create')->middleware('can:super admin');

@@ -81,9 +81,19 @@
                             <td
                                 style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
                                 <a class="btn btn-edit-pencil" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#changePasswordAdminModal">
+                                    data-bs-target="#changePasswordAdminModal{{ $user->id }}">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                 </a>
+                                @extends('dashboard.manage-users.pop-up.change-pass-admin')
+                                {{-- <form action="{{ route('manage-users.destroy', $user->id) }}}}" method="POST"
+                                    class="d-inline-grid">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-delete" style="border-radius: 100%"
+                                        onclick="return confirm('Hapus Akun Ini?')">
+                                        <img src="{{ asset('icon/trash3.svg') }}" alt="">
+                                    </button>
+                                </form> --}}
                             </td>
                             <td>
                                 <a class="btn btn-edit-pencil" data-bs-toggle="modal" data-bs-target="#addRoleModal"
@@ -100,9 +110,9 @@
                     @endforeach
                 </tbody>
             </table>
+            
         </div>
     </section>
-    @extends('dashboard.manage-users.pop-up.change-pass-admin')
     @extends('dashboard.manage-users.pop-up.addrole')
     @extends('dashboard.manage-users.pop-up.deleterole')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

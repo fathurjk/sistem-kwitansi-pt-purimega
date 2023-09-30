@@ -61,12 +61,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('change-password') }}" method="post">
+                        <form action="{{ route('change-password-me') }}" method="post">
                             @csrf
-                            <div class="mb-3">
-                                <label for="oldPassword" class="form-label">Old Password</label>
-                                <input type="password" class="form-control" id="oldPassword" name="old_password" required>
-                            </div>
                             <div class="mb-3">
                                 <label for="newPassword" class="form-label">New Password</label>
                                 <input type="password" class="form-control" id="newPassword" name="new_password" required>

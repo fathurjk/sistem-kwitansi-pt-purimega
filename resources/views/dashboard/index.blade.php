@@ -109,7 +109,7 @@
                                 <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
                                     style="cursor: pointer;">
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $kwitansi->user->name }}</td>
+                                    <td>{{ optional($kwitansi->user)->name }}</td>
                                     <td>{{ date('j F Y', strtotime($kwitansi->created_at)) }}</td>
                                     <td>{{ $kwitansi->nomor_kwitansi }}</td>
                                     <td>{{ $kwitansi->pembayaran }}</td>
