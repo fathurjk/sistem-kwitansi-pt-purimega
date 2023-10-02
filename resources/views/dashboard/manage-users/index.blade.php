@@ -113,9 +113,9 @@
                     @endforeach
                 </tbody>
             </table>
+            
         </div>
     </section>
-    @extends('dashboard.manage-users.pop-up.change-pass-admin')
     @extends('dashboard.manage-users.pop-up.addrole')
     @extends('dashboard.manage-users.pop-up.deleterole')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

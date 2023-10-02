@@ -46,11 +46,12 @@ Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel']
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('change-password');
 
 Route::get('/manage-users', [ManageUsersController::class, 'index'])->name('manage.users')->middleware('can:super admin');
 Route::get('/manage-users/create', [ManageUsersController::class, 'create'])->name('manage-users.create')->middleware('can:super admin');
 Route::post('/manage-users', [ManageUsersController::class, 'store'])->name('manage-users.store')->middleware('can:super admin');
+
+Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('change-password');
 
 Route::get('/manage-users/{id}/edit', [ManageUsersController::class, 'edit'])->name('manage-users.edit')->middleware('can:super admin');
 Route::put('/manage-users/{id}', [ManageUsersController::class, 'update'])->name('manage-users.update')->middleware('can:super admin');
