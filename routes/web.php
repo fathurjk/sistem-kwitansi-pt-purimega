@@ -20,13 +20,11 @@ use App\Models\Kwitansi;
 */
 
 Route::get('/', function () {
-
     $kwitansis = Kwitansi::get();
        
-   
-       return view('kwitansi.index', [
-           'kwitansis' => $kwitansis,
-       ]);
+    return view('kwitansi.index', [
+       'kwitansis' => $kwitansis,
+    ]);
    })->middleware('auth');
 
 Route::get('/dashboard', function () {
@@ -35,16 +33,15 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('can:super admin');
 
-
-Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi')->middleware('can:admin, super admin');
-Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create')->middleware('can:admin, super admin');
+Route::get('/kwitansi', [KwitansiController::class, 'index'])->name('kwitansi')->middleware('can:admin');
+Route::get('/kwitansi/create', [KwitansiController::class, 'create'])->name('kwitansi.create')->middleware('can:admin');
 Route::post('/kwitansi', [KwitansiController::class, 'store'])->name('kwitansi.store')->middleware('auth');
-Route::get('/kwitansi/detail/{kwitansi:id}', [KwitansiController::class, 'detail'])->name('kwitansi.detail')->middleware('auth');
+Route::get('/kwitansi/detail/{kwitansi:id}', [KwitansiController::class, 'detail'])->name('kwitansi.detail')->middleware('can:admin');
 Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])->name('kwitansi.edit')->middleware('can:super admin');
 Route::put('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'update'])->name('kwitansi.update')->middleware('can:super admin');
 Route::delete('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'destroy'])->name('kwitansi.destroy')->middleware('can:super admin');
-Route::get('/kwitansi/detail/{kwitansi:id}/print', [KwitansiController::class, 'print'])->name('kwitansi.print')->middleware('can:admin, super admin');
-Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel'])->middleware('can:admin, super admin');
+Route::get('/kwitansi/detail/{kwitansi:id}/print', [KwitansiController::class, 'print'])->name('kwitansi.print')->middleware('can:admin');
+Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel'])->middleware('can:admin');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.process');
@@ -54,6 +51,10 @@ Route::post('/change-password', [ChangePasswordController::class, 'update'])->na
 Route::get('/manage-users', [ManageUsersController::class, 'index'])->name('manage.users')->middleware('can:super admin');
 Route::get('/manage-users/create', [ManageUsersController::class, 'create'])->name('manage-users.create')->middleware('can:super admin');
 Route::post('/manage-users', [ManageUsersController::class, 'store'])->name('manage-users.store')->middleware('can:super admin');
+
+Route::get('/manage-users/{id}/edit', [ManageUsersController::class, 'edit'])->name('manage-users.edit')->middleware('can:super admin');
+Route::put('/manage-users/{id}', [ManageUsersController::class, 'update'])->name('manage-users.update')->middleware('can:super admin');
+
 Route::delete('/manage-users/{userId}', [ManageUsersController::class, 'destroy'])->name('manage-users.destroy')->middleware('can:super admin');
 Route::get('/manage-users/{userId}/', [ManageUsersController::class, 'addRole'])->name('add.role')->middleware('can:super admin');
 Route::post('/manage-users/{userId}/assign-role', [ManageUsersController::class, 'assignRole'])->name('assign.role')->middleware('can:super admin');

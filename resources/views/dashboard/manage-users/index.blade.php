@@ -27,6 +27,14 @@
                 {{ session()->get('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+
+        @endif
+        @if (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-center align-items-center"
+                role="alert" style="width: 25%;">
+                {{ session()->get('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 
         <h1 class="text-center" style="margin: 2.5rem 0 0 0"> <a href="{{ route('manage.users') }}"
@@ -80,10 +88,15 @@
                             </td>
                             <td
                                 style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                <a class="btn btn-edit-pencil" href="#" data-bs-toggle="modal"
+                                <!-- <a class="btn btn-edit-pencil" href="#" data-bs-toggle="modal"
                                     data-bs-target="#changePasswordAdminModal">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
+                                </a> -->
+
+                                <a class="btn btn-edit-pencil" href="{{ route('manage-users.edit', $user->id) }}">
+                                    <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                 </a>
+                            
                             </td>
                             <td>
                                 <a class="btn btn-edit-pencil" data-bs-toggle="modal" data-bs-target="#addRoleModal"
