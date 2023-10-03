@@ -13,9 +13,10 @@
     <div class="sheet wrapper"
         style="position: relative; display: flex; padding: 4rem 0 0 0; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh;">
         <div class="header text-center mb-5">
-          <img class="mb-4" src="{{ asset('img/logo.jpg') }}" alt="" width="60" height="60" style="margin-right: 8px">
-          <label style="font-size: 42px" for="">PT PURIMEGA SARANALAND</label>
-      </div>
+            <img class="login-logo" class="mb-4" src="{{ asset('img/logo.png') }}" alt="" width="80px"
+                height="80px" style="margin-right: 8px">
+            <label class="login-tittle" style="font-size: 42px; font-weight: 600" for="">PT PURIMEGA SARANALAND</label>
+        </div>
         <div class="col-md-4">
             @if (session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -33,7 +34,7 @@
 
             <form action="{{ route('login.process') }}" method="POST">
                 @csrf
-                
+
                 <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
                 <div class="form-floating">
@@ -69,3 +70,12 @@
 </script>
 
 </html>
+<style>
+    .header {
+        max-height: 7rem;
+        display: grid;
+        flex-grow: 1;
+        vertical-align: middle;
+        justify-items: center
+    }
+</style>
