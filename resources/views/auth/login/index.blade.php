@@ -14,7 +14,7 @@
         style="position: relative; display: flex; padding: 4rem 0 0 0; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh;">
         <div class="header text-center mb-5">
           <img class="mb-4" src="{{ asset('img/logo.jpg') }}" alt="" width="60" height="60" style="margin-right: 8px">
-          <label style="font-size: 42px" for="">PT SATRIYO MEGA SARANA</label>
+          <label style="font-size: 42px" for="">PT PURIMEGA SARANALAND</label>
       </div>
         <div class="col-md-4">
             @if (session()->has('success'))
