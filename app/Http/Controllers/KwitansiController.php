@@ -59,7 +59,7 @@ class KwitansiController extends Controller
             $nextNumber = 1;
         }
 
-        $serialNumber = 'SMS-' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
+        $serialNumber = 'PM-' . str_pad($nextNumber, 2, '0', STR_PAD_LEFT);
 
         return view('kwitansi.create', compact('serialNumber'));
     }
