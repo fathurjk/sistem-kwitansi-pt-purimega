@@ -33,6 +33,7 @@
                             @csrf
                             @method('PUT')
                         
+                            <a class="btn btn-back mb-3" href="/manage-users">Kembali</a>
                             <div class="form-group">
                                 <label for="name">Nama:</label>
                                 <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" required>
