@@ -16,10 +16,10 @@
                 aria-controls="offcanvasWithBothOptions">
                 <img src="{{ asset('icon/menu.svg') }}" alt="">
             </button>
-            <img class="logo-img" src="{{ asset('img/logoremove.png') }}" alt="Logo" width="30" height="24"
+            <img class="logo-img" src="{{ asset('img/logo.png') }}" alt="Logo" width="30" height="24"
                 class="d-inline-block align-text-top" style="margin-right: 10px;">
             <a class="navbar-brand" href="{{ route('kwitansi') }}" style="margin-top: 0;">
-                PT SATRIYO MEGA SARANA
+                PT PURIMEGA SARANALAND
             </a>
 
             <div class="profile d-flex align-items-center" style="margin-left: auto; margin-right: 20px">

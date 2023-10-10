@@ -161,6 +161,7 @@
             let noSortOrder = 1;
             let kwitansiSortOrder = 1;
             let namaSortOrder = 1;
+            // let tanggalSortOrder = 1;
 
             // Function to update the table with sorted data
             function updateTable(sortKey, sortOrder) {
@@ -200,6 +201,11 @@
                 namaSortOrder *= -1;
                 updateTable(2, namaSortOrder);
             });
+
+            // $("#sortTanggal").click(function() {
+            //     tanggalSortOrder *= -1;
+            //     updateTable(13, tanggalSortOrder);
+            // });
         });
     </script>
     <script>
