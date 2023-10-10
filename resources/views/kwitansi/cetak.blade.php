@@ -6,7 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cetak Kwitansi</title>
-        <link rel="icon" href="{{ asset('img/logoremove.png') }}">
+        <link rel="icon" href="{{ asset('img/logo.png') }}">
+        <script>
+            function goBack() {
+                history.back();
+            }
+        </script>
     </head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -33,14 +38,6 @@
 
         }
     </style>
-
-    <script>
-        function printKwitansi() {
-            window.print({
-                mode: 'portrait'
-            });
-        }
-    </script>
 
     <body>
         <div class="sheet wrapper"
@@ -340,57 +337,6 @@
                 </div>
             </div>
         </div>
-        <div class="button wrapper"
-            style="padding: 32px; position: relative; flex-direction: row; display: flex; justify-content: center; align-items: center">
-            <div
-                style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
-                <div style="flex: 1">
-                    <a style="width: 6rem" class="btn btn-back"
-                        href="{{ route('kwitansi.detail', $kwitansi->id) }}">Kembali</a>
-                </div>
-                <div style="flex: 1">
-                    <button type="button" style="width: 6rem;" class="btn btn-print"
-                        onclick="printKwitansi()" media="print">Cetak</button>
-                </div>
-            </div>
-        </div>
     </body>
 
     </html>
-    <style>
-        .btn-back {
-            background-color: #82bcde;
-            color: #404567;
-            border-radius: 0.3rem;
-        }
-
-        .btn-back:hover {
-            background-color: #5a8db6;
-            color: #ffffff;
-            border: 1px solid #82bcde;
-        }
-
-        .btn-print {
-            background-color: #f9d150;
-            color: #404567;
-            border-radius: 0.3rem;
-        }
-
-        .btn-print:hover {
-            background-color: #e5eae6;
-            color: #404567;
-            border: 1px solid #8e4761
-        }
-
-        .btn-edit {
-            background-color: #d96652;
-            color: #e9ecf1;
-            border-radius: 0.3rem
-        }
-
-        .btn-edit:hover {
-            background-color: #8e4761;
-            color: #e9ecf1;
-            border: 1px solid #f39c7d
-        }
-    </style>

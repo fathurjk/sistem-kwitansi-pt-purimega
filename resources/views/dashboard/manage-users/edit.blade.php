@@ -7,11 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Edit Akun</title>
-    <link rel="icon" href="{{ asset('img/logoremove.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
 </head>
 
 <body>
     @include('templates.navbar')
+    <div class="date-wrapper">
+        <label class="date float-end" style="font-weight: 500">
+            {{ date('l, j F Y') }}
+        </label>
+    </div>
     <div class="content-wrapper">
         <section class="wrapper" style="padding-bottom: 10rem; max-width: 1200px; margin: 0 auto;">
             <div class="container pt-8 pt-md-14">
@@ -26,8 +31,8 @@
 
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
                     <div class="col-lg-8 mx-auto">
-                        <div class="title-form mt-3 mb-4" id="title-form">
-                            <h1 class="h2">EDIT AKUN</h1>
+                        <div class="title-form mt-3 mb-4" style="padding-top: 0.2rem" id="title-form">
+                            <h1 style="">EDIT AKUN</h1>
                         </div>
                         <form method="POST" action="{{ route('manage-users.update', $user->id) }}">
                             @csrf
@@ -59,7 +64,7 @@
                                 <input type="password" name="new_password" id="new_password" class="form-control">
                             </div>
                         
-                            <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
+                            <button type="submit" class="btn btn-edit mt-3">Simpan Perubahan</button>
                         </form>
                         
                             </div>
@@ -178,36 +183,18 @@
             }
         }
     </script>
-    <footer>
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
-                Group</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    @extends('templates.footer')
 </body>
 
 </html>
 <style>
-    body {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
+    .date-wrapper {
+        margin:20px 32px 0 0;
     }
-
-    a {
-        color: #000;
-        text-decoration: none;
+    .date{
+        font-weight: 500; 
+        font-size: 14pt
     }
-
-    a:hover {
-        color: #8ba8d9;
-    }
-
-    /* Content */
-
     .content-wrapper {
         padding: 2rem;
     }
@@ -218,9 +205,8 @@
     }
 
     /* Form */
-
-    form {
-        margin-bottom: 2rem;
+    .form-group{
+        margin: 1rem 0 0.5rem 0
     }
 
     .form-control {
@@ -234,6 +220,17 @@
         background-color: #8e4761;
         color: #ffffff;
         border-radius: 0.3rem;
+    }
+
+    .btn-edit {
+        background-color: #d96652;
+        color: #e9ecf1;
+    }
+
+    .btn-edit:hover {
+        background-color: #8e4761;
+        color: #e9ecf1;
+        border: 1px solid #f39c7d
     }
 
     .btn-add:hover {
@@ -252,22 +249,6 @@
         background-color: #5a8db6;
         color: #ffffff;
         border: 1px solid #82bcde;
-    }
-
-    footer {
-        padding: 1rem;
-        background-color: #8ba8d9;
-        color: #fff;
-        text-align: center;
-    }
-
-    footer a {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    footer a:hover {
-        color: #ccc;
     }
 
     /* Custom */

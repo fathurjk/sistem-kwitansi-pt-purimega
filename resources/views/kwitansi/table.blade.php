@@ -3,6 +3,7 @@
         <tr class="bg-info">
             <th>No.</th>
             <th>No. Kwitansi</th>
+            <th>Tanggal</th>
             <th>Nama Lengkap</th>
             <th>Alamat</th>
             <th>No. HP</th>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $kwitansi->nomor_kwitansi }}</td>
+                <td>{{ date('j F Y', strtotime($kwitansi->created_at)) }}</td>
                 <td>{{ $kwitansi->nama_lengkap }}</td>
                 <td>{{ $kwitansi->alamat }}</td>
                 <td>{{ $kwitansi->no_hp }}</td>

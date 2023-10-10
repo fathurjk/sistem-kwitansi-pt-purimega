@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Detail Kwitansi</title>
-    <link rel="icon" href="{{ asset('img/logoremove.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -22,7 +22,7 @@
             <div class="content">
                 <div class="output kwitansi" style="text-align: right">
                     <div class="no-kwitansi" style="margin: 0px 8px 0 0" id="no-kwitansi">
-                        <label class="no" style="margin-right: 2px">No. Kwitansi:</label>
+                        <label class="no" style="margin-right: 2px">No:</label>
                         <label style="width: 4.5rem">{{ $kwitansi->nomor_kwitansi }}</label>
                     </div>
                 </div>
@@ -46,28 +46,24 @@
                     <label style="margin-left:">:</label>
                     <label style="margin-left: 0.2rem;">{{ $kwitansi->terbilang }}</label>
                 </div>
-                <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
-                    <div class="output" style="margin: 0 0 -1px 0px">
-                        <label style="width: 8rem;">Pembayaran</label>
-                        <label style="margin-left:">:</label>
-                        <label style="margin-left: 0.2rem; width: 15rem;">{{ $kwitansi->pembayaran }}</label>
-                    </div>
-                    @if (!empty($kwitansi->keterangan))
-                        <div class="output" style="margin: 0 0 -1px 0px">
-                            <label style="width: 5.3rem">Keterangan</label>
-                            <label>:</label>
-                            <label style="margin-left: 0.2rem; width: 10rem">{{ $kwitansi->keterangan }}</label>
-                        </div>
+                <div class="output" style="margin: 0 0 -1px 12px">
+                    <label style="width: 8rem;">Pembayaran</label>
+                    <label style="margin-left:">:</label>
+                    @if (in_array('Lain-lain', explode(', ', $kwitansi->pembayaran)))
+                        <label style="margin-left: 0.2rem;">{{ $kwitansi->lainlaininput }}</label>
+                    @else
+                        <label style="margin-left: 0.2rem;">{{ $kwitansi->pembayaran }}</label>
                     @endif
                 </div>
+
                 <div class="wrapper output radio" style="display: flex; margin: 0 0 -2px 12px">
                     <div class="output" style="margin: 0 0 -1px 0px">
-                        <label style="width: 8rem">Nama Perumahan</label>
+                        <label style="width: 8rem">Lokasi</label>
                         <label>:</label>
-                        <label style="margin-left: 0.2rem; width: 15rem">{{ $kwitansi->lokasi }}</label>
+                        <label style="margin-left: 0.2rem; width: 7rem">{{ $kwitansi->lokasi }}</label>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 0px">
-                        <label style="width: 5.3rem">Type</label>
+                        <label style="width: 2.5rem">Type</label>
                         <label>:</label>
                         <label style="margin-left: 0.2rem; width: 5rem">{{ $kwitansi->type }}</label>
                     </div>
@@ -82,7 +78,8 @@
                 <div class="output" style="display: flex; margin: 0 0 -1px 12px">
                     <label style="width: 8.3rem; margin: 0 0 -1px 0">Jumlah</label>
                     <label style="margin: 0 0 -1px 0">:</label>
-                    <label style="width: 10rem; margin: 0 0 -1px 6px">{{ $kwitansi->jumlah }}</label>
+                    <label style="margin: 0 4px -1px 6px"></label>
+                    <label style="width: 10rem; margin: 0 0 -1px 0">{{ $kwitansi->jumlah }}</label>
                     <div style="flex-grow: 1; text-align: right; margin: 0 0 -1px 0 ">
                         <label style="width: 15rem; margin-right: 8px;">Cirebon,
                             {{ date('j F Y', strtotime($kwitansi->created_at)) }}</label>
@@ -119,18 +116,19 @@
             <div
                 style="width: 21.59cm; text-align: center; display: flex; justify-content: space-between; align-items: center">
                 <div style="flex: 1">
-                    <a style="width: 6rem" class="btn btn-back" href="{{ route('kwitansi') }}">Kembali</a>
+                    <a style="width: 6rem" class="btn btn-back"
+                        href="{{ URL::previous() }}" onclick="">Kembali</a>
                 </div>
                 @can('super admin')
-                    <div style="flex: 1">
-                        <button style="width: 6rem" type="button"
-                            onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
-                            class="btn btn-edit">Edit</button>
-                    </div>
+                <div style="flex: 1">
+                    <button style="width: 6rem" type="button"
+                    onclick="window.location.href='{{ route('kwitansi.edit', $kwitansi->id) }}'"
+                    class="btn btn-edit">Edit</button>
+                </div>
                 @endcan
                 <div style="flex: 1">
-                    <a class="btn btn-print" style="width: 6rem;"
-                        href="{{ route('kwitansi.print', $kwitansi->id) }}">Cetak</a>
+                    <a class="btn btn-print" style="width: 6rem;" href="#"
+                        onclick="printKwitansi()">Cetak</a>
                 </div>
             </div>
         </div>
@@ -138,6 +136,16 @@
     @extends('templates.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+    <script>
+        function printKwitansi() {
+            // Buka halaman preview di jendela baru
+            var previewWindow = window.open('{{ route('kwitansi.print', $kwitansi->id) }}', '_blank');
+            // Setelah halaman dimuat, otomatis buka jendela cetak
+            previewWindow.onload = function() {
+                previewWindow.print();
+            };
+        }
     </script>
 </body>
 

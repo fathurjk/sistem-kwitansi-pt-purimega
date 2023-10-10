@@ -6,12 +6,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Kwitansi</title>
-    <link rel="icon" href="{{ asset('img/logoremove.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
 </head>
 
 <body>
     @include('templates.navbar')
-    <div class="date">
+    <div class="date-wrapper">
         <label class="date float-end" style="font-weight: 500">
             {{ date('l, j F Y') }}
         </label>
@@ -22,18 +22,18 @@
         </h1>
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row">
-                <div class="col">
-                    <a href="{{ route('kwitansi.create') }}" class="btn btn-add mb-1"
-                        style="margin-right: 24px">Tambah</a>
-                    <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-print mb-1" id="exportAllButton">Export
-                        To Excel (SemuaData)</a>
-                    <button type="button" class="btn btn-print" data-bs-toggle="modal" data-bs-target="#durationModal">
-                        Ekspor Dengan Durasi
-                    </button>
+                <div class="col" style="width: 30rem">
+                    <a href="{{ route('kwitansi.create') }}" class="btn btn-add mb-1" style="margin-right: 24px"><img
+                            class="add" src="{{ asset('icon/add_notes.svg') }}" alt=""> Tambah</a>
+                    <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-print mb-1" id="exportAllButton"><img
+                            src="{{ asset('icon/export_notes.svg') }}" alt=""> Export Semua Data</a>
+                    <a href="" class="btn btn-print mb-1" data-bs-toggle="modal" data-bs-target="#durationModal"
+                        id="exportAllButton"><img src="{{ asset('icon/calendar_clock.svg') }}" alt=""> Export
+                        Range Tanggal</a>
                 </div>
-                <div class="col" style="padding-left:50%">
-                    <form action="/kwitansi" method="GET" class="float-right">
-                        <div class="input-group" style="padding-left: ;">
+                <div class="col ml-auto" style="padding-left: 21%;">
+                    <form action="/kwitansi" method="GET">
+                        <div class="input-group">
                             <input type="search" style="border-top-right-radius: 0; border-bottom-right-radius: 0"
                                 class="form-control shadow-sm bg-body-tertiary" placeholder="Search..." name="search"
                                 value="{{ request('search') }}">
@@ -61,6 +61,7 @@
                         <th style="width: 2rem; justify-content: center; align-items: center; cursor: pointer; border-top-left-radius: 6px"
                             id="sortNo">No.</th>
                         <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
+                        <th style="width: 4.5rem; cursor: pointer;" id="sortTanggal">Tanggal</th>
                         <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
                         <th style="width: 10rem;">Alamat</th>
                         <th style="width: 4.5rem;">No. HP</th>
@@ -87,6 +88,7 @@
                             style="cursor: pointer;">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $kwitansi->nomor_kwitansi }}</td>
+                            <td>{{ date('j F Y', strtotime($kwitansi->created_at)) }}</td>
                             <td>{{ $kwitansi->nama_lengkap }}</td>
                             <td>{{ $kwitansi->alamat }}</td>
                             <td>{{ $kwitansi->no_hp }}</td>
@@ -123,38 +125,12 @@
             </div>
         </div>
     </section>
-
+    @extends('kwitansi.pop-up.date-picker')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
-
-
-    <div class="modal fade" id="durationModal" tabindex="-1" aria-labelledby="durationModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="durationModalLabel">Pilih Rentang Tanggal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="start_date" class="form-label">Start Date</label>
-                        <input type="date" class="form-control" id="start_date" name="start_date" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="end_date" class="form-label">End Date</label>
-                        <input type="date" class="form-control" id="end_date" name="end_date" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary" id="exportDurationModalButton">Ekspor</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Temukan elemen tombol ekspor di dalam modal
@@ -303,8 +279,13 @@
 </body>
 
 <style>
+    .date-wrapper {
+        margin: 20px 32px 0 0;
+    }
+
     .date {
-        margin-right: 16px;
+        font-weight: 500;
+        font-size: 14pt
     }
 
     body {
@@ -373,13 +354,19 @@
         background-color: #8e4761;
         color: #ffffff;
         border-radius: 0.3rem;
+        transition: all 0.3s ease;
     }
 
     .btn-add:hover {
         background-color: #acdff8;
         color: #8e4761;
-        border: 1px solid #8e4761
+        border: 1px solid #8e4761;
     }
+
+    .btn-add:hover img.add {
+        content: url('icon/add_noteshover.svg');
+    }
+
 
     .btn-print {
         background-color: #f9d150;

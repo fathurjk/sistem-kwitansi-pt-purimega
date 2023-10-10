@@ -7,18 +7,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Edit Kwitansi</title>
-    <link rel="icon" href="{{ asset('img/logoremove.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
 </head>
 
 <body>
     @include('templates.navbar')
+    <div class="date-wrapper">
+        <label class="date float-end" style="font-weight: 500">
+            {{ date('l, j F Y') }}
+        </label>
+    </div>
     <div class="content-wrapper">
         <section class="wrapper" style="padding-bottom: 10rem; max-width: 1200px; margin: 0 auto;">
             <div class="container pt-8 pt-md-14">
                 <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
                     <div class="col-lg-8 mx-auto">
                         <div class="title-form mt-3 mb-4" id="title-form">
-                            <h1 class="h2">EDIT KWITANSI</h1>
+                            <h1>EDIT KWITANSI</h1>
                         </div>
                         <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3">
                             @method('put')
@@ -339,8 +344,15 @@
 
 </html>
 <style>
+    .date-wrapper {
+        margin:20px 32px 0 0;
+    }
+    .date{
+        font-weight: 500; 
+        font-size: 14pt
+    }
     .content-wrapper {
-        padding: 2rem;
+        padding: 3rem 2rem 2rem 2rem;
     }
 
     .wrapper {
@@ -365,6 +377,7 @@
         background-color: #8e4761;
         color: #ffffff;
         border-radius: 0.3rem;
+        margin-top: 1rem
     }
 
     .btn-add:hover {
