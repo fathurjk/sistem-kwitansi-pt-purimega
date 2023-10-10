@@ -41,7 +41,12 @@ Route::get('/kwitansi/{kwitansi:id}/edit', [KwitansiController::class, 'edit'])-
 Route::put('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'update'])->name('kwitansi.update')->middleware('can:super admin');
 Route::delete('/kwitansi/{kwitansi:id}', [KwitansiController::class, 'destroy'])->name('kwitansi.destroy')->middleware('can:super admin');
 Route::get('/kwitansi/detail/{kwitansi:id}/print', [KwitansiController::class, 'print'])->name('kwitansi.print')->middleware('can:admin');
-Route::get('/kwitansi/export/excel', [KwitansiController::class, 'export_excel'])->middleware('can:admin');
+
+Route::get('/kwitansi/export/excel', [KwitansiController::class, 'exportExcel'])->middleware('can:admin');
+// Route::get('/kwitansi/export/excel-with-date', [KwitansiController::class, 'export_excel_with_date'])->middleware('can:admin');
+Route::get('/kwitansi/export/excel-with-date', [KwitansiController::class, 'exportExcel'])->middleware('can:admin');
+
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.process');

@@ -27,7 +27,6 @@
                 {{ session()->get('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-
         @endif
         @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-center align-items-center"
@@ -43,8 +42,9 @@
         <div class="input mb-2" style="padding-top: 1rem">
             <div class="row">
                 <div class="col">
-                    <a href="{{ route('manage-users.create') }}" class="btn btn-add mb-1"
-                        style="margin-right: 24px">Tambah</a>
+                    <a href="{{ route('manage-users.create') }}" class="btn btn-add mb-1" style="margin-right: 24px">
+                        <img class="add" style="width: 20px; height: 20px; margin-right: 8px"
+                            src="{{ asset('icon/user-plus.svg') }}" alt="">Tambah Admin</a>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
                                 <a class="btn btn-edit-pencil" href="{{ route('manage-users.edit', $user->id) }}">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                 </a>
-                            
+
                             </td>
                             <td>
                                 <a class="btn btn-edit-pencil" data-bs-toggle="modal" data-bs-target="#addRoleModal"
@@ -113,7 +113,7 @@
                     @endforeach
                 </tbody>
             </table>
-            
+
         </div>
     </section>
     @extends('dashboard.manage-users.pop-up.addrole')
@@ -158,13 +158,19 @@
         background-color: #8e4761;
         color: #ffffff;
         border-radius: 0.3rem;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
     }
 
-    .btn-add:hover {
+    .btn-add:hover img.add {
         background-color: #acdff8;
         color: #8e4761;
-        border: 1px solid #8e4761
+        content: url('icon/user-plushover.svg');
+        border-image-source: 0;
     }
+
 
     .btn-edit-pencil {
         background-color: #d96652;

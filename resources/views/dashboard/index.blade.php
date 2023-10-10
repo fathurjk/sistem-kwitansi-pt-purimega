@@ -89,7 +89,7 @@
         <!-- Content goes here -->
         <div class="container" style="margin-top: 4rem">
             <div class="col">
-                <h1 class="text-center" style="margin-bottom: 3rem">Dashboard</h1>
+                <h1 class="text-center" style="margin-bottom: 3rem">DASHBOARD</h1>
                 <div class="col" style="margin-left: 32px">
                     <table class="table table-hover table-striped text-center" id="kwitansi-table"
                         style="margin-bottom: 2rem">

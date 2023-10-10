@@ -18,14 +18,18 @@
     </div>
     <section class="kwitansi" style="padding: 1.5rem 24px 1.5rem 24px">
         <h1 class="text-center"> <a href="{{ route('kwitansi') }}" class="text-decoration-none"
-                style="color: black">List Kwitansi</a>
+                style="color: black">LIST KWITANSI</a>
         </h1>
         <div class="input mb-2" style="padding-top: 2rem">
             <div class="row">
                 <div class="col">
                     <a href="{{ route('kwitansi.create') }}" class="btn btn-add mb-1"
                         style="margin-right: 24px">Tambah</a>
-                    <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-print mb-1 ">Export To Excel</a>
+                    <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-print mb-1" id="exportAllButton">Export
+                        To Excel (SemuaData)</a>
+                    <button type="button" class="btn btn-print" data-bs-toggle="modal" data-bs-target="#durationModal">
+                        Ekspor Dengan Durasi
+                    </button>
                 </div>
                 <div class="col" style="padding-left:50%">
                     <form action="/kwitansi" method="GET" class="float-right">
@@ -120,11 +124,61 @@
         </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <div class="modal fade" id="durationModal" tabindex="-1" aria-labelledby="durationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="durationModalLabel">Pilih Rentang Tanggal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="end_date" class="form-label">End Date</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" id="exportDurationModalButton">Ekspor</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Temukan elemen tombol ekspor di dalam modal
+            const exportDurationModalButton = document.getElementById('exportDurationModalButton');
+
+            // Tambahkan penanganan acara klik
+            exportDurationModalButton.addEventListener('click', function() {
+                const startDate = document.getElementById('start_date').value;
+                const endDate = document.getElementById('end_date').value;
+
+                // Mengonversi tanggal ke format ISO (YYYY-MM-DD)
+                const isoStartDate = new Date(startDate).toISOString().split('T')[0];
+                const isoEndDate = new Date(endDate).toISOString().split('T')[0];
+
+                // Redirect ke URL ekspor dengan parameter tanggal
+                window.location.href =
+                    `{{ url('kwitansi/export/excel-with-date') }}?start_date=${isoStartDate}&end_date=${isoEndDate}`;
+
+                // Sembunyikan modal setelah pengguna mengklik tombol "Export"
+                const modal = new bootstrap.Modal(document.getElementById('durationModal'));
+                modal.hide();
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
             // Initialize sorting order for each column
@@ -244,6 +298,7 @@
             });
         });
     </script>
+
     @extends('templates.footer')
 </body>
 

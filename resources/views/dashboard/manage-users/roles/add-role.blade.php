@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <form action="{{ route('assign.role', $user->id) }}" method="POST">
         @csrf
         <div class="form-group">

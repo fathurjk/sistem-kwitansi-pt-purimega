@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PT PURIMEGA SARANALAND</title>
+    <title>PT SATRIYO MEGA SARANA</title>
     <div class="containerlogo">
         <div class="headerlogo row">
-            <img src=" {{ asset("/img/logo.png") }}">
+            <img src=" {{ asset("/img/logo.jpg") }}">
         </div>
         <div class="headerkonten">
-            <p class="tittle-kop">PT. PURIMEGA SARANALAND </p>
-            {{-- <p class="text">GENERAL CONTRACTOR - DEVELOPER - PERDAGANGAN UMUM
-            </p> --}}
+            <h1>PT. SATRIYO MEGA SARANA</h1>
+            <p class="text">GENERAL CONTRACTOR - DEVELOPER - PERDAGANGAN UMUM
+            </p>
             <p class="text">Jl. Setrayasa Barat 1 No. Kav 19 Kedungjaya Kedawung Cirebon 45135 Telp. (0231) 8807370</p>
         </div>
     </div>
@@ -21,14 +21,6 @@
 
 
 <style>
-    .tittle-kop{
-        font-size: 36px;
-        font-weight: 600;
-        padding: 0;
-        margin: 0;
-        letter-spacing: 0.5px
-    }
-
     .containerlogo{
         padding-top: 0;
         display: flex;
@@ -44,12 +36,11 @@
     }
 
     .headerlogo img {
-        height: 70px;
-        width: 90px;
+        height: 4.8rem;
+        width: 6rem;
         margin-right: 0px;
         align-items: center;
-        justify-content: center;
-        margin-top: 12px
+        justify-content: center
     }
 
     .headerkonten h1 {

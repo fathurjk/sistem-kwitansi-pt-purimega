@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Edit Kwitansi</title>
+    <title>Edit Akun</title>
     <link rel="icon" href="{{ asset('img/logoremove.png') }}">
 </head>
 
@@ -32,8 +32,8 @@
                         <form method="POST" action="{{ route('manage-users.update', $user->id) }}">
                             @csrf
                             @method('PUT')
-                        
                             <a class="btn btn-back mb-3" href="/manage-users">Kembali</a>
+                        
                             <div class="form-group">
                                 <label for="name">Nama:</label>
                                 <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" required>

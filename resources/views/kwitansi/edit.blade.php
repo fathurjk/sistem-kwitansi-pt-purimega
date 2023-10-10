@@ -23,7 +23,13 @@
                         <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3">
                             @method('put')
                             @csrf
-                            <a class="btn btn-back mb-3" href="/kwitansi">Kembali</a>
+                            <a class="btn btn-back mb-3" onclick="goBack()">Kembali</a>
+                            <script>
+                                // Fungsi untuk kembali ke halaman sebelumnya
+                                function goBack() {
+                                    window.history.back();
+                                }
+                            </script>
                             <div class="mb-3">
                                 <label for="nomor_kwitansi">No. Kwitansi :</label>
                                 <input type="text"
@@ -328,36 +334,11 @@
             }
         }
     </script>
-    <footer>
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="text-dark text-decoration-none" href="https://tamananggrekgroup.co.id/">Taman Anggrek
-                Group</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    @extends('templates.footer')
 </body>
 
 </html>
 <style>
-    body {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    a {
-        color: #000;
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: #8ba8d9;
-    }
-
-    /* Content */
-
     .content-wrapper {
         padding: 2rem;
     }
@@ -404,23 +385,6 @@
         border: 1px solid #82bcde;
     }
 
-    footer {
-        padding: 1rem;
-        background-color: #8ba8d9;
-        color: #fff;
-        text-align: center;
-    }
-
-    footer a {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    footer a:hover {
-        color: #ccc;
-    }
-
-    /* Custom */
 
     .title-form {
         font-size: 2rem;

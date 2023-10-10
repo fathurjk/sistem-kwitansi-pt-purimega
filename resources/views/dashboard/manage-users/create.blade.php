@@ -14,6 +14,11 @@
 
 <body>
     @include('templates.navbar')
+    <div class="date-wrapper">
+        <label class="date float-end">
+            {{ date('l, j F Y') }}
+        </label>
+    </div>
     <div class="content-wrapper">
         <section class="wrapper" style="padding-bottom: 3rem">
             <div class="container pt-8 pt-md-14">
@@ -84,6 +89,13 @@
 
 </html>
 <style>
+    .date-wrapper {
+        margin:20px 32px 0 0;
+    }
+    .date{
+        font-weight: 500; 
+        font-size: 14pt
+    }
 
     .content-wrapper {
         padding: 2rem 0 0 0;
