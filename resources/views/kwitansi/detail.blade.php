@@ -127,8 +127,8 @@
                 </div>
                 @endcan
                 <div style="flex: 1">
-                    <a class="btn btn-print" style="width: 6rem;" href="#"
-                        onclick="printKwitansi()">Cetak</a>
+                    <a class="btn btn-print" style="width: 8rem;" href="#"
+                        onclick="printKwitansi()"><img style="margin-right: 8px" src="{{ asset('icon/printer.svg') }}" alt=""> Cetak</a>
                 </div>
             </div>
         </div>
