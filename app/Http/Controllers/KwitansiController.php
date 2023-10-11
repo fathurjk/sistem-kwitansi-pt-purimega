@@ -50,8 +50,9 @@ class KwitansiController extends Controller
     }
 
     public function create()
-{
-    $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
+    {
+        // $this->authorize('super admin');
+        $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
 
     if ($lastSerialNumber) {
         $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 4);
@@ -62,13 +63,13 @@ class KwitansiController extends Controller
 
     $serialNumber = 'PM-' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT); // Menggunakan 5 digit atau lebih
 
-    return view('kwitansi.create', compact('serialNumber'));
-}
+        return view('kwitansi.create', compact('serialNumber'));
+    }
 
-public function store(Request $request)
-{
-    try {
-        $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
+    public function store(Request $request)
+    {
+        try {
+            $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
 
         if ($lastSerialNumber) {
             $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 4);
@@ -79,21 +80,40 @@ public function store(Request $request)
 
         $serialNumber = 'PM-' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT); // Menggunakan 5 digit atau lebih
 
-        // ...
-        // (Bagian validasi dan operasi lainnya tetap sama)
-        // ...
+            $validatedData = $request->validate([
+                'nama_lengkap' => 'required',
+                'alamat' => 'required',
+                'no_hp' => 'required',
+                'terbilang' => 'required',
+                'lokasi' => 'required',
+                'no_kavling' => 'required',
+                'type' => 'required',
+                'jumlah' => 'required',
+            ]);
 
-        Kwitansi::create($validatedData);
+            // Mengubah pilihan checkbox menjadi string yang dipisahkan oleh koma
+            $pembayaran = implode(', ', $request->input('pembayaran'));
 
-        $kwitansis = Kwitansi::latest()->get();
+            if ($request->has('keterangan') && !empty($request->input('keterangan'))) {
+                // Ambil data input "keterangan" dan tambahkan ke dalam kolom "keterangan" dalam database
+                $keterangan = $request->input('keterangan');
+                $validatedData['keterangan'] = $keterangan;
+            }
 
-        return redirect('/kwitansi');
-    } catch (Exception $e) {
-        session()->flash('error', $e->getMessage());
+            $validatedData['user_id'] = auth()->user()->id;
+            $validatedData['nomor_kwitansi'] = $serialNumber;
+            $validatedData['pembayaran'] = $pembayaran; // Menyimpan pilihan checkbox ke dalam kolom 'pembayaran'
 
-        return back();
+            // dd($validatedData);
+            Kwitansi::create($validatedData);
+
+            return redirect('/kwitansi');
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+
+            return back();
+        }
     }
-}
 
     public function detail($id)
     {
