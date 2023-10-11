@@ -30,7 +30,6 @@
     </div>
 </div>
 <style>
-    
     .offcanvas-body #menu li.nav-item {
         width: 92%;
         margin: 0 16px 10px 16px;
@@ -38,27 +37,32 @@
         align-items: center;
         font-size: 20px;
         vertical-align: middle;
+        transition: all 0.3s ease; /* Animasi semua perubahan selama 0.3 detik dengan efek ease */
     }
 
     .offcanvas-body #menu li.nav-item img {
         margin-right: 10px;
         height: 24px;
         width: 24px;
+        transition: all 0.3s ease; /* Animasi semua perubahan selama 0.3 detik dengan efek ease */
     }
 
     .offcanvas-body #menu li.nav-item:hover img.home {
-        content: url('icon/homehover.svg');
+        transform: scale(1.2); /* Perbesar gambar saat dihover */
     }
+
     .offcanvas-body #menu li.nav-item:hover img.article {
-        content: url('icon/articlehover.svg');
+        transform: scale(1.2); /* Perbesar gambar saat dihover */
     }
+
     .offcanvas-body #menu li.nav-item:hover img.user {
-        content: url('icon/userhover.svg');
+        transform: scale(1.2); /* Perbesar gambar saat dihover */
     }
 
     .offcanvas-body #menu li.nav-item a.nav-link:hover {
         background-color: #EDD9EB;
-        color: #0A58CA
+        color: #0A58CA;
+        transition: all 0.3s ease; /* Animasi semua perubahan selama 0.3 detik dengan efek ease */
     }
 
     .offcanvas-body #menu li.nav-item a.nav-link {
@@ -67,5 +71,6 @@
         display: flex;
         align-items: center;
         padding-left: 6px;
+        transition: all 0.3s ease; /* Animasi semua perubahan selama 0.3 detik dengan efek ease */
     }
 </style>
