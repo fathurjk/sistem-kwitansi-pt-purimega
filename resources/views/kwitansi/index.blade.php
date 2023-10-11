@@ -20,34 +20,44 @@
         <h1 class="text-center"> <a href="{{ route('kwitansi') }}" class="text-decoration-none"
                 style="color: black">LIST KWITANSI</a>
         </h1>
-        <div class="input mb-2" style="padding-top: 2rem">
-            <div class="row">
-                <div class="col" style="width: 30rem">
-                    <a href="{{ route('kwitansi.create') }}" class="btn btn-add mb-1" style="margin-right: 24px"><img
-                            class="add" src="{{ asset('icon/add_notes.svg') }}" alt=""> Tambah</a>
-                    <a href="{{ url('kwitansi/export/excel') }}" class="btn btn-print mb-1" id="exportAllButton"><img
-                            src="{{ asset('icon/export_notes.svg') }}" alt=""> Export Semua Data</a>
-                    <a href="" class="btn btn-print mb-1" data-bs-toggle="modal" data-bs-target="#durationModal"
-                        id="exportAllButton"><img src="{{ asset('icon/calendar_clock.svg') }}" alt=""> Export
-                        Range Tanggal</a>
-                </div>
-                <div class="col ml-auto" style="padding-left: 21%;">
-                    <form action="/kwitansi" method="GET">
-                        <div class="input-group">
-                            <input type="search" style="border-top-right-radius: 0; border-bottom-right-radius: 0"
-                                class="form-control shadow-sm bg-body-tertiary" placeholder="Search..." name="search"
-                                value="{{ request('search') }}">
-                            <div class="input-group-append" style="padding-left: 2px;">
-                                <button class="btn btn-primary"
-                                    style="border-top-left-radius: 0; border-bottom-left-radius: 0; padding: 4px"
-                                    type="submit"><img src="{{ asset('icon/search.svg') }}" alt=""></button>
-                            </div>
+        <div class="input" style="padding-top: 2rem">
+            <div class="d-flex justify-content-end mb-3">
+                <form action="/kwitansi" method="GET" class="me-2">
+                    <div class="input-group">
+                        <input type="search" class="form-control shadow-sm bg-body-tertiary" placeholder="Search..."
+                            name="search" value="{{ request('search') }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary shadow-sm" type="submit"
+                                style="border-top-left-radius: 0; border-bottom-left-radius: 0" title="Search Data">
+                                <img src="{{ asset('icon/search.svg') }}" alt="">
+                            </button>
                         </div>
-                    </form>
+                    </div>
+                </form>
+                <div class="btn-group me-2">
+                    <a href="{{ route('kwitansi.create') }}" class="btn btn-add shadow-sm" title="Tambah Kwitansi">
+                        <img class="add" src="{{ asset('icon/add_notes.svg') }}" alt="">
+                    </a>
+                </div>
+                <div class="btn-group me-2">
+                    <a href="#" class="btn btn-filter shadow-sm" id="filterButton" title="Filter Data">
+                        <img class="filter" src="{{ asset('icon/filter.svg') }}" alt="">
+                    </a>
+                </div>
+                <div class="btn-group me-2">
+                    <button type="button" class="btn btn-print dropdown-toggle shadow-sm" data-bs-toggle="dropdown"
+                        aria-expanded="false" title="Export Data Excel">
+                        <img src="{{ asset('icon/export_notes.svg') }}" alt="">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url('kwitansi/export/excel') }}">Export Semua Data</a>
+                        </li>
+                        <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#durationModal">Export
+                                Range Tanggal</button></li>
+                    </ul>
                 </div>
             </div>
         </div>
-
         @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ session()->get('error') }}
@@ -102,7 +112,7 @@
                             @can('super admin')
                                 <td
                                     style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                    <a class="btn btn-edit-pencil" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
+                                    <a class="btn btn-edit-pencil" title="Edit Data Kwitansi" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
                                         <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                     </a>
 
@@ -110,7 +120,7 @@
                                         class="d-inline-grid">
                                         @method('delete')
                                         @csrf
-                                        <button class="btn btn-delete" onclick="return confirm('Are you sure?')"
+                                        <button class="btn btn-delete" title="Hapus Kwitansi" onclick="return confirm('Hapus Data Kwitansi?')"
                                             style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
                                             <img src="{{ asset('icon/trash3.svg') }}" alt="">
                                         </button>
@@ -126,10 +136,34 @@
         </div>
     </section>
     @extends('kwitansi.pop-up.date-picker')
+    @extends('kwitansi.pop-up.filter-date-picker')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButton = document.getElementById('filterButton');
+            const filterDatePickerModal = new bootstrap.Modal(document.getElementById('filterDatePickerModal'));
+
+            filterButton.addEventListener('click', function() {
+                filterDatePickerModal.show();
+            });
+
+            const filterDatePickerModalButton = document.getElementById('filterDatePickerModalButton');
+            filterDatePickerModalButton.addEventListener('click', function() {
+                // Ambil nilai tanggal dari input date picker
+                const startDate = document.getElementById('start_date_filter').value;
+                const endDate = document.getElementById('end_date_filter').value;
+
+                // Lakukan operasi atau pengiriman data ke server sesuai dengan kebutuhan Anda
+                
+
+                // Sembunyikan modal setelah mengambil nilai tanggal
+                filterDatePickerModal.hide();
+            });
+        });
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -368,6 +402,23 @@
 
     .btn-add:hover img.add {
         content: url('icon/add_noteshover.svg');
+    }
+
+    .btn-filter {
+        background-color: #8e4761;
+        color: #ffffff;
+        border-radius: 0.3rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-filter:hover {
+        background-color: #acdff8;
+        color: #8e4761;
+        border: 1px solid #8e4761;
+    }
+
+    .btn-filter:hover img.filter {
+        content: url('icon/filterhover.svg');
     }
 
 

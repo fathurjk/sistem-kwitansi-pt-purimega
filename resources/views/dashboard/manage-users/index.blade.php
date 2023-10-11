@@ -88,27 +88,20 @@
                             </td>
                             <td
                                 style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                <!-- <a class="btn btn-edit-pencil" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#changePasswordAdminModal">
-                                    <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
-                                </a> -->
-
-                                <a class="btn btn-edit-pencil" href="{{ route('manage-users.edit', $user->id) }}">
+                                <a class="btn btn-edit-pencil" title="Ubah Data Admin" href="{{ route('manage-users.edit', $user->id) }}">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                 </a>
-
                             </td>
                             <td>
-                                <a class="btn btn-edit-pencil" data-bs-toggle="modal" data-bs-target="#addRoleModal"
+                                <a class="btn btn-edit-pencil" title="Ubah Role Admin" data-bs-toggle="modal" data-bs-target="#addRoleModal"
                                     href="">
                                     <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
                                 </a>
-                                <a class="btn btn-delete" data-bs-toggle="modal" data-bs-target="#deleteRoleModal"
+                                <a class="btn btn-delete" title="Hapus Role Admin" data-bs-toggle="modal" data-bs-target="#deleteRoleModal"
                                     style="border-radius: 100%" href=""><img
                                         src="{{ asset('icon/trash3.svg') }}" alt="">
                                 </a>
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>

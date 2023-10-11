@@ -37,15 +37,15 @@ class KwitansiController extends Controller
                 ->orWhere('no_kavling', 'LIKE', '%' . $search . '%')
                 ->orWhere('type', 'LIKE', '%' . $search . '%')
                 ->orWhere('jumlah', 'LIKE', '%' . $search . '%');
-        })->get();
+        })
+            ->orderBy('created_at', 'desc') // Menyortir berdasarkan tanggal pembuatan (created_at) dari yang terbaru ke yang terlama
+            ->get();
 
         if ($kwitansis->count() == 0) {
             session()->flash('error', 'Kwitansi tidak ditemukan');
             return redirect('/kwitansi');
         }
 
-        $kwitansis = Kwitansi::latest()->get();
-        
         return view('kwitansi.index', [
             'kwitansis' => $kwitansis,
         ]);
@@ -56,14 +56,14 @@ class KwitansiController extends Controller
         // $this->authorize('super admin');
         $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
 
-    if ($lastSerialNumber) {
-        $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 3);
-        $nextNumber = $lastNumber + 1;
-    } else {
-        $nextNumber = 1;
-    }
+        if ($lastSerialNumber) {
+            $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 3);
+            $nextNumber = $lastNumber + 1;
+        } else {
+            $nextNumber = 1;
+        }
 
-    $serialNumber = 'PM-' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT); // Menggunakan 5 digit atau lebih
+        $serialNumber = 'PM-' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT); // Menggunakan 5 digit atau lebih
 
         return view('kwitansi.create', compact('serialNumber'));
     }
@@ -73,14 +73,14 @@ class KwitansiController extends Controller
         try {
             $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
 
-        if ($lastSerialNumber) {
-            $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 3);
-            $nextNumber = $lastNumber + 1;
-        } else {
-            $nextNumber = 1;
-        }
+            if ($lastSerialNumber) {
+                $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 3);
+                $nextNumber = $lastNumber + 1;
+            } else {
+                $nextNumber = 1;
+            }
 
-        $serialNumber = 'PM-' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT); // Menggunakan 5 digit atau lebih
+            $serialNumber = 'PM-' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT); // Menggunakan 5 digit atau lebih
 
             $validatedData = $request->validate([
                 'nama_lengkap' => 'required',
@@ -211,7 +211,7 @@ class KwitansiController extends Controller
 
         // Debug: Tampilkan nilai start_date dan end_date
         // dd($startDate, $endDate); // Hapus pernyataan ini setelah selesai debugging
-        
+
         if ($request->has('start_date') && $request->has('end_date')) {
             // Ekspor data kwitansi dengan rentang tanggal
             return Excel::download(new ExportKwitansiWithDate($startDate, $endDate), 'Kwitansi.xlsx');
