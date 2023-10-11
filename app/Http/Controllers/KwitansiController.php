@@ -44,6 +44,8 @@ class KwitansiController extends Controller
             return redirect('/kwitansi');
         }
 
+        $kwitansis = Kwitansi::latest()->get();
+        
         return view('kwitansi.index', [
             'kwitansis' => $kwitansis,
         ]);
