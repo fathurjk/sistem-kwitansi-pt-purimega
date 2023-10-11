@@ -161,7 +161,7 @@
             let noSortOrder = 1;
             let kwitansiSortOrder = 1;
             let namaSortOrder = 1;
-            // let tanggalSortOrder = 1;
+            let tanggalSortOrder = 1;
 
             // Function to update the table with sorted data
             function updateTable(sortKey, sortOrder) {
@@ -172,13 +172,21 @@
                     const aValue = $(a).find("td").eq(sortKey).text();
                     const bValue = $(b).find("td").eq(sortKey).text();
 
-                    if (sortKey === 1 || sortKey === 2) {
-                        // Convert values to lowercase for case-insensitive sorting
-                        return sortOrder * aValue.toLowerCase().localeCompare(bValue.toLowerCase());
+                    if (sortKey === 1) {
+                        // Sorting No. Kwitansi
+                        return sortOrder * aValue.localeCompare(bValue);
+                    } else if (sortKey === 2) {
+                        // Sorting Tanggal
+                        const dateA = new Date(aValue.replace(/-/g, '/'));
+                        const dateB = new Date(bValue.replace(/-/g, '/'));
+                        return sortOrder * (dateA - dateB);
+                    } else if (sortKey === 3) {
+                        // Sorting Nama Lengkap
+                        return sortOrder * aValue.localeCompare(bValue);
+                    } else {
+                        // Sorting other columns as numbers
+                        return sortOrder * (parseFloat(aValue) - parseFloat(bValue));
                     }
-
-                    // Sort as numbers
-                    return sortOrder * (parseFloat(aValue) - parseFloat(bValue));
                 });
 
                 $table.empty().append($rows);
@@ -202,10 +210,11 @@
                 updateTable(2, namaSortOrder);
             });
 
-            // $("#sortTanggal").click(function() {
-            //     tanggalSortOrder *= -1;
-            //     updateTable(13, tanggalSortOrder);
-            // });
+            // Handle click event for sorting by Tanggal
+            $("#sortTanggal").click(function() {
+                tanggalSortOrder *= -1;
+                updateTable(3, tanggalSortOrder);
+            });
         });
     </script>
     <script>
