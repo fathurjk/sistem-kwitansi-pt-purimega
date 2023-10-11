@@ -55,7 +55,7 @@ class KwitansiController extends Controller
         $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
 
     if ($lastSerialNumber) {
-        $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 4);
+        $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 3);
         $nextNumber = $lastNumber + 1;
     } else {
         $nextNumber = 1;
@@ -72,7 +72,7 @@ class KwitansiController extends Controller
             $lastSerialNumber = Kwitansi::latest('nomor_kwitansi')->first();
 
         if ($lastSerialNumber) {
-            $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 4);
+            $lastNumber = (int) substr($lastSerialNumber->nomor_kwitansi, 3);
             $nextNumber = $lastNumber + 1;
         } else {
             $nextNumber = 1;
