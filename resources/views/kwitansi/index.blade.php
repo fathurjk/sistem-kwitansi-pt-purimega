@@ -61,7 +61,7 @@
                         <th style="width: 2rem; justify-content: center; align-items: center; cursor: pointer; border-top-left-radius: 6px"
                             id="sortNo">No.</th>
                         <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
-                        <th style="width: 4.5rem; cursor: pointer;" id="sortTanggal">Tanggal</th>
+                        <th style="width: 4.5rem;">Tanggal</th>
                         <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
                         <th style="width: 10rem;">Alamat</th>
                         <th style="width: 4.5rem;">No. HP</th>
@@ -161,7 +161,6 @@
             let noSortOrder = 1;
             let kwitansiSortOrder = 1;
             let namaSortOrder = 1;
-            let tanggalSortOrder = 1;
 
             // Function to update the table with sorted data
             function updateTable(sortKey, sortOrder) {
@@ -175,11 +174,6 @@
                     if (sortKey === 1) {
                         // Sorting No. Kwitansi
                         return sortOrder * aValue.localeCompare(bValue);
-                    } else if (sortKey === 2) {
-                        // Sorting Tanggal
-                        const dateA = new Date(aValue.replace(/-/g, '/'));
-                        const dateB = new Date(bValue.replace(/-/g, '/'));
-                        return sortOrder * (dateA - dateB);
                     } else if (sortKey === 3) {
                         // Sorting Nama Lengkap
                         return sortOrder * aValue.localeCompare(bValue);
@@ -207,13 +201,7 @@
             // Handle click event for sorting by Nama Lengkap
             $("#sortNama").click(function() {
                 namaSortOrder *= -1;
-                updateTable(2, namaSortOrder);
-            });
-
-            // Handle click event for sorting by Tanggal
-            $("#sortTanggal").click(function() {
-                tanggalSortOrder *= -1;
-                updateTable(3, tanggalSortOrder);
+                updateTable(3, namaSortOrder);
             });
         });
     </script>
