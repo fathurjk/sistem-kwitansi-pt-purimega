@@ -37,32 +37,35 @@
         align-items: center;
         font-size: 20px;
         vertical-align: middle;
-        transition: all 0.3s ease; /* Animasi semua perubahan selama 0.3 detik dengan efek ease */
+        transition: all 0.3s ease;
     }
 
     .offcanvas-body #menu li.nav-item img {
         margin-right: 10px;
         height: 24px;
         width: 24px;
-        transition: all 0.3s ease; /* Animasi semua perubahan selama 0.3 detik dengan efek ease */
+        transition: all 0.3s ease;
     }
 
     .offcanvas-body #menu li.nav-item:hover img.home {
-        transform: scale(1.2); /* Perbesar gambar saat dihover */
+        transform: scale(1.2);
+        content: url('icon/homehover.svg');
     }
 
     .offcanvas-body #menu li.nav-item:hover img.article {
-        transform: scale(1.2); /* Perbesar gambar saat dihover */
+        transform: scale(1.2);
+        content: url('icon/articlehover.svg');
     }
 
     .offcanvas-body #menu li.nav-item:hover img.user {
-        transform: scale(1.2); /* Perbesar gambar saat dihover */
+        transform: scale(1.2);
+        content: url('icon/userhover.svg');
     }
 
     .offcanvas-body #menu li.nav-item a.nav-link:hover {
         background-color: #EDD9EB;
         color: #0A58CA;
-        transition: all 0.3s ease; /* Animasi semua perubahan selama 0.3 detik dengan efek ease */
+        transition: all 0.3s ease;
     }
 
     .offcanvas-body #menu li.nav-item a.nav-link {
@@ -71,6 +74,6 @@
         display: flex;
         align-items: center;
         padding-left: 6px;
-        transition: all 0.3s ease; /* Animasi semua perubahan selama 0.3 detik dengan efek ease */
+        transition: all 0.3s ease;
     }
 </style>
