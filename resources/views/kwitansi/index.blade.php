@@ -146,25 +146,27 @@
         document.addEventListener('DOMContentLoaded', function() {
             const filterButton = document.getElementById('filterButton');
             const filterDatePickerModal = new bootstrap.Modal(document.getElementById('filterDatePickerModal'));
-
+    
             filterButton.addEventListener('click', function() {
                 filterDatePickerModal.show();
             });
-
+    
             const filterDatePickerModalButton = document.getElementById('filterDatePickerModalButton');
             filterDatePickerModalButton.addEventListener('click', function() {
                 // Ambil nilai tanggal dari input date picker
                 const startDate = document.getElementById('start_date_filter').value;
                 const endDate = document.getElementById('end_date_filter').value;
-
+    
                 // Lakukan operasi atau pengiriman data ke server sesuai dengan kebutuhan Anda
-                
-
+                // Misalnya, Anda bisa membuat permintaan AJAX ke server dengan tanggal filter.
+    
                 // Sembunyikan modal setelah mengambil nilai tanggal
                 filterDatePickerModal.hide();
             });
         });
     </script>
+    
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Temukan elemen tombol ekspor di dalam modal
@@ -195,16 +197,16 @@
             let noSortOrder = 1;
             let kwitansiSortOrder = 1;
             let namaSortOrder = 1;
-
-            // Function to update the table with sorted data
+    
+            // Function to update the entire table with sorted data
             function updateTable(sortKey, sortOrder) {
                 const $table = $("table tbody");
                 const $rows = $table.find("tr").get();
-
+    
                 $rows.sort(function(a, b) {
                     const aValue = $(a).find("td").eq(sortKey).text();
                     const bValue = $(b).find("td").eq(sortKey).text();
-
+    
                     if (sortKey === 1) {
                         // Sorting No. Kwitansi
                         return sortOrder * aValue.localeCompare(bValue);
@@ -216,22 +218,22 @@
                         return sortOrder * (parseFloat(aValue) - parseFloat(bValue));
                     }
                 });
-
+    
                 $table.empty().append($rows);
             }
-
+    
             // Handle click event for sorting by No
             $("#sortNo").click(function() {
                 noSortOrder *= -1;
                 updateTable(0, noSortOrder);
             });
-
+    
             // Handle click event for sorting by No. Kwitansi
             $("#sortKwitansi").click(function() {
                 kwitansiSortOrder *= -1;
                 updateTable(1, kwitansiSortOrder);
             });
-
+    
             // Handle click event for sorting by Nama Lengkap
             $("#sortNama").click(function() {
                 namaSortOrder *= -1;
@@ -239,6 +241,7 @@
             });
         });
     </script>
+    
     <script>
         $(document).ready(function() {
             // Function to initialize the table with the specified number of items per page
