@@ -243,76 +243,65 @@
     </script>
     
     <script>
-        $(document).ready(function() {
-            // Function to initialize the table with the specified number of items per page
-            function initializeTable() {
-                const table = $("#kwitansi-table");
-                const itemsPerPage = 11; // Jumlah item per halaman
+$(document).ready(function() {
+    // Ambil data dari server dan simpan dalam variabel JavaScript
+    const kwitansis = @json($kwitansis);
 
-                // Hide all rows in the table, except the header
-                table.find("tr").not("thead tr").hide();
+    // Inisialisasi jumlah item per halaman
+    const itemsPerPage = 10;
 
-                // Show the rows for the current page
-                table.find("tr:lt(" + itemsPerPage + ")").show();
+    // Menghitung total halaman berdasarkan data dan jumlah item per halaman
+    const totalPages = Math.ceil(kwitansis.length / itemsPerPage);
+
+    // Menginisialisasi tabel
+    function initializeTable() {
+        updateTable(1); // Menampilkan halaman pertama
+    }
+
+    // Function untuk menampilkan item pada halaman yang dipilih
+    function updateTable(page) {
+        // Menghitung indeks awal dan akhir untuk item pada halaman yang dipilih
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        // Menghapus semua baris, kecuali header
+        table.find("tr").not("thead tr").remove();
+
+        // Menambahkan baris sesuai dengan halaman yang dipilih
+        for (let i = startIndex; i < endIndex; i++) {
+            if (i < kwitansis.length) {
+                const kwitansi = kwitansis[i];
+                const newRow = `<tr>
+                    <td>${i + 1}</td>
+                    <td>${kwitansi.nomor_kwitansi}</td>
+                    <td>${kwitansi.nama_lengkap}</td>
+                    <!-- Tambahkan kolom lain sesuai kebutuhan -->
+                </tr>`;
+                table.append(newRow);
             }
+        }
+    }
 
-            // Initialize the table when the document is ready
-            initializeTable();
+    // Menghandle klik pada tombol pagination
+    pagination.on("click", "a", function() {
+        const newPage = parseInt($(this).text());
 
-            // Get the table element
-            const table = $("#kwitansi-table");
+        // Jika halaman yang dipilih berbeda dari halaman saat ini
+        if (newPage !== currentPage) {
+            currentPage = newPage;
 
-            // Get the pagination element
-            const pagination = $(".pagination");
+            // Update tombol pagination yang aktif
+            pagination.find("a").removeClass("active");
+            $(this).addClass("active");
 
-            // Set the initial page number
-            let currentPage = 1;
+            // Menampilkan item pada halaman yang dipilih
+            updateTable(currentPage);
+        }
+    });
 
-            // Set the number of items per page
-            const itemsPerPage = 10;
-
-            // Calculate the total number of pages
-            const totalData = {{ $kwitansis->count() }}; // Ganti dengan jumlah data yang sesungguhnya
-            const totalPages = Math.ceil(totalData / itemsPerPage);
-
-            // Generate initial pagination buttons
-            for (let i = 1; i <= totalPages; i++) {
-                pagination.append(`<a href="#" class="${i === 1 ? 'active' : ''}">${i}</a>`);
-            }
-
-            // Function to hide and show rows based on the current page
-            function updateTableRows() {
-                // Hide all rows in the table, except the header
-                table.find("tr").not("thead tr").hide();
-
-                // Show the rows for the current page
-                const startIdx = (currentPage - 1) * itemsPerPage;
-                const endIdx = startIdx + itemsPerPage;
-                table.find("tr").slice(startIdx, endIdx).show();
-            }
-
-            // **Add the header to the table**
-            table.append(table.find("thead"));
-
-            // Handle click event for pagination buttons
-            pagination.on("click", "a", function() {
-                // Get the clicked page number
-                const newPage = parseInt($(this).text());
-
-                // If the clicked page number is different from the current page number
-                if (newPage !== currentPage) {
-                    // Update the current page number
-                    currentPage = newPage;
-
-                    // Update the active pagination button
-                    pagination.find("a").removeClass("active");
-                    $(this).addClass("active");
-
-                    // Update the table rows
-                    updateTableRows();
-                }
-            });
-        });
+    // Menginisialisasi tabel saat dokumen siap
+    initializeTable();
+});
     </script>
 
     @extends('templates.footer')
