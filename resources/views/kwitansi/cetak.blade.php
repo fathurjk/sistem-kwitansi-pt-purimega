@@ -42,14 +42,14 @@
     <body>
         <div class="sheet wrapper"
             style="position: relative; display: flex; padding: 0; flex-direction: column; justify-content: center; align-items: center;">
-            <div class="content wrapper"
+            <div class="content wrapper mt-3"
                 style="background-image: url('/img/konsumen.png'); width: 21.59cm; height: 10.8cm; padding: 0 24px 0px 24px; border-bottom: 1px solid; border-bottom-style: dashed">
                 @include('templates.headerCetak')
                 <div class="content">
                     <div class="output kwitansi" style="text-align: right">
                         <div class="no-kwitansi" style="margin: 0px 8px 0 0" id="no-kwitansi">
                             <label class="no" style="margin-right: 2px">No. Kwitansi:</label>
-                            <label style="width: 4.5rem">{{ $kwitansi->nomor_kwitansi }}</label>
+                            <label style="width: 7rem">{{ $kwitansi->nomor_kwitansi }}</label>
                         </div>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 12px">
@@ -140,14 +140,14 @@
                     </div>
                 </div>
             </div>
-            <div class="content wrapper"
+            <div class="content wrapper mt-2"
                 style="background-image: url('/img/kasir.png'); width: 21.59cm; height: 10.9cm; padding: 3pt 24px 0px 24px; border-bottom: 1px solid; border-bottom-style: dashed">
                 @include('templates.headerCetak')
                 <div class="content">
                     <div class="output kwitansi" style="text-align: right">
                         <div class="no-kwitansi" style="margin: 0px 8px 0 0" id="no-kwitansi">
                             <label class="no" style="margin-right: 2px">No. Kwitansi:</label>
-                            <label style="width: 4.5rem">{{ $kwitansi->nomor_kwitansi }}</label>
+                            <label style="width: 7rem">{{ $kwitansi->nomor_kwitansi }}</label>
                         </div>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 12px">
@@ -238,14 +238,14 @@
                     </div>
                 </div>
             </div>
-            <div class="content wrapper"
+            <div class="content wrapper mt-2"
                 style="background-image: url('/img/keuangan.png'); width: 21.59cm; height: 10.9cm; padding: 3pt 24px 0px 24px;">
                 @include('templates.headerCetak')
                 <div class="content">
                     <div class="output kwitansi" style="text-align: right">
                         <div class="no-kwitansi" style="margin: 0px 8px 0 0" id="no-kwitansi">
                             <label class="no" style="margin-right: 2px">No. Kwitansi:</label>
-                            <label style="width: 4.5rem">{{ $kwitansi->nomor_kwitansi }}</label>
+                            <label style="width: 7rem">{{ $kwitansi->nomor_kwitansi }}</label>
                         </div>
                     </div>
                     <div class="output" style="margin: 0 0 -1px 12px">

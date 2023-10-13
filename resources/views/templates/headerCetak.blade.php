@@ -9,7 +9,8 @@
             <img src=" {{ asset("/img/logo.png") }}">
         </div>
         <div class="headerkonten">
-            <h1>PT. PURIMEGA SARANALAND</h1>
+            <h1 class="header-tittle">PT. PURIMEGA SARANALAND</h1>
+            <p class="text">Jl. Setrayasa Barat 1 No. Kav 19 Kedungjaya Kedawung Cirebon 45135 Telp. (0231) 8807370</p>
         </div>
     </div>
     <div class="divider"></div>
@@ -40,10 +41,11 @@
         justify-content: center
     }
 
-    .headerkonten h1 {
+    .headerkonten h1.header-tittle {
         margin: 0 0 -4px 0;
         padding: 0;
-        font-size: 24pt
+        font-size: 24pt;
+        margin-bottom: 12px
     }
 
     .headerkonten{
