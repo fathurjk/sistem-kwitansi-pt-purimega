@@ -242,8 +242,8 @@
         });
     </script>
     
-    <script>
-$(document).ready(function() {
+<script>
+    $(document).ready(function() {
     // Ambil data dari server dan simpan dalam variabel JavaScript
     const kwitansis = @json($kwitansis);
 
@@ -301,8 +301,8 @@ $(document).ready(function() {
 
     // Menginisialisasi tabel saat dokumen siap
     initializeTable();
-});
-    </script>
+    });
+</script>
 
     @extends('templates.footer')
 </body>
