@@ -41,15 +41,13 @@ class KwitansiController extends Controller
             ->orderBy('created_at', 'desc') // Menyortir berdasarkan tanggal pembuatan (created_at) dari yang terbaru ke yang terlama
             ->get();
 
-        if ($kwitansis->count() == 0) {
-            session()->flash('error', 'Kwitansi tidak ditemukan');
-            return redirect('/kwitansi');
+            if ($kwitansis->isEmpty()) {
+                session()->flash('error', 'Aset tidak ditemukan');
+                return view('kwitansi.index', ['kwitansis' => $kwitansis]);
+            }
+        
+            return view('kwitansi.index', ['kwitansis' => $kwitansis]);
         }
-
-        return view('kwitansi.index', [
-            'kwitansis' => $kwitansis,
-        ]);
-    }
 
     public function create()
     {
