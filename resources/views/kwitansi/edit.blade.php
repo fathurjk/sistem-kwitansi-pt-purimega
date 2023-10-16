@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Edit Kwitansi</title>
+    <title>Edit Kwitansi {{ $kwitansi->nama_lengkap }}</title>
     <link rel="icon" href="{{ asset('img/logo.png') }}">
 </head>
 
@@ -188,8 +188,7 @@
                             </div>
                             <div class="col mb-3 mt-3" id="keteranganRow" style="display: none;">
                                 <label for="keterangan">Keterangan</label>
-                                <input type="text"
-                                    class="form-control @error('keterangan') is-invalid @enderror"
+                                <input type="text" class="form-control @error('keterangan') is-invalid @enderror"
                                     id="keterangan" name="keterangan"
                                     value="{{ old('keterangan', $kwitansi->keterangan) }}">
                                 @error('keterangan')
@@ -235,39 +234,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
-    <script>
-        // Dapatkan elemen checkbox "Lain-lain" berdasarkan ID
-        var lainlainCheckbox = document.getElementById('lainlain');
 
-        // Dapatkan elemen row "keterangan" berdasarkan ID
-        var keteranganRow = document.getElementById('keteranganRow');
-
-        // Tambahkan event listener ke checkbox "Lain-lain"
-        lainlainCheckbox.addEventListener('change', function() {
-            // Jika checkbox "Lain-lain" dicentang, tampilkan input "keterangan"
-            if (this.checked) {
-                keteranganRow.style.display = 'block';
-            } else {
-                // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan input "keterangan" dan hapus isinya
-                keteranganRow.style.display = 'none';
-                document.getElementById('keterangan').value = '';
-            }
-        });
-    </script>
     <script>
         var angsuranCheckbox = document.getElementById('angsuran');
-
+        var lainlainCheckbox = document.getElementById('lainlain');
         var keteranganRow = document.getElementById('keteranganRow');
 
-        angsuranCheckbox.addEventListener('change', function() {
-            if (this.checked) {
+        // Periksa status checkbox saat halaman dimuat
+        handleCheckboxChange();
+
+        // Fungsi untuk menangani perubahan pada checkbox "Lain-lain" dan "Angsuran ke"
+        function handleCheckboxChange() {
+            // Jika salah satu checkbox dipilih, tampilkan form keterangan
+            if (angsuranCheckbox.checked || lainlainCheckbox.checked) {
                 keteranganRow.style.display = 'block';
             } else {
+                // Jika tidak ada checkbox yang dipilih, sembunyikan form keterangan
                 keteranganRow.style.display = 'none';
                 document.getElementById('keterangan').value = '';
             }
+        }
+
+        // Tambahkan event listener ke kedua checkbox
+        lainlainCheckbox.addEventListener('change', function() {
+            // Saat checkbox "Lain-lain" berubah, pastikan form keterangan tetap terbuka
+            handleCheckboxChange();
+            // Jika checkbox "Lain-lain" dicentang, pastikan checkbox "Angsuran ke" tidak dicentang
+            if (lainlainCheckbox.checked) {
+                angsuranCheckbox.checked = false;
+            }
+        });
+
+        angsuranCheckbox.addEventListener('change', function() {
+            // Saat checkbox "Angsuran ke" berubah, pastikan form keterangan tetap terbuka
+            handleCheckboxChange();
+            // Jika checkbox "Angsuran ke" dicentang, pastikan checkbox "Lain-lain" tidak dicentang
+            if (angsuranCheckbox.checked) {
+                lainlainCheckbox.checked = false;
+            }
         });
     </script>
+
     <script>
         // Dapatkan semua elemen checkbox
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -345,12 +352,14 @@
 </html>
 <style>
     .date-wrapper {
-        margin:20px 32px 0 0;
+        margin: 20px 32px 0 0;
     }
-    .date{
-        font-weight: 500; 
+
+    .date {
+        font-weight: 500;
         font-size: 14pt
     }
+
     .content-wrapper {
         padding: 3rem 2rem 2rem 2rem;
     }
