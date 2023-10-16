@@ -131,7 +131,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="pagination" style="display: flex">
+            <div class="pagination" id="pagination" style="display: flex">
             </div>
         </div>
     </section>
@@ -242,67 +242,68 @@
         });
     </script>
     
-<script>
-    $(document).ready(function() {
-    // Ambil data dari server dan simpan dalam variabel JavaScript
-    const kwitansis = @json($kwitansis);
+    <script>
+        $(document).ready(function () {
+            // Ambil data dari server dan simpan dalam variabel JavaScript
+            const kwitansis = @json($kwitansis);
 
-    // Inisialisasi jumlah item per halaman
-    const itemsPerPage = 10;
+            // Inisialisasi jumlah item per halaman
+            const itemsPerPage = 10;
 
-    // Menghitung total halaman berdasarkan data dan jumlah item per halaman
-    const totalPages = Math.ceil(kwitansis.length / itemsPerPage);
+            // Menghitung total halaman berdasarkan data dan jumlah item per halaman
+            const totalPages = Math.ceil(kwitansis.length / itemsPerPage);
 
-    // Menginisialisasi tabel
-    function initializeTable() {
-        updateTable(1); // Menampilkan halaman pertama
-    }
-
-    // Function untuk menampilkan item pada halaman yang dipilih
-    function updateTable(page) {
-        // Menghitung indeks awal dan akhir untuk item pada halaman yang dipilih
-        const startIndex = (page - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-
-        // Menghapus semua baris, kecuali header
-        table.find("tr").not("thead tr").remove();
-
-        // Menambahkan baris sesuai dengan halaman yang dipilih
-        for (let i = startIndex; i < endIndex; i++) {
-            if (i < kwitansis.length) {
-                const kwitansi = kwitansis[i];
-                const newRow = `<tr>
-                    <td>${i + 1}</td>
-                    <td>${kwitansi.nomor_kwitansi}</td>
-                    <td>${kwitansi.nama_lengkap}</td>
-                    <!-- Tambahkan kolom lain sesuai kebutuhan -->
-                </tr>`;
-                table.append(newRow);
+            // Menginisialisasi tabel
+            function initializeTable() {
+                updateTable(1); // Menampilkan halaman pertama
+                setupPagination();
             }
-        }
-    }
 
-    // Menghandle klik pada tombol pagination
-    pagination.on("click", "a", function() {
-        const newPage = parseInt($(this).text());
+            // Function untuk menampilkan item pada halaman yang dipilih
+            function updateTable(page) {
+                // Menghitung indeks awal dan akhir untuk item pada halaman yang dipilih
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
 
-        // Jika halaman yang dipilih berbeda dari halaman saat ini
-        if (newPage !== currentPage) {
-            currentPage = newPage;
+                const table = $("#kwitansiTable tbody");
+                // Menghapus semua baris, kecuali header
+                table.empty();
 
-            // Update tombol pagination yang aktif
-            pagination.find("a").removeClass("active");
-            $(this).addClass("active");
+                // Menambahkan baris sesuai dengan halaman yang dipilih
+                for (let i = startIndex; i < endIndex; i++) {
+                    if (i < kwitansis.length) {
+                        const kwitansi = kwitansis[i];
+                        const newRow = `<tr>
+                            <td>${i + 1}</td>
+                            <td>${kwitansi.nomor_kwitansi}</td>
+                            <td>${kwitansi.nama_lengkap}</td>
+                            <!-- Tambahkan kolom lain sesuai kebutuhan -->
+                        </tr>`;
+                        table.append(newRow);
+                    }
+                }
+            }
 
-            // Menampilkan item pada halaman yang dipilih
-            updateTable(currentPage);
-        }
-    });
+            function setupPagination() {
+                const pagination = $("#pagination");
+                pagination.empty();
 
-    // Menginisialisasi tabel saat dokumen siap
-    initializeTable();
-    });
-</script>
+                for (let page = 1; page <= totalPages; page++) {
+                    const pageLink = $(`<a href="#">${page}</a>`);
+                    pageLink.click(function () {
+                        updateTable(page);
+                    });
+                    pagination.append(pageLink);
+                }
+
+                // Tandai halaman pertama sebagai aktif
+                pagination.find("a:first").addClass("active");
+            }
+
+            // Menginisialisasi tabel saat dokumen siap
+            initializeTable();
+        });
+    </script>
 
     @extends('templates.footer')
 </body>
