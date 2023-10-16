@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Kwitansi</title>
+    <title>List Kwitansi</title>
     <link rel="icon" href="{{ asset('img/logo.png') }}">
 </head>
 
@@ -77,7 +77,6 @@
                         <th style="width: 4.5rem;">No. HP</th>
                         <th style="width: 8.5rem;">Terbilang</th>
                         <th style="width: 4rem;">Pembayaran</th>
-                        <th style="width: 4rem;">Keterangan</th>
                         <th style="width: 4rem;">Nama Perumahan</th>
                         <th style="width: 1rem;">No. Kavling</th>
                         <th style="width: 1rem;">Type</th>
@@ -103,8 +102,20 @@
                             <td>{{ $kwitansi->alamat }}</td>
                             <td>{{ $kwitansi->no_hp }}</td>
                             <td>{{ $kwitansi->terbilang }}</td>
-                            <td>{{ $kwitansi->pembayaran }}</td>
-                            <td>{{ $kwitansi->keterangan }}</td>
+                            <td> <?php
+                                $pembayaran = $kwitansi->pembayaran;
+                                $keterangan = $kwitansi->keterangan;
+                                
+                                if ($pembayaran === 'Booking' || $pembayaran === 'DP' || $pembayaran === 'CBTH' || $pembayaran === 'KET') {
+                                    echo $pembayaran;
+                                } elseif ($pembayaran === 'Angsuran ke') {
+                                    echo $pembayaran . ' ' . $keterangan;
+                                } elseif ($pembayaran === 'Lain-lain') {
+                                    echo $keterangan;
+                                } else {
+                                    echo $pembayaran;
+                                }
+                                ?></td>
                             <td>{{ $kwitansi->lokasi }}</td>
                             <td>{{ $kwitansi->no_kavling }}</td>
                             <td>{{ $kwitansi->type }}</td>

@@ -129,8 +129,8 @@
                             </div>
                             <div class="row mb-3" id="keteranganRow" style="display: none;">
                                 <div class="col-sm-12">
-                                    <label for="keterangan" class="col-form-label">Keterangan Lainnya</label>
-                                    <input class="form-control" id="keterangan" name="keterangan"
+                                    <label for="keterangan" class="col-form-label">Keterangan</label>
+                                    <input class="form-control shadow-sm bg-body-tertiary rounded" id="keterangan" name="keterangan"
                                         placeholder="Masukkan keterangan">
                                 </div>
                             </div>
@@ -185,38 +185,30 @@
         }
     </script>
     <script>
-        // Dapatkan elemen checkbox "Lain-lain" berdasarkan ID
+        // Dapatkan elemen checkbox "Lain-lain" dan "Angsuran ke" berdasarkan ID
+        var angsuranCheckbox = document.getElementById('angsuran');
         var lainlainCheckbox = document.getElementById('lainlain');
-
+    
         // Dapatkan elemen row "keterangan" berdasarkan ID
         var keteranganRow = document.getElementById('keteranganRow');
-
-        // Tambahkan event listener ke checkbox "Lain-lain"
-        lainlainCheckbox.addEventListener('change', function() {
-            // Jika checkbox "Lain-lain" dicentang, tampilkan input "keterangan"
-            if (this.checked) {
+    
+        // Tambahkan event listener ke checkbox "Lain-lain" dan "Angsuran ke"
+        angsuranCheckbox.addEventListener('change', handleCheckboxChange);
+        lainlainCheckbox.addEventListener('change', handleCheckboxChange);
+    
+        // Fungsi untuk menangani perubahan pada checkbox "Lain-lain" dan "Angsuran ke"
+        function handleCheckboxChange() {
+            // Jika checkbox "Lain-lain" atau "Angsuran ke" dicentang, tampilkan input "keterangan"
+            if (angsuranCheckbox.checked || lainlainCheckbox.checked) {
                 keteranganRow.style.display = 'block';
             } else {
-                // Jika checkbox "Lain-lain" tidak dicentang, sembunyikan input "keterangan" dan hapus isinya
+                // Jika tidak, sembunyikan input "keterangan" dan hapus isinya
                 keteranganRow.style.display = 'none';
                 document.getElementById('keterangan').value = '';
             }
-        });
+        }
     </script>
-    <script>
-        var angsuranCheckbox = document.getElementById('angsuran');
-
-        var keteranganRow = document.getElementById('keteranganRow');
-
-        angsuranCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                keteranganRow.style.display = 'block';
-            } else {
-                keteranganRow.style.display = 'none';
-                document.getElementById('keterangan').value = '';
-            }
-        });
-    </script>
+    
     <script>
         // Dapatkan semua elemen checkbox
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
