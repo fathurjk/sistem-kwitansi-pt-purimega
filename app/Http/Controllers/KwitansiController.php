@@ -22,9 +22,16 @@ class KwitansiController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $searchDate = null;
 
-        // Mengonversi input pencarian tanggal ke format yang sesuai (misalnya, 'Y-m-d')
-        $searchDate = \Carbon\Carbon::parse($search)->format('Y-m-d');
+        // Periksa apakah input pencarian adalah tanggal yang valid
+        if (\Carbon\Carbon::hasFormat($search, 'Y-m-d')) {
+            // Jika valid, gunakan tanggal langsung
+            $searchDate = $search;
+        } else {
+            // Jika bukan tanggal yang valid, beri nilai null pada $searchDate
+            $searchDate = null;
+        }
 
         // Filter Kwitansi berdasarkan pencarian
         $kwitansis = Kwitansi::where(function ($query) use ($search, $searchDate) {
@@ -39,10 +46,14 @@ class KwitansiController extends Controller
                 ->orWhere('lokasi', 'LIKE', '%' . $search . '%')
                 ->orWhere('no_kavling', 'LIKE', '%' . $search . '%')
                 ->orWhere('type', 'LIKE', '%' . $search . '%')
-                ->orWhere('jumlah', 'LIKE', '%' . $search . '%')
-                ->orWhereDate('created_at', $searchDate);
+                ->orWhere('jumlah', 'LIKE', '%' . $search . '%');
+
+            // Tambahkan kondisi pencarian berdasarkan tanggal hanya jika tanggal valid
+            if ($searchDate) {
+                $query->orWhereDate('created_at', $searchDate);
+            }
         })
-            ->orderBy('created_at', 'desc') // Menyortir berdasarkan tanggal pembuatan (created_at) dari yang terbaru ke yang terlama
+            ->orderBy('created_at', 'desc')
             ->get();
 
         if ($kwitansis->isEmpty()) {
