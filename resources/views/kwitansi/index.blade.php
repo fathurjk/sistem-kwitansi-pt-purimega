@@ -266,8 +266,8 @@
 
             // Menginisialisasi tabel
             function initializeTable() {
-                updateTable(1); // Menampilkan halaman pertama
                 setupPagination();
+                updateTable(1); // Menampilkan halaman pertama
             }
 
             // Function untuk menampilkan item pada halaman yang dipilih
