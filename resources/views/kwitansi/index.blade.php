@@ -272,7 +272,6 @@
 
             // Function untuk menampilkan item pada halaman yang dipilih
             function updateTable(page) {
-                // Menghitung indeks awal dan akhir untuk item pada halaman yang dipilih
                 const startIndex = (page - 1) * itemsPerPage;
                 const endIndex = startIndex + itemsPerPage;
 
