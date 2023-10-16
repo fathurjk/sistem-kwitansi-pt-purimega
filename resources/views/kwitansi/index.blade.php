@@ -261,9 +261,6 @@
             // Inisialisasi jumlah item per halaman
             const itemsPerPage = 10;
 
-            // Menghitung total halaman berdasarkan data dan jumlah item per halaman
-            const totalPages = Math.ceil(kwitansis.length / itemsPerPage);
-
             // Menginisialisasi tabel
             function initializeTable() {
                 setupPagination();
@@ -274,29 +271,27 @@
             function updateTable(page) {
                 const startIndex = (page - 1) * itemsPerPage;
                 const endIndex = startIndex + itemsPerPage;
-
                 const table = $("#kwitansiTable tbody");
                 // Menghapus semua baris, kecuali header
                 table.empty();
-
                 // Menambahkan baris sesuai dengan halaman yang dipilih
-                for (let i = startIndex; i < endIndex; i++) {
-                    if (i < kwitansis.length) {
-                        const kwitansi = kwitansis[i];
-                        const newRow = `<tr>
-                            <td>${i + 1}</td>
-                            <td>${kwitansi.nomor_kwitansi}</td>
-                            <td>${kwitansi.nama_lengkap}</td>
-                            <!-- Tambahkan kolom lain sesuai kebutuhan -->
-                        </tr>`;
-                        table.append(newRow);
-                    }
+                for (let i = startIndex; i < endIndex && i < kwitansis.length; i++) {
+                    const kwitansi = kwitansis[i];
+                    const newRow = `<tr>
+                        <td>${i + 1}</td>
+                        <td>${kwitansi.nomor_kwitansi}</td>
+                        <td>${kwitansi.nama_lengkap}</td>
+                        <!-- Tambahkan kolom lain sesuai kebutuhan -->
+                    </tr>`;
+                    table.append(newRow);
                 }
             }
 
             function setupPagination() {
                 const pagination = $("#pagination");
                 pagination.empty();
+
+                const totalPages = Math.ceil(kwitansis.length / itemsPerPage);
 
                 for (let page = 1; page <= totalPages; page++) {
                     const pageLink = $(`<a href="#">${page}</a>`);
