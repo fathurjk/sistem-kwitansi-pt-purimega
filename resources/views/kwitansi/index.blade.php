@@ -153,7 +153,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
-    //modal filter date
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const filterButton = document.getElementById('filterButton');
@@ -178,7 +178,6 @@
         });
     </script>
     
-    //Export excell sesuai range tanggal
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Temukan elemen tombol ekspor di dalam modal
@@ -188,7 +187,7 @@
             exportDurationModalButton.addEventListener('click', function() {
                 const startDate = document.getElementById('start_date').value;
                 const endDate = document.getElementById('end_date').value;
-
+                
                 // Mengonversi tanggal ke format ISO (YYYY-MM-DD)
                 const isoStartDate = new Date(startDate).toISOString().split('T')[0];
                 const isoEndDate = new Date(endDate).toISOString().split('T')[0];
