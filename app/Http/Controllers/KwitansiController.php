@@ -25,7 +25,7 @@ class KwitansiController extends Controller
         $searchDate = null;
 
         // Periksa apakah input pencarian adalah tanggal yang valid
-        if (\Carbon\Carbon::hasFormat($search, 'Y-m-d')) {
+        if (\Carbon\Carbon::hasFormat($search, 'Y/m/d')) {
             // Jika valid, gunakan tanggal langsung
             $searchDate = $search;
         } else {
