@@ -23,8 +23,11 @@ class KwitansiController extends Controller
     {
         $search = $request->input('search');
 
+        // Mengonversi input pencarian tanggal ke format yang sesuai (misalnya, 'Y-m-d')
+        $searchDate = \Carbon\Carbon::parse($search)->format('Y-m-d');
+
         // Filter Kwitansi berdasarkan pencarian
-        $kwitansis = Kwitansi::where(function ($query) use ($search) {
+        $kwitansis = Kwitansi::where(function ($query) use ($search, $searchDate) {
             $query
                 ->where('nomor_kwitansi', 'LIKE', '%' . $search . '%')
                 ->orWhere('nama_lengkap', 'LIKE', '%' . $search . '%')
@@ -36,18 +39,19 @@ class KwitansiController extends Controller
                 ->orWhere('lokasi', 'LIKE', '%' . $search . '%')
                 ->orWhere('no_kavling', 'LIKE', '%' . $search . '%')
                 ->orWhere('type', 'LIKE', '%' . $search . '%')
-                ->orWhere('jumlah', 'LIKE', '%' . $search . '%');
+                ->orWhere('jumlah', 'LIKE', '%' . $search . '%')
+                ->orWhereDate('created_at', $searchDate);
         })
             ->orderBy('created_at', 'desc') // Menyortir berdasarkan tanggal pembuatan (created_at) dari yang terbaru ke yang terlama
             ->get();
 
-            if ($kwitansis->isEmpty()) {
-                session()->flash('error', 'Aset tidak ditemukan');
-                return view('kwitansi.index', ['kwitansis' => $kwitansis]);
-            }
-        
+        if ($kwitansis->isEmpty()) {
+            session()->flash('error', 'Aset tidak ditemukan');
             return view('kwitansi.index', ['kwitansis' => $kwitansis]);
         }
+
+        return view('kwitansi.index', ['kwitansis' => $kwitansis]);
+    }
 
     public function create()
     {

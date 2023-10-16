@@ -15,6 +15,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
+        "nesbot/carbon": "^2.71",
         "spatie/laravel-permission": "^5.11"
     },
     "require-dev": {
