@@ -313,7 +313,7 @@
             updateTable(0, 1);
             updateTableRows(currentPage);
         });
-        </script>
+    </script>
         
     
     
