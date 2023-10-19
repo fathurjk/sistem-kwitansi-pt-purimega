@@ -45,6 +45,12 @@
                     </a>
                 </div>
                 <div class="btn-group me-2">
+                    <a href="#" class="btn btn-refresh shadow-sm" id="refreshButton" title="Refresh Data">
+                        <img style="width: 20px; height: 20px;" class="refresh" src="{{ asset('icon/refresh.svg') }}"
+                            alt="">
+                    </a>
+                </div>
+                <div class="btn-group me-2">
                     <button type="button" class="btn btn-print dropdown-toggle shadow-sm" data-bs-toggle="dropdown"
                         aria-expanded="false" title="Export Data Excel">
                         <img src="{{ asset('icon/export_notes.svg') }}" alt="">
@@ -71,7 +77,7 @@
                         <th style="width: 2rem; justify-content: center; align-items: center; cursor: pointer; border-top-left-radius: 6px"
                             id="sortNo">No.</th>
                         <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
-                        <th style="width: 4.5rem;">Tanggal</th>
+                        <th style="width: 5rem;">Tanggal</th>
                         <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
                         <th style="width: 10rem;">Alamat</th>
                         <th style="width: 4.5rem;">No. HP</th>
@@ -97,25 +103,25 @@
                             style="cursor: pointer;">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $kwitansi->nomor_kwitansi }}</td>
-                            <td>{{ date('j F Y', strtotime($kwitansi->created_at)) }}</td>
+                            <td>{{ $kwitansi->created_at->format('Y-m-d') }}</td>
                             <td>{{ $kwitansi->nama_lengkap }}</td>
                             <td>{{ $kwitansi->alamat }}</td>
                             <td>{{ $kwitansi->no_hp }}</td>
                             <td>{{ $kwitansi->terbilang }}</td>
                             <td> <?php
-                                $pembayaran = $kwitansi->pembayaran;
-                                $keterangan = $kwitansi->keterangan;
-                                
-                                if ($pembayaran === 'Booking' || $pembayaran === 'DP' || $pembayaran === 'CBTH' || $pembayaran === 'KET') {
-                                    echo $pembayaran;
-                                } elseif ($pembayaran === 'Angsuran ke') {
-                                    echo $pembayaran . ' ' . $keterangan;
-                                } elseif ($pembayaran === 'Lain-lain') {
-                                    echo $keterangan;
-                                } else {
-                                    echo $pembayaran;
-                                }
-                                ?></td>
+                            $pembayaran = $kwitansi->pembayaran;
+                            $keterangan = $kwitansi->keterangan;
+                            
+                            if ($pembayaran === 'Booking' || $pembayaran === 'DP' || $pembayaran === 'CBTH' || $pembayaran === 'KET') {
+                                echo $pembayaran;
+                            } elseif ($pembayaran === 'Angsuran ke') {
+                                echo $pembayaran . ' ' . $keterangan;
+                            } elseif ($pembayaran === 'Lain-lain') {
+                                echo $keterangan;
+                            } else {
+                                echo $pembayaran;
+                            }
+                            ?></td>
                             <td>{{ $kwitansi->lokasi }}</td>
                             <td>{{ $kwitansi->no_kavling }}</td>
                             <td>{{ $kwitansi->type }}</td>
@@ -123,15 +129,18 @@
                             @can('super admin')
                                 <td
                                     style="padding-left: 1rem; display: flex; height: 6rem; justify-content: space-around; align-items: center">
-                                    <a class="btn btn-edit-pencil" title="Edit Data Kwitansi" href="{{ route('kwitansi.edit', $kwitansi->id) }}">
-                                        <img src="{{ asset('icon/pen2.svg') }}" alt="" style="margin: 4px 0 4px 0">
+                                    <a class="btn btn-edit-pencil" title="Edit Data Kwitansi"
+                                        href="{{ route('kwitansi.edit', $kwitansi->id) }}">
+                                        <img src="{{ asset('icon/pen2.svg') }}" alt=""
+                                            style="margin: 4px 0 4px 0">
                                     </a>
 
                                     <form action="{{ route('kwitansi.destroy', $kwitansi->id) }}}}" method="POST"
                                         class="d-inline-grid">
                                         @method('delete')
                                         @csrf
-                                        <button class="btn btn-delete" title="Hapus Kwitansi" onclick="return confirm('Hapus Data Kwitansi?')"
+                                        <button class="btn btn-delete" title="Hapus Kwitansi"
+                                            onclick="return confirm('Hapus Data Kwitansi?')"
                                             style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
                                             <img src="{{ asset('icon/trash3.svg') }}" alt="">
                                         </button>
@@ -153,32 +162,53 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
-    
+
     <script>
+        //JS Filter Data Menggunakan Tanggal
         document.addEventListener('DOMContentLoaded', function() {
             const filterButton = document.getElementById('filterButton');
             const filterDatePickerModal = new bootstrap.Modal(document.getElementById('filterDatePickerModal'));
-    
+
             filterButton.addEventListener('click', function() {
                 filterDatePickerModal.show();
             });
-    
+
             const filterDatePickerModalButton = document.getElementById('filterDatePickerModalButton');
             filterDatePickerModalButton.addEventListener('click', function() {
                 // Ambil nilai tanggal dari input date picker
                 const startDate = document.getElementById('start_date_filter').value;
                 const endDate = document.getElementById('end_date_filter').value;
-    
+
                 // Lakukan operasi atau pengiriman data ke server sesuai dengan kebutuhan Anda
                 // Misalnya, Anda bisa membuat permintaan AJAX ke server dengan tanggal filter.
-    
+
                 // Sembunyikan modal setelah mengambil nilai tanggal
                 filterDatePickerModal.hide();
+
+                // Anda dapat memfilter data di tabel menggunakan startDate dan endDate
+                // Sebagai contoh, Anda dapat menyembunyikan baris yang tidak berada dalam rentang tanggal tertentu.
+
+                // Ambil semua baris dalam tabel
+                const rows = document.querySelectorAll('#kwitansi-table tbody tr');
+
+                // Iterasi melalui setiap baris dan periksa tanggal
+                rows.forEach(row => {
+                    const tanggal = row.cells[2]
+                        .textContent; // Menggunakan indeks 2 karena kolom tanggal berada pada indeks 2
+                    if (tanggal < startDate || tanggal > endDate) {
+                        // Sembunyikan baris jika tanggal tidak berada dalam rentang
+                        row.style.display = 'none';
+                    } else {
+                        // Tampilkan baris jika tanggal berada dalam rentang
+                        row.style.display = '';
+                    }
+                });
             });
         });
     </script>
-    
+
     <script>
+        //JS Export Data Excell Menggunakan Rentang Tanggal
         document.addEventListener('DOMContentLoaded', function() {
             // Temukan elemen tombol ekspor di dalam modal
             const exportDurationModalButton = document.getElementById('exportDurationModalButton');
@@ -187,7 +217,7 @@
             exportDurationModalButton.addEventListener('click', function() {
                 const startDate = document.getElementById('start_date').value;
                 const endDate = document.getElementById('end_date').value;
-                
+
                 // Mengonversi tanggal ke format ISO (YYYY-MM-DD)
                 const isoStartDate = new Date(startDate).toISOString().split('T')[0];
                 const isoEndDate = new Date(endDate).toISOString().split('T')[0];
@@ -203,30 +233,45 @@
         });
     </script>
     <script>
+        //JS Refresh
+        document.addEventListener('DOMContentLoaded', function() {
+            const refreshButton = document.getElementById('refreshButton');
+
+            refreshButton.addEventListener('click', function() {
+                // Lakukan operasi atau pengiriman data ke server sesuai dengan kebutuhan Anda untuk me-refresh data.
+                // Misalnya, Anda bisa membuat permintaan AJAX ke server untuk memuat ulang data.
+
+                // Setelah memuat ulang data, Anda dapat mereload halaman untuk menampilkan perubahan.
+                location.reload();
+            });
+        });
+    </script>
+
+    <script>
         $(document).ready(function() {
             // Initialize sorting order for each column
             let noSortOrder = 1;
             let kwitansiSortOrder = 1;
             let namaSortOrder = 1;
-            
+
             // Get the table element
             const table = $("#kwitansi-table");
-            
+
             // Get the pagination element
             const pagination = $(".pagination");
-            
+
             // Set the number of items per page
             const itemsPerPage = 10; // Ganti dengan 10 untuk menampilkan 10 data per halaman
-            
+
             // Function to update the entire table with sorted data
             function updateTable(sortKey, sortOrder) {
                 const $table = $("table tbody");
                 const $rows = $table.find("tr").get();
-            
+
                 $rows.sort(function(a, b) {
                     const aValue = $(a).find("td").eq(sortKey).text();
                     const bValue = $(b).find("td").eq(sortKey).text();
-            
+
                     if (sortKey === 1) {
                         // Sorting No. Kwitansi
                         return sortOrder * aValue.localeCompare(bValue);
@@ -238,84 +283,84 @@
                         return sortOrder * (parseFloat(aValue) - parseFloat(bValue));
                     }
                 });
-            
+
                 $table.empty().append($rows);
-            
+
                 // Call the initial sorting to sort the data based on the default column
                 updateTableRows(currentPage);
             }
-            
+
             // Function to hide and show rows based on the current page
             function updateTableRows(currentPage) {
                 // Hide all rows in the table, except the header
                 table.find("tr").not("thead tr").hide();
-            
+
                 // Show the rows for the current page
                 const startIdx = (currentPage - 1) * itemsPerPage;
                 const endIdx = startIdx + itemsPerPage;
                 table.find("tr").slice(startIdx, endIdx).show();
             }
-            
+
             // **Add the header to the table**
             table.append(table.find("thead"));
-            
+
             // Handle click event for sorting by No
             $("#sortNo").click(function() {
                 noSortOrder *= -1;
                 updateTable(0, noSortOrder);
             });
-            
+
             // Handle click event for sorting by No. Kwitansi
             $("#sortKwitansi").click(function() {
                 kwitansiSortOrder *= -1;
                 updateTable(1, kwitansiSortOrder);
             });
-            
+
             // Handle click event for sorting by Nama Lengkap
             $("#sortNama").click(function() {
                 namaSortOrder *= -1;
                 updateTable(3, namaSortOrder);
             });
-            
+
             // Set the initial page number
             let currentPage = 1;
-            
+
             // Calculate the total number of pages
             const totalData = {{ $kwitansis->count() }}; // Ganti dengan jumlah data yang sesungguhnya
             const totalPages = Math.ceil(totalData / itemsPerPage);
-            
+
             // Generate initial pagination buttons
             for (let i = 1; i <= totalPages; i++) {
                 pagination.append(`<a href="#" class="${i === 1 ? 'active' : ''}">${i}</a>`);
             }
-            
+
             // Handle click event for pagination buttons
             pagination.on("click", "a", function() {
                 // Get the clicked page number
                 const newPage = parseInt($(this).text());
-            
+
                 // If the clicked page number is different from the current page number
                 if (newPage !== currentPage) {
                     // Update the current page number
                     currentPage = newPage;
-            
+
                     // Update the active pagination button
                     pagination.find("a").removeClass("active");
                     $(this).addClass("active");
-            
+
                     // Update the table rows
                     updateTableRows(currentPage);
                 }
             });
-            
+
             // Call the initial sorting to sort the data based on the default column
             updateTable(0, 1);
             updateTableRows(currentPage);
         });
     </script>
-        
-    
-    
+
+
+
 
     @extends('templates.footer')
 </body>
@@ -393,6 +438,7 @@
     }
 
     .btn-add {
+        width: 4rem;
         background-color: #8e4761;
         color: #ffffff;
         border-radius: 0.3rem;
@@ -410,6 +456,7 @@
     }
 
     .btn-filter {
+        width: 4rem;
         background-color: #8e4761;
         color: #ffffff;
         border-radius: 0.3rem;
@@ -424,6 +471,27 @@
 
     .btn-filter:hover img.filter {
         content: url('icon/filterhover.svg');
+    }
+
+    .btn-refresh {
+        width: 4rem;
+        background-color: #8e4761;
+        color: #ffffff;
+        border-radius: 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-refresh:hover {
+        background-color: #acdff8;
+        color: #8e4761;
+        border: 1px solid #8e4761;
+    }
+
+    .btn-refresh:hover img.refresh {
+        content: url('icon/refresh-hover.svg');
     }
 
 
