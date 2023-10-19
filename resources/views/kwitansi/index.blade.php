@@ -140,8 +140,7 @@
                                         @method('delete')
                                         @csrf
                                         <button class="btn btn-delete" title="Hapus Kwitansi"
-                                            onclick="return confirm('Hapus Data Kwitansi?')"
-                                            style="margin:0 ; padding: 6.5px 8px 6.5px 8px; border-radius: 100%;">
+                                            onclick="return confirm('Hapus Data Kwitansi?')">
                                             <img src="{{ asset('icon/trash3.svg') }}" alt="">
                                         </button>
                                     </form>
@@ -246,7 +245,6 @@
             });
         });
     </script>
-
     <script>
         $(document).ready(function() {
             // Initialize sorting order for each column
@@ -358,10 +356,6 @@
             updateTableRows(currentPage);
         });
     </script>
-
-
-
-
     @extends('templates.footer')
 </body>
 
@@ -522,7 +516,9 @@
     .btn-delete {
         background-color: #33434f;
         color: #ffffff;
-        border-radius: 0.3rem
+        margin: 0;
+        padding: 6.5px 8px 6.5px 8px;
+        border-radius: 100%;
     }
 
     .btn-delete:hover {
