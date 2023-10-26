@@ -25,7 +25,7 @@
                         <div class="title-form mt-3 mb-4" id="title-form">
                             <h1>EDIT KWITANSI</h1>
                         </div>
-                        <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3">
+                        <form method="POST" action="{{ route('kwitansi.update', $kwitansi->id) }}" class="mb-3" onsubmit="return validateForm()">
                             @method('put')
                             @csrf
                             <a class="btn btn-back mb-3" onclick="goBack()">Kembali</a>
@@ -298,6 +298,31 @@
             });
         });
     </script>
+
+<script>
+    function validateForm() {
+        var nomor_kwitansi = document.getElementById("nomor_kwitansi").value;
+        var nama_lengkap = document.getElementById("nama_lengkap").value;
+        var lokasi = document.getElementById("lokasi").value;
+        var alamat = document.getElementById("alamat").value;
+        var no_kavling = document.getElementById("no_kavling").value;
+        var no_hp = document.getElementById("no_hp").value;
+        var type = document.getElementById("type").value;
+        var pembayaran = document.querySelectorAll('input[name="pembayaran[]"]:checked').length;
+        var keterangan = document.getElementById("keterangan").value;
+        var terbilang = document.getElementById("terbilang").value;
+        var jumlah = document.getElementById("jumlah").value;
+
+        if (nomor_kwitansi === "" || nama_lengkap === "" || lokasi === "" || alamat === "" ||
+            no_kavling === "" || no_hp === "" || type === "" || pembayaran === 0 ||
+            terbilang === "" || jumlah === "") {
+            alert("Harap isi semua field yang diperlukan sebelum mengirimkan formulir.");
+            return false;
+        }
+    }
+</script>
+
+
     <script>
         // Fungsi untuk memformat input jumlah dengan titik dan "RP"
         function formatCurrency(input) {

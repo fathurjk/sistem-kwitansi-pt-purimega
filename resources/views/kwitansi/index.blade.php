@@ -103,7 +103,7 @@
                             style="cursor: pointer;">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $kwitansi->nomor_kwitansi }}</td>
-                            <td>{{ $kwitansi->created_at->format('Y-m-d') }}</td>
+                            <td>{{ $kwitansi->created_at->format('d F Y') }}</td>
                             <td>{{ $kwitansi->nama_lengkap }}</td>
                             <td>{{ $kwitansi->alamat }}</td>
                             <td>{{ $kwitansi->no_hp }}</td>
@@ -162,49 +162,63 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
 
-    <script>
-        //JS Filter Data Menggunakan Tanggal
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButton = document.getElementById('filterButton');
-            const filterDatePickerModal = new bootstrap.Modal(document.getElementById('filterDatePickerModal'));
+<script>
+    // JS Filter Data Menggunakan Tanggal
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButton = document.getElementById('filterButton');
+        const filterDatePickerModal = new bootstrap.Modal(document.getElementById('filterDatePickerModal'));
 
-            filterButton.addEventListener('click', function() {
-                filterDatePickerModal.show();
-            });
+        filterButton.addEventListener('click', function() {
+            filterDatePickerModal.show();
+        });
 
-            const filterDatePickerModalButton = document.getElementById('filterDatePickerModalButton');
-            filterDatePickerModalButton.addEventListener('click', function() {
-                // Ambil nilai tanggal dari input date picker
-                const startDate = document.getElementById('start_date_filter').value;
-                const endDate = document.getElementById('end_date_filter').value;
+        const filterDatePickerModalButton = document.getElementById('filterDatePickerModalButton');
+        filterDatePickerModalButton.addEventListener('click', function() {
+            // Ambil nilai tanggal dari input date picker
+            const startDateText = document.getElementById('start_date_filter').value;
+            const endDateText = document.getElementById('end_date_filter').value;
 
-                // Lakukan operasi atau pengiriman data ke server sesuai dengan kebutuhan Anda
-                // Misalnya, Anda bisa membuat permintaan AJAX ke server dengan tanggal filter.
+            // Konversi tanggal dari format "j F Y" ke objek Date
+            const startDate = new Date(startDateText);
+            const endDate = new Date(endDateText);
 
-                // Sembunyikan modal setelah mengambil nilai tanggal
-                filterDatePickerModal.hide();
+            // Sembunyikan modal setelah mengambil nilai tanggal
+            filterDatePickerModal.hide();
 
-                // Anda dapat memfilter data di tabel menggunakan startDate dan endDate
-                // Sebagai contoh, Anda dapat menyembunyikan baris yang tidak berada dalam rentang tanggal tertentu.
+            // Anda dapat memfilter data di tabel menggunakan startDate dan endDate
+            // Sebagai contoh, Anda dapat menyembunyikan baris yang tidak berada dalam rentang tanggal tertentu.
 
-                // Ambil semua baris dalam tabel
-                const rows = document.querySelectorAll('#kwitansi-table tbody tr');
+            // Ambil semua baris dalam tabel
+            const rows = document.querySelectorAll('#kwitansi-table tbody tr');
 
-                // Iterasi melalui setiap baris dan periksa tanggal
-                rows.forEach(row => {
-                    const tanggal = row.cells[2]
-                        .textContent; // Menggunakan indeks 2 karena kolom tanggal berada pada indeks 2
-                    if (tanggal < startDate || tanggal > endDate) {
-                        // Sembunyikan baris jika tanggal tidak berada dalam rentang
-                        row.style.display = 'none';
-                    } else {
-                        // Tampilkan baris jika tanggal berada dalam rentang
-                        row.style.display = '';
-                    }
+            // Iterasi melalui setiap baris dan periksa tanggal
+            rows.forEach(row => {
+                const tanggalText = row.cells[2]
+                    .textContent; // Menggunakan indeks 2 karena kolom tanggal berada pada indeks 2
+                const tanggal = new Date(tanggalText);
+
+                // Format tanggal dalam "j F Y"
+                const formatter = new Intl.DateTimeFormat('id-ID', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
                 });
+
+                if (
+                    formatter.format(tanggal) >= formatter.format(startDate) &&
+                    formatter.format(tanggal) <= formatter.format(endDate)
+                ) {
+                    // Tampilkan baris jika tanggal berada dalam rentang
+                    row.style.display = '';
+                } else {
+                    // Sembunyikan baris jika tanggal tidak berada dalam rentang
+                    row.style.display = 'none';
+                }
             });
         });
-    </script>
+    });
+</script>
+
 
     <script>
         //JS Export Data Excell Menggunakan Rentang Tanggal

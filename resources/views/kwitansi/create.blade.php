@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="container mb-3">
-                                <label for="pembayaran" class="col-form-label">Pembayaran</label>
+                                <label for="pembayaran" class="col-form-label">Pembayaran</label> 
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
@@ -149,7 +149,7 @@
                                         placeholder="Masukkan Jumlah" required>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-add mt-3 shadow-sm">Tambah</button>
+                            <button type="submit" class="btn btn-add mt-3 shadow-sm" id="tambahButton" disabled>Tambah</button>
                         </form>
                     </div>
                 </div>
@@ -171,6 +171,31 @@
             return true;
         }
     </script>
+
+<script>
+    // Dapatkan semua elemen input yang perlu diverifikasi
+    const inputFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+    
+    // Dapatkan tombol "Tambah"
+    const tambahButton = document.getElementById('tambahButton');
+    
+    // Tambahkan event listener untuk memeriksa field saat berubah
+    inputFields.forEach(field => {
+        field.addEventListener('input', function() {
+            // Cek apakah semua field yang wajib diisi sudah terisi
+            const allFieldsValid = [...inputFields].every(field => field.value.trim() !== '');
+            
+            // Aktifkan atau nonaktifkan tombol "Tambah" berdasarkan hasil pemeriksaan di atas
+            if (allFieldsValid) {
+                tambahButton.removeAttribute('disabled');
+            } else {
+                tambahButton.setAttribute('disabled', 'true');
+            }
+        });
+    });
+</script>
+
+
     <script>
         function hanyaHurufDanSpasi(event) {
             var charCode = event.which || event.keyCode;
