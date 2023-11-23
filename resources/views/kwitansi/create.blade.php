@@ -131,7 +131,7 @@
                                 <div class="col-sm-12">
                                     <label for="keterangan" class="col-form-label">Keterangan</label>
                                     <input class="form-control shadow-sm bg-body-tertiary rounded" id="keterangan" name="keterangan"
-                                        placeholder="Masukkan keterangan">
+                                        placeholder="Masukkan keterangan" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -149,7 +149,7 @@
                                         placeholder="Masukkan Jumlah" required>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-add mt-3 shadow-sm" id="tambahButton" disabled>Tambah</button>
+                            <button type="submit" class="btn btn-add mt-3 shadow-sm">Tambah</button>
                         </form>
                     </div>
                 </div>
@@ -171,30 +171,6 @@
             return true;
         }
     </script>
-
-<script>
-    // Dapatkan semua elemen input yang perlu diverifikasi
-    const inputFields = document.querySelectorAll('input[required], select[required], textarea[required]');
-    
-    // Dapatkan tombol "Tambah"
-    const tambahButton = document.getElementById('tambahButton');
-    
-    // Tambahkan event listener untuk memeriksa field saat berubah
-    inputFields.forEach(field => {
-        field.addEventListener('input', function() {
-            // Cek apakah semua field yang wajib diisi sudah terisi
-            const allFieldsValid = [...inputFields].every(field => field.value.trim() !== '');
-            
-            // Aktifkan atau nonaktifkan tombol "Tambah" berdasarkan hasil pemeriksaan di atas
-            if (allFieldsValid) {
-                tambahButton.removeAttribute('disabled');
-            } else {
-                tambahButton.setAttribute('disabled', 'true');
-            }
-        });
-    });
-</script>
-
 
     <script>
         function hanyaHurufDanSpasi(event) {
