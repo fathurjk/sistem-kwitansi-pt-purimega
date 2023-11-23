@@ -34,11 +34,13 @@
                         </div>
                     </div>
                 </form>
+                @can('super admin')
                 <div class="btn-group me-2">
                     <a href="{{ route('kwitansi.create') }}" class="btn btn-add shadow-sm" title="Tambah Kwitansi">
                         <img class="add" src="{{ asset('icon/add_notes.svg') }}" alt="">
                     </a>
                 </div>
+                @endcan
                 <div class="btn-group me-2">
                     <a href="#" class="btn btn-filter shadow-sm" id="filterButton" title="Filter Data">
                         <img class="filter" src="{{ asset('icon/filter.svg') }}" alt="">
@@ -71,6 +73,9 @@
             </div>
         @endif
         <div class="content" style="margin: 2rem 0 2rem 0">
+            @can('admin')
+                
+           
             <table class="table table-hover table-striped text-center" id="kwitansi-table" style="margin-bottom: 2rem">
                 <thead>
                     <tr class="bg-info">
@@ -152,6 +157,7 @@
             </table>
             <div class="pagination" id="pagination" style="display: flex">
             </div>
+            @endcan
         </div>
     </section>
     @extends('kwitansi.pop-up.date-picker')

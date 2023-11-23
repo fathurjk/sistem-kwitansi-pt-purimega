@@ -131,7 +131,7 @@
                                 <div class="col-sm-12">
                                     <label for="keterangan" class="col-form-label">Keterangan</label>
                                     <input class="form-control shadow-sm bg-body-tertiary rounded" id="keterangan" name="keterangan"
-                                        placeholder="Masukkan keterangan" required>
+                                        placeholder="Masukkan keterangan">
                                 </div>
                             </div>
                             <div class="row mb-3">
