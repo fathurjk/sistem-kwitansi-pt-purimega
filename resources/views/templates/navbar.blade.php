@@ -37,7 +37,7 @@
             aria-controls="offcanvasWithBothOptions">
             <img src="{{ asset('icon/menu.svg') }}" alt="">
         </button>
-        <img class="logo-img" src="{{ asset('img/logo.png') }}" alt="Logo" width="30" height="24"
+        <img class="logo-img" src="{{ asset('img/logo-pm.png') }}" alt="Logo" width="30" height="24"
             class="d-inline-block align-text-top" style="margin-right: 10px;">
         <a class="navbar-brand" href="{{ route('dashboard') }}" style="margin-top: 0;">
             PT PURIMEGA SARANALAND
@@ -54,7 +54,7 @@
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal"
                                 data-bs-target="#changePasswordModal">
-                                Change Password
+                                Ganti Password
                             </a>
                         </li>
                         <li>
@@ -78,18 +78,18 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                    <h5 class="modal-title" id="changePasswordModalLabel">Ubah Password</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('change-password') }}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="oldPassword" class="form-label">Old Password</label>
+                            <label for="oldPassword" class="form-label">Password Lama</label>
                             <input type="password" class="form-control" id="oldPassword" name="old_password" required>
                         </div>
                         <div class="mb-3">
-                            <label for="newPassword" class="form-label">New Password</label>
+                            <label for="newPassword" class="form-label">Password Baru</label>
                             <input type="password" class="form-control" id="newPassword" name="new_password" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Change Password</button>

@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>List Kwitansi</title>
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
+    <link rel="icon" href="{{ asset('img/logo-pm.png') }}">
 </head>
 
 <body>
@@ -435,6 +435,11 @@
     }
 
     .pagination a:hover {
+        background-color: #6ac063;
+        color: white;
+    }
+
+    .pagination .active {
         background-color: #6ac063;
         color: white;
     }

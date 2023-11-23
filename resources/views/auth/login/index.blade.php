@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
+    <link rel="icon" href="{{ asset('img/logo-pm.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
@@ -14,7 +14,7 @@
     <div class="sheet wrapper"
         style="position: relative; display: flex; padding: 4rem 0 0 0; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh;">
         <div class="header text-center mb-5">
-            <img class="login-logo" class="mb-4" src="{{ asset('img/logo.png') }}" alt="" width="80px"
+            <img class="login-logo" class="mb-4" src="{{ asset('img/logo-pm.png') }}" alt="" width="80px"
                 height="80px" style="margin-right: 8px">
             <label class="login-tittle" style="font-size: 42px; font-weight: 600" for="">PT PURIMEGA SARANALAND</label>
         </div>
