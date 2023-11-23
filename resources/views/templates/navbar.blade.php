@@ -15,7 +15,7 @@
             @endcan
             <li class="nav-item {{ str_contains(Request::url(), 'kwitansi') ? 'active' : '' }}">
                 <a href="{{ route('kwitansi') }}" class="nav-link text-truncate">
-                    <img class="kwitansi" src="{{ asset('icon/article-hover.svg') }}" alt="">
+                    <img class="kwitansii" src="{{ asset('icon/article-hover.svg') }}" alt="">
                     List Kwitansi
                 </a>
             </li>            
@@ -151,8 +151,8 @@
         width: 28px;
     }
 
-    .offcanvas-body #menu li.nav-item:hover img.kwitansi,
-    .offcanvas-body #menu li.nav-item.active img.kwitansi {
+    .offcanvas-body #menu li.nav-item:hover img.kwitansii,
+    .offcanvas-body #menu li.nav-item.active img.kwitansii {
         transform: scale(1.2);
         height: 28px;
         width: 28px;
