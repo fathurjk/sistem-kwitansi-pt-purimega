@@ -2,6 +2,7 @@
 <html lang="en">
 
 <html>
+
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -11,14 +12,16 @@
 
     <style>
         .date {
-        margin-right: 16px;
-        margin-top: 10px;
-        font-size: 18px
+            margin-right: 16px;
+            margin-top: 10px;
+            font-size: 18px
         }
-        .main-content{
+
+        .main-content {
             flex-grow: 1;
-        min-height: calc(100vh - 60px);
+            min-height: calc(100vh - 60px);
         }
+
         .col-content {
             display: flex;
             justify-content: space-between
@@ -45,7 +48,7 @@
         .pagination {
             display: flex;
             justify-content: center;
-            margin-top: 1rem;
+            margin: 1rem 0 3rem 0;
         }
 
         .pagination a {
@@ -58,6 +61,11 @@
         }
 
         .pagination a:hover {
+            background-color: #6ac063;
+            color: white;
+        }
+
+        .pagination .active {
             background-color: #6ac063;
             color: white;
         }
@@ -118,16 +126,133 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="pagination" id="pagination" style="display: flex">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    @extends('templates.footer')
+        @extends('templates.footer')
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                // Initialize sorting order for each column
+                let noSortOrder = 1;
+                let kwitansiSortOrder = 1;
+                let namaSortOrder = 1;
+
+                // Get the table element
+                const table = $("#kwitansi-table");
+
+                // Get the pagination element
+                const pagination = $(".pagination");
+
+                // Set the number of items per page
+                const itemsPerPage = 10; // Ganti dengan 10 untuk menampilkan 10 data per halaman
+
+                // Function to update the entire table with sorted data
+                function updateTable(sortKey, sortOrder) {
+                    const $table = $("table tbody");
+                    const $rows = $table.find("tr").get();
+
+                    $rows.sort(function(a, b) {
+                        let result = 0;
+                        const aValue = $(a).find("td").eq(sortKey).text();
+                        const bValue = $(b).find("td").eq(sortKey).text();
+
+                        if (sortKey === 1 || sortKey === 3) {
+                            // Sorting No. Kwitansi / Nama Admin
+                            result = sortOrder * aValue.localeCompare(bValue);
+                        } else if (sortKey === 2) {
+                            // Sorting Tanggal
+                            const aDate = new Date($(a).find("td").eq(2).text());
+                            const bDate = new Date($(b).find("td").eq(2).text());
+                            result = sortOrder * (aDate - bDate);
+                        }
+
+                        return result;
+                    });
+
+                    $table.empty().append($rows);
+
+                    // Call the initial sorting to sort the data based on the default column
+                    updateTableRows(currentPage);
+                }
+
+
+                // Function to hide and show rows based on the current page
+                function updateTableRows(currentPage) {
+                    // Hide all rows in the table, except the header
+                    table.find("tr").not("thead tr").hide();
+
+                    // Show the rows for the current page
+                    const startIdx = (currentPage - 1) * itemsPerPage;
+                    const endIdx = startIdx + itemsPerPage;
+                    table.find("tr").slice(startIdx, endIdx).show();
+                }
+
+                // **Add the header to the table**
+                table.append(table.find("thead"));
+
+                // Handle click event for sorting by No
+                $("#sortNo").click(function() {
+                    noSortOrder *= -1;
+                    updateTable(0, noSortOrder);
+                });
+
+                // Handle click event for sorting by No. Kwitansi
+                $("#sortKwitansi").click(function() {
+                    kwitansiSortOrder *= -1;
+                    updateTable(1, kwitansiSortOrder);
+                });
+
+                // Handle click event for sorting by Nama Lengkap
+                $("#sortNama").click(function() {
+                    namaSortOrder *= -1;
+                    updateTable(3, namaSortOrder);
+                });
+
+                // Set the initial page number
+                let currentPage = 1;
+
+                // Calculate the total number of pages
+                const totalData = {{ $kwitansis->count() }}; // Ganti dengan jumlah data yang sesungguhnya
+                const totalPages = Math.ceil(totalData / itemsPerPage);
+
+                // Generate initial pagination buttons
+                for (let i = 1; i <= totalPages; i++) {
+                    pagination.append(`<a href="#" class="${i === 1 ? 'active' : ''}">${i}</a>`);
+                }
+
+                // Handle click event for pagination buttons
+                pagination.on("click", "a", function() {
+                    // Get the clicked page number
+                    const newPage = parseInt($(this).text());
+
+                    // If the clicked page number is different from the current page number
+                    if (newPage !== currentPage) {
+                        // Update the current page number
+                        currentPage = newPage;
+
+                        // Update the active pagination button
+                        pagination.find("a").removeClass("active");
+                        $(this).addClass("active");
+
+                        // Update the table rows
+                        updateTableRows(currentPage);
+                    }
+                });
+
+                // Call the initial sorting to sort the data based on the default column
+                updateTable(0, 1);
+                updateTableRows(currentPage);
+            });
+        </script>
 </body>
 
 </html>
