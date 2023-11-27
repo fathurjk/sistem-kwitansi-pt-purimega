@@ -54,7 +54,7 @@ class KwitansiController extends Controller
             }
         })
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(10);
 
         if ($kwitansis->isEmpty()) {
             session()->flash('error', 'Aset tidak ditemukan');

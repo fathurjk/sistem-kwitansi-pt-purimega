@@ -102,7 +102,7 @@
                     @foreach ($kwitansis as $kwitansi)
                         <tr onclick="window.location.href='{{ route('kwitansi.detail', $kwitansi->id) }}';"
                             style="cursor: pointer;">
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $kwitansis->firstItem() + $loop->index }}</td>
                             <td>{{ $kwitansi->nomor_kwitansi }}</td>
                             <td>{{ $kwitansi->created_at->format('d F Y') }}</td>
                             <td>{{ $kwitansi->nama_lengkap }}</td>
@@ -151,7 +151,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="pagination" id="pagination" style="display: flex">
+            {{ $kwitansis->links() }}
             </div>
             @endcan
         </div>
@@ -261,117 +261,6 @@
             });
         });
     </script>
-    <script>
-        $(document).ready(function() {
-            // Initialize sorting order for each column
-            let noSortOrder = 1;
-            let kwitansiSortOrder = 1;
-            let namaSortOrder = 1;
-
-            // Get the table element
-            const table = $("#kwitansi-table");
-
-            // Get the pagination element
-            const pagination = $(".pagination");
-
-            // Set the number of items per page
-            const itemsPerPage = 10; // Ganti dengan 10 untuk menampilkan 10 data per halaman
-
-            // Function to update the entire table with sorted data
-            function updateTable(sortKey, sortOrder) {
-                const $table = $("table tbody");
-                const $rows = $table.find("tr").get();
-
-                $rows.sort(function(a, b) {
-                    const aValue = $(a).find("td").eq(sortKey).text();
-                    const bValue = $(b).find("td").eq(sortKey).text();
-
-                    if (sortKey === 1) {
-                        // Sorting No. Kwitansi
-                        return sortOrder * aValue.localeCompare(bValue);
-                    } else if (sortKey === 3) {
-                        // Sorting Nama Lengkap
-                        return sortOrder * aValue.localeCompare(bValue);
-                    } else {
-                        // Sorting other columns as numbers
-                        return sortOrder * (parseFloat(aValue) - parseFloat(bValue));
-                    }
-                });
-
-                $table.empty().append($rows);
-
-                // Call the initial sorting to sort the data based on the default column
-                updateTableRows(currentPage);
-            }
-
-            // Function to hide and show rows based on the current page
-            function updateTableRows(currentPage) {
-                // Hide all rows in the table, except the header
-                table.find("tr").not("thead tr").hide();
-
-                // Show the rows for the current page
-                const startIdx = (currentPage - 1) * itemsPerPage;
-                const endIdx = startIdx + itemsPerPage;
-                table.find("tr").slice(startIdx, endIdx).show();
-            }
-
-            // **Add the header to the table**
-            table.append(table.find("thead"));
-
-            // Handle click event for sorting by No
-            $("#sortNo").click(function() {
-                noSortOrder *= -1;
-                updateTable(0, noSortOrder);
-            });
-
-            // Handle click event for sorting by No. Kwitansi
-            $("#sortKwitansi").click(function() {
-                kwitansiSortOrder *= -1;
-                updateTable(1, kwitansiSortOrder);
-            });
-
-            // Handle click event for sorting by Nama Lengkap
-            $("#sortNama").click(function() {
-                namaSortOrder *= -1;
-                updateTable(3, namaSortOrder);
-            });
-
-            // Set the initial page number
-            let currentPage = 1;
-
-            // Calculate the total number of pages
-            const totalData = {{ $kwitansis->count() }}; // Ganti dengan jumlah data yang sesungguhnya
-            const totalPages = Math.ceil(totalData / itemsPerPage);
-
-            // Generate initial pagination buttons
-            for (let i = 1; i <= totalPages; i++) {
-                pagination.append(`<a href="#" class="${i === 1 ? 'active' : ''}">${i}</a>`);
-            }
-
-            // Handle click event for pagination buttons
-            pagination.on("click", "a", function() {
-                // Get the clicked page number
-                const newPage = parseInt($(this).text());
-
-                // If the clicked page number is different from the current page number
-                if (newPage !== currentPage) {
-                    // Update the current page number
-                    currentPage = newPage;
-
-                    // Update the active pagination button
-                    pagination.find("a").removeClass("active");
-                    $(this).addClass("active");
-
-                    // Update the table rows
-                    updateTableRows(currentPage);
-                }
-            });
-
-            // Call the initial sorting to sort the data based on the default column
-            updateTable(0, 1);
-            updateTableRows(currentPage);
-        });
-    </script>
     @extends('templates.footer')
 </body>
 
@@ -418,10 +307,11 @@
     .pagination {
         display: flex;
         justify-content: center;
+        align-items: center;
         margin-top: 1rem;
     }
 
-    .pagination a {
+    .pagination a, .pagination .active {
         margin: 0 0.5rem;
         text-decoration: none;
         padding: 0.5rem 1rem;

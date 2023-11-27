@@ -66,7 +66,7 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $users->firstItem() + $loop->index }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->username }}</td>
                             <td>{{ $user->email }}</td>
@@ -106,7 +106,7 @@
                     @endforeach
                 </tbody>
             </table>
-
+            {{ $users->links() }}
         </div>
     </section>
     @extends('dashboard.manage-users.pop-up.addrole')
@@ -145,6 +145,32 @@
         padding: 0 4px 0 4px;
         vertical-align: middle;
         height: 4rem;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    .pagination a, .pagination .active {
+        margin: 0 0.5rem;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 1px solid #4caf50;
+        color: #4caf50;
+        border-radius: 4px;
+    }
+
+    .pagination a:hover {
+        background-color: #6ac063;
+        color: white;
+    }
+
+    .pagination .active {
+        background-color: #6ac063;
+        color: white;
     }
 
     .btn-add {

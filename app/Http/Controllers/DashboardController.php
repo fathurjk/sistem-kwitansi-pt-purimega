@@ -11,7 +11,7 @@ class DashboardController extends Controller
     {
         $kwitansis = Kwitansi::all();
 
-        $kwitansis = Kwitansi::latest()->get();
+        $kwitansis = Kwitansi::latest()->paginate(10);
 
         return view('dashboard.index', compact('kwitansis'));
     }

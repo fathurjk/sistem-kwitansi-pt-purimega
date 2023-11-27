@@ -19,8 +19,8 @@ class ManageUsersController extends Controller
     {
 
         return view('dashboard.manage-users.index',[
-            'users' => User::get(),
-            'roles' => Role::get(),
+            'users' => User::paginate(10),
+            'roles' => Role::paginate(10),
         ]);
     }
 
