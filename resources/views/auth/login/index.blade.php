@@ -4,19 +4,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - PT PURIMEGA SARANALAND</title>
     <link rel="icon" href="{{ asset('img/logo-pm.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header img {
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Adjust the maximum width as needed */
+            margin: auto; /* Center the form horizontally */
+        }
+
+        .form-floating {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-check {
+            margin-top: 1rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="sheet wrapper"
-        style="position: relative; display: flex; padding: 4rem 0 0 0; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh;">
-        <div class="header text-center mb-5">
-            <img class="login-logo" class="mb-4" src="{{ asset('img/logo-pm.png') }}" alt="" width="80px"
-                height="80px" style="margin-right: 8px">
-            <label class="login-tittle" style="font-size: 42px; font-weight: 600" for="">PT PURIMEGA SARANALAND</label>
+    <div class="sheet wrapper">
+        <div class="header">
+            <img class="mb-4" src="{{ asset('img/logo-pm.png') }}" alt="" width="60" height="60">
+            <h1 class="h3 mb-3 font-weight-normal">PT PURIMEGA SARANALAND</h1>
         </div>
         <div class="col-md-4">
             @if (session()->has('success'))
@@ -35,8 +84,6 @@
 
             <form action="{{ route('login.process') }}" method="POST">
                 @csrf
-
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
                 <div class="form-floating">
                     <input type="username" class="form-control @error('username') is-invalid @enderror" id="username"
@@ -60,7 +107,7 @@
                         Remember me
                     </label>
                 </div>
-                <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+                <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
             </form>
         </div>
     </div>
@@ -71,12 +118,3 @@
 </script>
 
 </html>
-<style>
-    .header {
-        max-height: 7rem;
-        display: grid;
-        flex-grow: 1;
-        vertical-align: middle;
-        justify-items: center
-    }
-</style>
