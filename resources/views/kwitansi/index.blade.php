@@ -20,6 +20,18 @@
         <h1 class="text-center"> <a href="{{ route('kwitansi') }}" class="text-decoration-none"
                 style="color: black">LIST KWITANSI</a>
         </h1>
+        <div class="btn-group me-2">
+            <label for="rowsPerPage" class="form-label me-2">Data yang Ditampilkan:</label>
+            <select id="rowsPerPage" class="form-select" onchange="changeRowsPerPage(this)">
+                <option value="5" {{ request('rowsPerPage') == 5 ? 'selected' : '' }}>5</option>
+                <option value="10" {{ request('rowsPerPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="20" {{ request('rowsPerPage') == 20 ? 'selected' : '' }}>20</option>
+                <option value="30" {{ request('rowsPerPage') == 30 ? 'selected' : '' }}>30</option>
+                <option value="40" {{ request('rowsPerPage') == 40 ? 'selected' : '' }}>40</option>
+                <option value="50" {{ request('rowsPerPage') == 50 ? 'selected' : '' }}>50</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
         <div class="input" style="padding-top: 2rem">
             <div class="d-flex justify-content-end mb-3">
                 <form action="/kwitansi" method="GET" class="me-2">
@@ -78,8 +90,8 @@
                         <th style="width: 2rem; justify-content: center; align-items: center; cursor: pointer; border-top-left-radius: 6px"
                             id="sortNo">No.</th>
                         <th style="width: 4.5rem; cursor: pointer;" id="sortKwitansi">No. Kwitansi</th>
-                        <th style="width: 5rem;">Tanggal</th>
-                        <th style="width: 6rem; cursor: pointer;" id="sortNama">Nama Lengkap</th>
+                        <th style="width: 5rem; cursor: pointer;" id="sortTanggal">Tanggal</th>
+                        <th style="width: 6rem;">Nama Lengkap</th>
                         <th style="width: 10rem;">Alamat</th>
                         <th style="width: 4.5rem;">No. HP</th>
                         <th style="width: 8.5rem;">Terbilang</th>
@@ -163,6 +175,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
     </script>
+
+<script>
+    function changeRowsPerPage(selectElement) {
+        const rowsPerPage = selectElement.value;
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('rowsPerPage', rowsPerPage);
+        window.location.href = currentUrl.toString();
+    }
+</script>
 
     <script>
         // JS Filter Data Menggunakan Tanggal
@@ -261,6 +282,98 @@
             });
         });
     </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Store the original order of the rows
+        const originalRows = Array.from(document.querySelectorAll('#kwitansi-table tbody tr'));
+
+        // Function to handle sorting for alphanumeric columns
+        function sortAlphanumericColumn(columnIndex, isAsc) {
+            const tableBody = document.querySelector('#kwitansi-table tbody');
+            const rows = originalRows.slice(); // Create a copy of the original rows
+
+            rows.sort(function (rowA, rowB) {
+                const cellA = rowA.cells[columnIndex].textContent;
+                const cellB = rowB.cells[columnIndex].textContent;
+
+                // Use localeCompare for alphanumeric sorting
+                return isAsc ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+            });
+
+            // Remove existing rows
+            tableBody.innerHTML = '';
+
+            // Append sorted rows to the table
+            rows.forEach(row => tableBody.appendChild(row));
+        }
+
+        // Function to handle sorting for numeric columns
+        function sortNumericColumn(columnIndex, isAsc) {
+            const tableBody = document.querySelector('#kwitansi-table tbody');
+            const rows = originalRows.slice(); // Create a copy of the original rows
+
+            rows.sort(function (rowA, rowB) {
+                const cellA = parseFloat(rowA.cells[columnIndex].textContent);
+                const cellB = parseFloat(rowB.cells[columnIndex].textContent);
+
+                return isAsc ? cellA - cellB : cellB - cellA;
+            });
+
+            // Remove existing rows
+            tableBody.innerHTML = '';
+
+            // Append sorted rows to the table
+            rows.forEach(row => tableBody.appendChild(row));
+        }
+
+        // Function to handle sorting for date column
+        function sortDateColumn(columnIndex, isAsc) {
+            const tableBody = document.querySelector('#kwitansi-table tbody');
+            const rows = originalRows.slice(); // Create a copy of the original rows
+
+            rows.sort(function (rowA, rowB) {
+                const dateA = new Date(rowA.cells[columnIndex].textContent);
+                const dateB = new Date(rowB.cells[columnIndex].textContent);
+
+                return isAsc ? dateA - dateB : dateB - dateA;
+            });
+
+            // Remove existing rows
+            tableBody.innerHTML = '';
+
+            // Append sorted rows to the table
+            rows.forEach(row => tableBody.appendChild(row));
+        }
+
+        // Sorting for No. column
+        const sortNoButton = document.getElementById('sortNo');
+        let isSortNoAsc = true;
+
+        sortNoButton.addEventListener('click', function () {
+            sortNumericColumn(0, isSortNoAsc);
+            isSortNoAsc = !isSortNoAsc;
+        });
+
+        // Sorting for No. Kwitansi column
+        const sortKwitansiButton = document.getElementById('sortKwitansi');
+        let isSortKwitansiAsc = true;
+
+        sortKwitansiButton.addEventListener('click', function () {
+            sortAlphanumericColumn(1, isSortKwitansiAsc);
+            isSortKwitansiAsc = !isSortKwitansiAsc;
+        });
+
+        // Sorting for Tanggal column
+        const sortTanggalButton = document.getElementById('sortTanggal');
+        let isSortTanggalAsc = true;
+
+        sortTanggalButton.addEventListener('click', function () {
+            sortDateColumn(2, isSortTanggalAsc);
+            isSortTanggalAsc = !isSortTanggalAsc;
+        });
+    });
+</script>
     @extends('templates.footer')
 </body>
 
